@@ -6,12 +6,67 @@
     android:layout_height="match_parent"
     tools:context="com.uniroma2.mobynet.marvel_androidproject.MainActivity">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".MainAnctivity"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/test">
+    <RelativeLayout
+        android:layout_width="388dp"
+        android:layout_height="521dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/background_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:context=".MainAnctivity">
+
+        <Button
+            android:id="@+id/btnCreator"
+            style="@android:style/Widget.Holo.Light.Button.Toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="52dp"
+            android:background="@drawable/gold_image2"
+            android:text="Autore"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:text="Cliccare un bottone per iniziare la ricerca"
+            android:textColor="#CC0000"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/btnCharacter"
+            style="@android:style/Widget.Holo.Light.Button.Inset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="77dp"
+            android:background="@drawable/gold_image2"
+            android:text="Personaggio"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView2"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="79dp"
+            android:text="Benvenuto in Moby Marvel!"
+            android:textColor="#CC0000"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
