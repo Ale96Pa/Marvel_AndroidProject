@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btnCreator.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SearchCreatorActivity.class);
+                Intent intent = new Intent(MainActivity.this, SearchCreatorActivity.class);
                 startActivity(intent);
 
             }
