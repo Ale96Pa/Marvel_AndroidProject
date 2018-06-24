@@ -4,31 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.uniroma2.mobynet.marvel_androidproject.SearchCreatorActivity">
+    tools:context="com.uniroma2.mobynet.marvel_androidproject.SearchCreatorActivity"
+    android:background="@drawable/background_image">
 
-    <RelativeLayout
-        android:layout_width="388dp"
-        android:layout_height="521dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/background_image"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="267dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
+        android:background="#FFFFFF"
+        android:drawableLeft="@drawable/search_icon"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Inserisci un nome"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:context=".MainAnctivity">
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="75dp"
-            android:layout_marginTop="106dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Inserisci un nome"
-            android:textColor="#000000"
-            android:background="#FFFFFF"
-            />
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

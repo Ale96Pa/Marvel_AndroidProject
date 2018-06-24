@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity {
 
     private Button btnCreator;
     private Button btnCharacter;
@@ -15,15 +15,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btnCreator= (Button) findViewById(R.id.btnCreator);
         btnCharacter=(Button) findViewById(R.id.btnCharacter);
-        btnCreator.setOnClickListener(this);
-        btnCharacter.setOnClickListener(this);
+        btnCreator.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SearchCreatorActivity.class);
+                startActivity(intent);
 
-
-    }
-
-    public void onClick(View view){
-        startActivity(new Intent(MainActivity.this,SearchCreatorActivity.class));
+            }
+        });
     }
 }
+
+
+
+
+
