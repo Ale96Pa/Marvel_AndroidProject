@@ -16,6 +16,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RestRequest rs = new RestRequest("comics");
+        try {
+            rs.sendGet();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         btnCreator = (Button) findViewById(R.id.btnCreator);
         btnCharacter =(Button) findViewById(R.id.btnCharacter);
         btnCreator.setOnClickListener(new Button.OnClickListener() {
@@ -28,8 +35,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-
-
-
-

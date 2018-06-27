@@ -9,9 +9,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by Matteo on 24/06/2018.
- */
 
 public class MyAsyncTask extends AsyncTask {
     public static String REQUEST_METHOD = "GET";
@@ -67,6 +64,8 @@ public class MyAsyncTask extends AsyncTask {
             result=null;
         }
 
+        System.out.println("*************************************************");
+        System.out.println(result);
         return result;
     }
 
