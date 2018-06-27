@@ -14,10 +14,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.uniroma2.mobynet.marvel_androidproject.R;
 import com.uniroma2.mobynet.marvel_androidproject.RestRequest;
+import com.uniroma2.mobynet.marvel_androidproject.model.ComicSummary;
 
 public class SearchCreatorActivity extends AppCompatActivity {
 
@@ -85,6 +87,29 @@ public class SearchCreatorActivity extends AppCompatActivity {
                     String description = obj.getString("description");
                     String resourceURI = obj.getString("resourceURI");
                     String modified = obj.getString("modified");
+
+                    JSONObject comics = obj.getJSONObject("comics");
+                    Integer available= comics.getInt("available");
+                    Integer returned = comics.getInt("returned");
+                    String collectionURI=comics.getString("collectionURI");
+                    JSONArray itemsArray = comics.getJSONArray("items");
+
+                    ArrayList<ComicSummary> comicSummaryArrayList= new ArrayList<>();
+
+                    for (int j = 0; j<itemsArray.length();j++){
+                        JSONObject items=itemsArray.getJSONObject(j);
+                        String resourceURI_item = items.getString("resourceURI");
+                        String name_item = items.getString("name");
+
+                        ComicSummary comicSummary = new ComicSummary(resourceURI_item,name_item);
+
+                        comicSummaryArrayList.add(comicSummary);
+
+
+                    }
+
+
+
 
 
                     //Character character = new Character(.....);
