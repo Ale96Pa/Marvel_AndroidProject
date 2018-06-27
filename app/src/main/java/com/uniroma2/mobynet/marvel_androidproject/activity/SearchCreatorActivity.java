@@ -2,26 +2,75 @@ package com.uniroma2.mobynet.marvel_androidproject.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Date;
+
 import com.uniroma2.mobynet.marvel_androidproject.R;
+import com.uniroma2.mobynet.marvel_androidproject.RestRequest;
+import com.uniroma2.mobynet.marvel_androidproject.model.ComicSummary;
 
 public class SearchCreatorActivity extends AppCompatActivity {
+
+    private EditText ricerca;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_creator);
+        ricerca = (EditText) findViewById(R.id.ricerca);
+        String jsonString = get_json(ricerca.getText().toString());
     }
 
-    public String  get_json(){
+    public String  get_json(String nameToSearch) {
         String nome = null;
         String json = null;
+
+        File file = new File("characters.json");
+
+        try {
+
+            file.createNewFile();
+
+            RestRequest rs = new RestRequest("creators", nameToSearch);
+
+            try {
+
+                rs.sendGet();
+                String res = rs.getResult();
+                System.out.println("****** RESULT JSON *******");
+                System.out.println(res);
+
+                FileOutputStream fOut = new FileOutputStream(file);
+                OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
+
+                myOutWriter.append(res);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+             }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+
         try{
-            InputStream is = getAssets().open("1009144.json");
+            InputStream is = getAssets().open("characters.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -31,8 +80,40 @@ public class SearchCreatorActivity extends AppCompatActivity {
 
             for (int i = 0; i<jsonArray.length(); i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
-                if (obj.getInt("id")==1009144){
-                    nome=obj.getString("name");
+                if (obj.getString("name")==nameToSearch){
+
+                    String nomeC = obj.getString("name");
+                    int id = obj.getInt("id");
+                    String description = obj.getString("description");
+                    String resourceURI = obj.getString("resourceURI");
+                    String modified = obj.getString("modified");
+
+                    JSONObject comics = obj.getJSONObject("comics");
+                    Integer available= comics.getInt("available");
+                    Integer returned = comics.getInt("returned");
+                    String collectionURI=comics.getString("collectionURI");
+                    JSONArray itemsArray = comics.getJSONArray("items");
+
+                    ArrayList<ComicSummary> comicSummaryArrayList= new ArrayList<>();
+
+                    for (int j = 0; j<itemsArray.length();j++){
+                        JSONObject items=itemsArray.getJSONObject(j);
+                        String resourceURI_item = items.getString("resourceURI");
+                        String name_item = items.getString("name");
+
+                        ComicSummary comicSummary = new ComicSummary(resourceURI_item,name_item);
+
+                        comicSummaryArrayList.add(comicSummary);
+
+
+                    }
+
+
+
+
+
+                    //Character character = new Character(.....);
+
                 }
             }
 
