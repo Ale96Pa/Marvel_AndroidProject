@@ -1,30 +1,13 @@
 package com.uniroma2.mobynet.marvel_androidproject;
 
-import android.os.AsyncTask;
-import android.util.Log;
-
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
+import org.apache.commons.codec.digest.DigestUtils;
 import java.net.URL;
-
-import cz.msebera.android.httpclient.Header;
+import io.mikael.urlbuilder.UrlBuilder;
 
 public class RestRequest {
-
     /* Attributi */
-    private static AsyncHttpClient client = new AsyncHttpClient();
-    private URL url;
+    private String url;
+    private final String entryPoint = "http://gateway.marvel.com/v1/public/";
     private long timestamp;
     private final String privateKey = "614dac0d45ede934f75eaba93f13e1ae5eb1f38f";
     private final String publicKey = "4b4c2ad8ede8e2cfd66baa32cee65dda";
@@ -36,45 +19,19 @@ public class RestRequest {
     }
 
     /* Metodi */
-    private static String convertToMd5(final String md5) throws UnsupportedEncodingException {
-        StringBuffer sb=null;
-        try {
-            final java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-            final byte[] array = md.digest(md5.getBytes("UTF-8"));
-            sb = new StringBuffer();
-            for (int i = 0; i < array.length; ++i) {
-                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
-            }
-            return sb.toString();
-        } catch (final java.security.NoSuchAlgorithmException e) {
-        }
-        return sb.toString();
+    private String createHash(long ts) {
+        String stringToHash = ts+getPrivateKey()+getPublicKey();
+        String hash = DigestUtils.md5Hex(stringToHash);
+        System.out.println("******* HASH: ******: " + hash);
+        return hash;
     }
-    public URL getUrl() {
-        /*
-        String origin = getTimestamp() + getPrivateKey() + getPublicKey();
-
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.update(origin.getBytes());
-            byte[] digest = messageDigest.digest();
-
-            url = new URL("http://gateway.marvel.com/v1/public/" + getRequestType() + "?ts=" +
-                    getTimestamp() + "&apikey=" + getPublicKey() + "&hash=" + messageDigest);
-
-        } catch (NoSuchAlgorithmException|MalformedURLException e) {
-            e.printStackTrace();
-        }*/
-        String md5String;
-        try {
-            md5String = convertToMd5(getTimestamp() + getPrivateKey() + getPublicKey());
-            url = new URL("http://gateway.marvel.com/v1/public/" + getRequestType() + "?ts=" +
-                    getTimestamp() + "&apikey=" + getPublicKey() + "&hash=" + md5String);
-
-        } catch (UnsupportedEncodingException | MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return url;
+    public String getUrl() {
+        long ts = getTimestamp();
+        String url = getEntryPoint()+getRequestType()+"?ts="+ts+"&apikey="+getPublicKey()+"&hash="+createHash(ts);
+        UrlBuilder urlBuilder = UrlBuilder.fromString(url);
+        System.out.println("***URL: ****************: " + urlBuilder.toString());
+        this.url = urlBuilder.toString();
+        return urlBuilder.toString();
     }
 
     public long getTimestamp() {
@@ -94,66 +51,27 @@ public class RestRequest {
         this.requestType = requestType;
     }
 
-    /**
-     * Il metodo ...
-     * @return: File JSon sottoforma di stringa
-     */
-    public void request(URL url, RequestParams params) {
-        /*
-        AsyncHttpResponseHandler responseHandler = new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject responseBody) {
-                // If the response is JSONObject instead of expected JSONArray
-                Log.d("asd", "---------------- this is response : " + responseBody);
-                try {
-                    JSONObject serverResp = new JSONObject(responseBody.toString());
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-            }
-        };
-        client.get(url.toString(), params, responseHandler);
-        System.out.println(responseHandler.getRequestURI());
-        System.out.println(responseHandler.getCharset());*/
-
+    public String getEntryPoint() {
+        return entryPoint;
     }
 
     // HTTP GET request
     public void sendGet() throws Exception {
+        String url = getUrl();     //prendo il mio url
+        URL effectiveURL = new URL(url);
+        String result;  //gli inserisco il risultato
+        MyAsyncTask request = new MyAsyncTask();
 
-        String url = "http://www.google.com/search?q=mkyong";
+        // Esegue il metodo doInBackground, passando il nostro url
+        result = (String) request.execute(effectiveURL).get();
 
-        URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-        // optional default is GET
-        con.setRequestMethod("GET");
-
-        //add request header
-        //con.setRequestProperty("User-Agent", USER_AGENT);
-
-        int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'GET' request to URL : " + url);
-        System.out.println("Response Code : " + responseCode);
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+        if(result==null){
+            System.out.println("C' e' stato un errore nella richiesta GET!");
+            return;
         }
-        in.close();
+        System.out.println("******* RESTREQUEST ***************************");
+        System.out.println(result);
 
-        //print result
-        System.out.println(response.toString());
 
     }
 }
