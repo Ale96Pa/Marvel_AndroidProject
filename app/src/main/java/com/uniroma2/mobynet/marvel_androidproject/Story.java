@@ -6,15 +6,15 @@ import java.util.ArrayList;
  * Created by Francesca on 27/06/18.
  */
 
-public class EventList{
+public class Story{
 
 
     private int available;
     private int returned;
     private String collectionURI;
-    private ArrayList<EventSummary> items;
+    private ArrayList<StorySummary> items;
 
-    public EventList(int available, int returned, String collectionURI, ArrayList<EventSummary> items ){
+    public Story(int available, int returned, String collectionURI, ArrayList<StorySummary> items ){
 
         this.available = available;
         this.returned = returned;
@@ -34,7 +34,7 @@ public class EventList{
         this.collectionURI = collection;
     }
 
-    public void setItems(ArrayList<EventSummary> items){
+    public void setItems(ArrayList<StorySummary> items){
         this.items = items;
     }
 
