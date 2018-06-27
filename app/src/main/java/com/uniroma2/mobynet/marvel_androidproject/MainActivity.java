@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RestRequest rs = new RestRequest("comics");
+        RestRequest rs = new RestRequest("characters");
         try {
             rs.sendGet();
         } catch (Exception e) {
