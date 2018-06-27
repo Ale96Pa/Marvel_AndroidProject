@@ -1,21 +1,20 @@
 package com.uniroma2.mobynet.marvel_androidproject;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
-    private Button btnCreator;
-    private Button btnCharacter;
     private Button btnStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_welcome);
 /*
         RestRequest rs = new RestRequest("characters");
         try {
@@ -24,16 +23,14 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 */
-        btnCreator = (Button) findViewById(R.id.btnCreator);
-        btnCharacter =(Button) findViewById(R.id.btnCharacter);
-        btnCreator.setOnClickListener(new Button.OnClickListener() {
+        btnStart = findViewById(R.id.btnStart);
+        btnStart.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SearchCreatorActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(intent);
 
             }
         });
-
     }
 }
