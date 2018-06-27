@@ -1,15 +1,13 @@
-package com.uniroma2.mobynet.marvel_androidproject;
+package com.uniroma2.mobynet.marvel_androidproject.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import com.uniroma2.mobynet.marvel_androidproject.R;
 
 public class SearchCreatorActivity extends AppCompatActivity {
 
@@ -28,10 +26,8 @@ public class SearchCreatorActivity extends AppCompatActivity {
             byte[] buffer = new byte[size];
             is.read(buffer);
             is.close();
-            //json = new String(buffer);
             json = new String(buffer, "UTF-8");
             JSONArray jsonArray = new JSONArray(json);
-
 
             for (int i = 0; i<jsonArray.length(); i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
@@ -40,12 +36,7 @@ public class SearchCreatorActivity extends AppCompatActivity {
                 }
             }
 
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
 

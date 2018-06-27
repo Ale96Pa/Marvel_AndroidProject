@@ -2,12 +2,7 @@ package com.uniroma2.mobynet.marvel_androidproject.model;
 
 import java.util.ArrayList;
 
-/**
- * Created by Francesca on 27/06/18.
- */
-
 public class Event{
-
 
     private int available;
     private int returned;
@@ -37,7 +32,5 @@ public class Event{
     public void setItems(ArrayList<EventSummary> items){
         this.items = items;
     }
-
-
 
 }

@@ -11,13 +11,13 @@ public class Character {
     private Date modified;
     private String resourceURI;
     private ArrayList<Url> urls;
-    private Img thumbnail;
+    private Thumbnail thumbnail;
     private ArrayList<Comic> comics;
     private ArrayList<Story> stories;
     private ArrayList<Event> events;
 
     public Character( int id, String name, String description, Date modified, String resourceURI,ArrayList<Url> urls,
-                      Img thumbnail, ArrayList<Comic> comics, ArrayList<Story> stories, ArrayList<Event> events){
+                      Thumbnail thumbnail, ArrayList<Comic> comics, ArrayList<Story> stories, ArrayList<Event> events){
         this.comics=comics;
         this.description=description;
         this.events=events;
@@ -54,7 +54,7 @@ public class Character {
         this.urls=urls;
     }
 
-    public void setThumbnail(Img thumbnail){
+    public void setThumbnail(Thumbnail thumbnail){
         this.thumbnail=thumbnail;
     }
 

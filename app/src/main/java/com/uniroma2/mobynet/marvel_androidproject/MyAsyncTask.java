@@ -1,15 +1,16 @@
 package com.uniroma2.mobynet.marvel_androidproject;
 
-
 import android.os.AsyncTask;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
+/**
+ * La classe MyAsyncTask implementa la connessione in background tramite un url per ricevere
+ * file JSon richiesti tramite un metodo GET
+ */
 public class MyAsyncTask extends AsyncTask {
     public static String REQUEST_METHOD = "GET";
     public static final int READ_TIMEOUT = 15000;
@@ -27,45 +28,39 @@ public class MyAsyncTask extends AsyncTask {
         String inputLine;
 
         try{
-            // Creo una connessione
+            // Creazione di una connessione
             HttpURLConnection connection = (HttpURLConnection) myUrl.openConnection();
 
-            // Imposta metodi e timeout
+            // Impostazione di metodi e timeout
             connection.setRequestMethod (REQUEST_METHOD);
             connection.setReadTimeout (READ_TIMEOUT);
             connection.setConnectTimeout (CONNECTION_TIMEOUT);
 
-            // Connetti alla nostra url
+            // Connessione all'url
             connection.connect ();
 
-            // Crea un nuovo InputStreamReader che legge il nostro input di richiesta
+            // Creazione di un nuovo InputStreamReader che legge l'input di richiesta
             InputStreamReader streamReader = new InputStreamReader (connection.getInputStream ());
 
-            // Crea un nuovo BufferedReader per scorrere la risposta e aggingerle allo StringBuilder
+            // Creazione di un nuovo BufferedReader per scorrere la risposta e aggiungerle allo StringBuilder
             BufferedReader reader = new BufferedReader (streamReader);
             StringBuilder stringBuilder = new StringBuilder ();
-
-            // Controlla se la linea che stiamo leggendo non è nullo
             while ((inputLine = reader.readLine ()) != null) {
                 stringBuilder.append (inputLine);
             }
 
-            // Chiudi il nostro lettore InputStream e Buffered
+            // Chiusura dell'InputStream e Bufferead
             reader.close ();
             streamReader.close ();
 
-            // Imposta il nostro risultato uguale al nostro stringBuilder
+            // Impostazione e restituzione del risultato
             result = stringBuilder.toString ();
-
-            //return result;
 
         } catch (IOException e) {
             e.printStackTrace();
             result=null;
         }
 
-        System.out.println("*************************************************");
-        System.out.println(result);
         return result;
     }
 
@@ -74,4 +69,3 @@ public class MyAsyncTask extends AsyncTask {
         super.onPostExecute(result);
     }
 }
-

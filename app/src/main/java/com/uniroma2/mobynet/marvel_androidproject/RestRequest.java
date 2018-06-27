@@ -2,39 +2,60 @@ package com.uniroma2.mobynet.marvel_androidproject;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import java.net.URL;
+import java.util.Objects;
 import io.mikael.urlbuilder.UrlBuilder;
 
+/**
+ * La classe RestRequest implementa le richieste REST appositamente in base al tipo di ricerca
+ * definita dall'utente
+ */
 public class RestRequest {
+
     /* Attributi */
-    private String url;
     private final String entryPoint = "http://gateway.marvel.com/v1/public/";
-    private long timestamp;
     private final String privateKey = "614dac0d45ede934f75eaba93f13e1ae5eb1f38f";
     private final String publicKey = "4b4c2ad8ede8e2cfd66baa32cee65dda";
-    private String requestType; //characters o creators
+
+    private String requestType; // Characters o creators
+    private String name; // Nome di characters o di creators
+
+    private String url;
+    private long timestamp;
     private String result;
 
     /* Costruttore */
-    public RestRequest(String request){
+    public RestRequest(String request, String name){
         this.requestType = request;
+        this.name = name;
     }
 
     /* Metodi */
     private String createHash(long ts) {
         String stringToHash = ts+getPrivateKey()+getPublicKey();
-        String hash = DigestUtils.md5Hex(stringToHash);
-        //System.out.println("******* HASH: ******: " + hash);
-        return hash;
-    }
-    public String getUrl() {
-        long ts = getTimestamp();
-        String url = getEntryPoint()+getRequestType()+"?ts="+ts+"&apikey="+getPublicKey()+"&hash="+createHash(ts);
-        UrlBuilder urlBuilder = UrlBuilder.fromString(url);
-        //System.out.println("***URL: ****************: " + urlBuilder.toString());
-        //this.url = urlBuilder.toString();
-        return urlBuilder.toString();
+        return DigestUtils.md5Hex(stringToHash);
     }
 
+    // Tale metodo costruisce appositamente un url per la richiesta GET
+    public String getUrl() {
+        String url;
+        long ts = getTimestamp();
+        if(getName() == null) {
+            url = getEntryPoint()+getRequestType()+ "?ts="+ts+"&apikey="+getPublicKey()+"&hash="+createHash(ts);
+        } else {
+            if (Objects.equals(getRequestType(), "characters")) {
+                url = getEntryPoint() + getRequestType() + "?nameStartsWith=" + getName() +
+                        "&orderBy=name&ts=" + ts + "&apikey=" + getPublicKey() + "&hash=" + createHash(ts);
+            } else {
+                url = getEntryPoint() + getRequestType() + "?nameStartsWith=" + getName() +
+                        "&orderBy=lastName&ts=" + ts + "&apikey=" + getPublicKey() + "&hash=" + createHash(ts);
+            }
+        }
+        UrlBuilder urlBuilder = UrlBuilder.fromString(url);
+        this.url = urlBuilder.toString();
+        return this.url;
+    }
+
+    // Il timestamp viene ottenuto come secondi correnti, in modo da essere diverso ad ogni richiesta
     public long getTimestamp() {
         timestamp = System.currentTimeMillis();
         return timestamp;
@@ -48,36 +69,31 @@ public class RestRequest {
     public String getRequestType() {
         return requestType;
     }
-    public void setRequestType(String requestType) {
-        this.requestType = requestType;
+    public String getName() {
+        return name;
     }
-
     public String getEntryPoint() {
         return entryPoint;
     }
-
     public String getResult() {
         return result;
     }
 
-    // HTTP GET request
+    // Tale metodo invia la richiesta GET effettiva e ottiene il risultato come file JSon
     public void sendGet() throws Exception {
-        String url = getUrl();     //prendo il mio url
+        // Si prende l'url per la richiesta
+        String url = getUrl();
         URL effectiveURL = new URL(url);
-        String result;  //gli inserisco il risultato
+        String result;  // Variabile che conterra' il risultato
         MyAsyncTask request = new MyAsyncTask();
 
-        // Esegue il metodo doInBackground, passando il nostro url
+        // Esecuzione del metodo doInBackground, tramite l'url
         result = (String) request.execute(effectiveURL).get();
 
         if(result==null){
-            System.out.println("C' e' stato un errore nella richiesta GET!");
+            System.out.println("Errore nella richiesta GET!");
             return;
-
         }
         this.result = result;
-
     }
-
-
 }

@@ -1,10 +1,12 @@
-package com.uniroma2.mobynet.marvel_androidproject;
+package com.uniroma2.mobynet.marvel_androidproject.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import com.uniroma2.mobynet.marvel_androidproject.R;
+import com.uniroma2.mobynet.marvel_androidproject.RestRequest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RestRequest rs = new RestRequest("characters");
+        RestRequest rs = new RestRequest("creators", null);
         try {
             rs.sendGet();
             String res = rs.getResult();
