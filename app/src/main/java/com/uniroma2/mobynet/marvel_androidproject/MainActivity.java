@@ -16,14 +16,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*
+
         RestRequest rs = new RestRequest("characters");
         try {
             rs.sendGet();
+            String res = rs.getResult();
+            System.out.println("****** RESULT JSON *******");
+            System.out.println(res);
         } catch (Exception e) {
             e.printStackTrace();
         }
-*/
+
         btnCreator = (Button) findViewById(R.id.btnCreator);
         btnCharacter =(Button) findViewById(R.id.btnCharacter);
         btnCreator.setOnClickListener(new Button.OnClickListener() {
