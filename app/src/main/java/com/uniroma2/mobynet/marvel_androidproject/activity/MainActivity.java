@@ -19,15 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RestRequest rs = new RestRequest("creators", null);
-        try {
-            rs.sendGet();
-            String res = rs.getResult();
-            System.out.println("****** RESULT JSON *******");
-            System.out.println(res);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         btnCreator = (Button) findViewById(R.id.btnCreator);
         btnCharacter =(Button) findViewById(R.id.btnCharacter);

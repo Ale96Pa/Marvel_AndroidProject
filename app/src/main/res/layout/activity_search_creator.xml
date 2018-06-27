@@ -11,7 +11,7 @@
 
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/ricerca"
         android:layout_width="267dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
