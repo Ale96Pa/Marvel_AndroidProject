@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import com.uniroma2.mobynet.marvel_androidproject.R;
-import com.uniroma2.mobynet.marvel_androidproject.RestRequest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         btnCreator.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SearchCreatorActivity.class);
+                Intent intent = new Intent(MainActivity.this, SearchElementActivity.class);
                 startActivity(intent);
 
             }

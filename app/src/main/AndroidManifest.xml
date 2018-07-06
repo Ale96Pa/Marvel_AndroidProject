@@ -22,7 +22,6 @@
         </activity>
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.SearchCreatorActivity" />
-        <activity android:name=".activity.activity_element_form"></activity>
     </application>
 
 </manifest>
