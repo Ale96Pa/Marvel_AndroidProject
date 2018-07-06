@@ -3,8 +3,6 @@
     package="com.uniroma2.mobynet.marvel_androidproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.SearchCreatorActivity" />
+        <activity android:name=".activity.SearchElementActivity" />
     </application>
 
 </manifest>

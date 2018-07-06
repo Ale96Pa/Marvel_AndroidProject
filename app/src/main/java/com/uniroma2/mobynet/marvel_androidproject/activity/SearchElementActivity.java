@@ -1,5 +1,6 @@
 package com.uniroma2.mobynet.marvel_androidproject.activity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -27,14 +28,15 @@ import com.uniroma2.mobynet.marvel_androidproject.database.DbHelper;
 import com.uniroma2.mobynet.marvel_androidproject.model.ComicSummary;
 
 import static com.uniroma2.mobynet.marvel_androidproject.activity.WelcomeActivity.DBhelper;
-import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE_CHARACTERS;
 
 public class SearchElementActivity extends AppCompatActivity {
 
     private EditText etSearch;
     private ListView lvElements;
-    final String querySearch = "SELECT * FROM characters WHERE name like '%hulk%';";
-    ArrayList<String> allSearchedNames = new ArrayList<>();
+    final String querySearch = "SELECT * FROM creators WHERE name like '%deo%';";
+    int type; // 1 if characters, 2 if creator
+    ArrayList<String> allSearchedCharacters = new ArrayList<>();
+    ArrayList<String> allSearchedCreators = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,26 +45,27 @@ public class SearchElementActivity extends AppCompatActivity {
         etSearch = (EditText) findViewById(R.id.etSearch);
         lvElements = (ListView) findViewById(R.id.lvElementsSearched);
 
+        Bundle requested = getIntent().getExtras();
+        type = requested.getInt("type");
+        System.out.println("*********YOU HAVE CLICKED: " + type);
 
         DBhelper = new DbHelper(this);
         SQLiteDatabase db = DBhelper.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery(querySearch, new String[] {});
-        allSearchedNames = new ArrayList<>();
+        Cursor cursor = db.rawQuery(querySearch, new String[]{});
+        allSearchedCharacters = new ArrayList<>();
 
         if(cursor.moveToFirst()) {
             do {
                 String name = cursor.getString(1);
-                allSearchedNames.add(name);
-
+                allSearchedCharacters.add(name);
             } while(cursor.moveToNext());
         }
-
         cursor.close();
 
 
 
-        ArrayAdapter<String> adapater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allSearchedNames);
+        ArrayAdapter<String> adapater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allSearchedCharacters);
         lvElements.setAdapter(adapater);
 
         lvElements.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -149,8 +152,6 @@ public class SearchElementActivity extends AppCompatActivity {
 
 
                     }
-
-
 
 
 
