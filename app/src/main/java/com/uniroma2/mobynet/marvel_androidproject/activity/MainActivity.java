@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCharacter;
     private Button btnStart;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +26,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SearchElementActivity.class);
+                intent.putExtra("type", 1);
                 startActivity(intent);
-
+            }
+        });
+        btnCharacter.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SearchElementActivity.class);
+                intent.putExtra("type", 2);
+                startActivity(intent);
             }
         });
 
