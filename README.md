@@ -2,7 +2,7 @@
 
 ### Mobile Programming project
 
-Focus:
+Focus: Android application in which the user can insert a PART of a name of marvel characters or creators, the app suggests some result and the user can view all details of selected element
 
 University: Universita' di Roma Tor Vergata
 
