@@ -1,9 +1,14 @@
 package com.uniroma2.mobynet.marvel_androidproject.activity;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,22 +20,59 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.uniroma2.mobynet.marvel_androidproject.R;
 import com.uniroma2.mobynet.marvel_androidproject.RestRequest;
+import com.uniroma2.mobynet.marvel_androidproject.database.DbHelper;
 import com.uniroma2.mobynet.marvel_androidproject.model.ComicSummary;
 
-public class SearchCreatorActivity extends AppCompatActivity {
+import static com.uniroma2.mobynet.marvel_androidproject.activity.WelcomeActivity.DBhelper;
+import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE_CHARACTERS;
 
-    private EditText ricerca;
+public class SearchElementActivity extends AppCompatActivity {
+
+    private EditText etSearch;
+    private ListView lvElements;
+    final String querySearch = "SELECT * FROM characters WHERE name like '%hulk%';";
+    ArrayList<String> allSearchedNames = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_creator);
-        ricerca = (EditText) findViewById(R.id.ricerca);
-        String jsonString = get_json(ricerca.getText().toString());
+        etSearch = (EditText) findViewById(R.id.etSearch);
+        lvElements = (ListView) findViewById(R.id.lvElementsSearched);
+
+
+        DBhelper = new DbHelper(this);
+        SQLiteDatabase db = DBhelper.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(querySearch, new String[] {});
+        allSearchedNames = new ArrayList<>();
+
+        if(cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(1);
+                allSearchedNames.add(name);
+
+            } while(cursor.moveToNext());
+        }
+
+        cursor.close();
+
+
+
+        ArrayAdapter<String> adapater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allSearchedNames);
+        lvElements.setAdapter(adapater);
+
+        lvElements.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println("**********CLICK ON ITEM: ********" + adapterView.getItemAtPosition(i));
+                //Passare all'intent del personagio
+            }
+        });
+      //  String jsonString = get_json(etSearch.getText().toString());
     }
 
     public String  get_json(String nameToSearch) {
