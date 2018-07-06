@@ -72,7 +72,9 @@ public class SearchElementActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 System.out.println("**********CLICK ON ITEM: ********" + adapterView.getItemAtPosition(i));
-                //Passare all'intent del personagio
+                //Passare all'intent del personaggio
+                Intent intent = new Intent(SearchElementActivity.this, ShowElementActivity.class);
+                startActivity(intent);
             }
         });
       //  String jsonString = get_json(etSearch.getText().toString());
@@ -125,7 +127,7 @@ public class SearchElementActivity extends AppCompatActivity {
 
             for (int i = 0; i<jsonArray.length(); i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
-                if (obj.getString("name")==nameToSearch){
+                if (obj.getString("name")== nameToSearch){
 
                     String nomeC = obj.getString("name");
                     int id = obj.getInt("id");
