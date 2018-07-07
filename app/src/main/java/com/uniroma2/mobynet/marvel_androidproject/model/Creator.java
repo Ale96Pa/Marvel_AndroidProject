@@ -12,7 +12,7 @@ public class Creator {
     private String lastName;
     private String fullName;
     private String suffix;
-    private Date modified;
+    private String modified;
     private String resourceURI;
     private ArrayList<Url> urls;
     private Thumbnail thumbnail;
@@ -21,7 +21,7 @@ public class Creator {
     private Event events;
 
 
-    public Creator( int id, String firstName, String middleName, String lastName, String suffix, String fullName, Date modified, String resourceURI,ArrayList<Url> urls,
+    public Creator( int id, String firstName, String middleName, String lastName, String suffix, String fullName, String modified, String resourceURI,ArrayList<Url> urls,
                       Thumbnail thumbnail, Comic comics, Story stories, Event events){
 
         this.id=id;
@@ -66,7 +66,7 @@ public class Creator {
         this.fullName=fullName;
     }
 
-    public void setModified(Date modified){
+    public void setModified(String modified){
         this.modified=modified;
     }
 

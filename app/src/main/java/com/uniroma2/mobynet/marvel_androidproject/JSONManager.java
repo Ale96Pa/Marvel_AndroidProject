@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.uniroma2.mobynet.marvel_androidproject.model.Comic;
 import com.uniroma2.mobynet.marvel_androidproject.model.ComicSummary;
+import com.uniroma2.mobynet.marvel_androidproject.model.Creator;
+import com.uniroma2.mobynet.marvel_androidproject.model.Character;
 import com.uniroma2.mobynet.marvel_androidproject.model.Event;
 import com.uniroma2.mobynet.marvel_androidproject.model.EventSummary;
 import com.uniroma2.mobynet.marvel_androidproject.model.Story;
@@ -20,6 +22,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -34,7 +39,7 @@ public class JSONManager extends AppCompatActivity{
 
     }
 
-    public Character  get_json_character(String nameToSearch) {
+    public Character  get_json_character(String nameToSearch) throws ParseException {
         String nome = null;
         String json = null;
 
@@ -76,31 +81,32 @@ public class JSONManager extends AppCompatActivity{
             json = new String(buffer, "UTF-8");
             JSONArray jsonArray = new JSONArray(json);
 
-
-
             for (int i = 0; i<jsonArray.length(); i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
                 if (obj.getString("name").equals(nameToSearch)){
 
-                    String name = obj.getString("name");
                     int id = obj.getInt("id");
+                    String name = obj.getString("name");
                     String description = obj.getString("description");
                     String resourceURI = obj.getString("resourceURI");
                     String modified = obj.getString("modified");
 
                     JSONObject comics = obj.getJSONObject("comics");
                     Comic comic = get_json_comics( comics);
+
                     JSONObject thumbnails=obj.getJSONObject("thumbnail");
                     Thumbnail thumbnail=get_json_thumbnail( thumbnails);
+
                     JSONObject urls = obj.getJSONObject("urls");
                     ArrayList<Url> urlArrayList = get_json_urls(urls);
+
                     JSONObject events=obj.getJSONObject("event");
                     Event event=get_json_events( events);
+
                     JSONObject stories=obj.getJSONObject("story");
                     Story story=get_json_stories( stories);
 
-                    character = new Character(id, name,description,modified,resourceURI,ArrayList<Url> urls,
-                            thumbnail, comic, Story stories, Event events);
+                    character = new Character(id, name, description, modified, resourceURI, urlArrayList, thumbnail, comic, story, event);
 
                 }
             }
@@ -111,6 +117,109 @@ public class JSONManager extends AppCompatActivity{
 
         return character;
     }
+
+
+
+
+
+
+
+
+    public void get_Creator_By_Name(String name){
+
+    }
+
+
+    public Creator  get_json_creator(String nameToSearch) {
+        String nome = null;
+        String json = null;
+
+        File file = new File("creator.json");
+
+        try {
+
+            file.createNewFile();
+
+            RestRequest rs = new RestRequest("creator", nameToSearch);
+
+            try {
+
+                rs.sendGet();
+                String res = rs.getResult();
+                System.out.println("****** RESULT JSON *******");
+                System.out.println(res);
+
+                FileOutputStream fOut = new FileOutputStream(file);
+                OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
+
+                myOutWriter.append(res);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Creator creator=null;
+        try{
+            InputStream is = getAssets().open("creator.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+            JSONArray jsonArray = new JSONArray(json);
+
+
+
+            for (int i = 0; i<jsonArray.length(); i++){
+                JSONObject obj = jsonArray.getJSONObject(i);
+                if (obj.getString("lastName").equals(nameToSearch)){
+
+                    int id = obj.getInt("id");
+                    String firstName = obj.getString("firstName");
+                    String middleName = obj.getString("middleName");
+                    String lastName = obj.getString("lastName");
+                    String suffix = obj.getString("suffix");
+                    String fullName = obj.getString("fullName");
+                    String resourceURI = obj.getString("resourceURI");
+                    String modified = obj.getString("modified");
+
+                    JSONObject comics = obj.getJSONObject("comics");
+                    Comic comic = get_json_comics( comics);
+
+                    JSONObject thumbnails=obj.getJSONObject("thumbnail");
+                    Thumbnail thumbnail=get_json_thumbnail( thumbnails);
+
+                    JSONObject urls = obj.getJSONObject("urls");
+                    ArrayList<Url> urlArrayList = get_json_urls(urls);
+
+                    JSONObject events=obj.getJSONObject("event");
+                    Event event=get_json_events( events);
+
+                    JSONObject stories=obj.getJSONObject("story");
+                    Story story=get_json_stories( stories);
+
+                    creator = new Creator(id, firstName, middleName, lastName, suffix, fullName, modified,resourceURI,
+                            urlArrayList, thumbnail, comic, story, event);
+
+                }
+            }
+
+        } catch (JSONException | IOException e) {
+            e.printStackTrace();
+        }
+
+        return creator;
+    }
+
+
+
+
+
+
 
     public Comic  get_json_comics( JSONObject comics) {
         Comic comic=null;
@@ -284,4 +393,14 @@ public class JSONManager extends AppCompatActivity{
         return urlArrayList;
 
     }
+
+
+
+
+
+
+
+
+
+
 }

@@ -8,7 +8,7 @@ public class Character {
     private int id;
     private String name;
     private String description;
-    private Date modified;
+    private String modified;
     private String resourceURI;
     private ArrayList<Url> urls;
     private Thumbnail thumbnail;
@@ -16,8 +16,8 @@ public class Character {
     private Story stories;
     private Event events;
 
-    public Character( int id, String name, String description, Date modified, String resourceURI,ArrayList<Url> urls,
-                      Thumbnail thumbnail, Comic comics, Story stories, Event events){
+
+    public Character(int id, String name, String description, String modified, String resourceURI, ArrayList<Url> urls, Thumbnail thumbnail, Comic comics, Story stories, Event events ){
         this.comics=comics;
         this.description=description;
         this.events=events;
@@ -42,7 +42,7 @@ public class Character {
         this.description=description;
     }
 
-    public void setModified(Date modified){
+    public void setModified(String modified){
         this.modified=modified;
     }
 
