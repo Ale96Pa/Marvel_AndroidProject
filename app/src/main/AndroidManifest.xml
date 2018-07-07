@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.SearchElementActivity" />
+        <activity android:name=".activity.ShowElementActivity" />
     </application>
 
 </manifest>
