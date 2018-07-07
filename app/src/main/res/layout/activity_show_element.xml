@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b8860b"
+    tools:context=".activity.ShowElementActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/tv_ID"
+        android:layout_width="41dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="ID"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="59dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Nome"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ID" />
+
+    <TextView
+        android:id="@+id/tv_uriORlastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="URL/Cogn"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_descriptionORsuffix"
+        android:layout_width="214dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Descrizione/Suffisso"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_uriORlastname"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="@+id/tv_uriORlastname"
+        app:layout_constraintTop_toBottomOf="@+id/tv_uriORlastname" />
+
+    <ImageView
+        android:id="@+id/iv_thumbnail"
+        android:layout_width="101dp"
+        android:layout_height="95dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:src="@android:drawable/star_big_on"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="357dp"
+        android:layout_height="194dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="266dp">
+
+            <TableLayout
+                android:id="@+id/comics"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_comics"
+                    android:layout_width="368dp"
+
+                    android:layout_height="wrap_content"
+                    android:background="#b22222"
+                    android:text="Fumetti"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="531dp" />
+
+                <TableRow
+                    android:id="@+id/collectionURIComic"
+                    android:layout_width="126dp"
+                    android:layout_height="wrap_content"
+                    android:background="#b8860b">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="18dp" />
+
+                    <TextView
+                        android:id="@+id/tv_collectionUriComics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:background="#b8860b"
+                        android:text="CollezioneURI"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/returnedComic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#b8860b">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="18dp" />
+
+                    <TextView
+                        android:id="@+id/tv_publishedComics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#b8860b"
+                        android:text="Pubblicati"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/availableComic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#b8860b">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="18dp" />
+
+                    <TextView
+                        android:id="@+id/tv_availableComics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#b8860b"
+                        android:text="Disponibili"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableLayout
+                    android:id="@+id/itemsComic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_items"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#8b4513"
+                        android:text="Elementi"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TableRow
+                        android:id="@+id/resourceURIComic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#bebebe">
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="18dp" />
+
+                        <TextView
+                            android:id="@+id/tv_resoucesUri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#bebebe"
+                            android:text="RisorseURI"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/nameComic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#bebebe">
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="18dp" />
+
+                        <TextView
+                            android:id="@+id/tv_nameComics"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#bebebe"
+                            android:text="Nome"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                </TableLayout>
+
+            </TableLayout>
+
+            <TableLayout
+                android:id="@+id/events"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#b8860b">
+
+                <TextView
+                    android:id="@+id/tv_Events"
+                    android:layout_width="368dp"
+
+                    android:layout_height="wrap_content"
+                    android:background="#b22222"
+                    android:text="Eventi"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="531dp" />
+
+
+                <TableRow
+                    android:id="@+id/availableEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#b8860b">
+
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="18dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_availableEvents"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:background="#b8860b"
+                        android:text="Disponibili"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/returnedEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#b8860b">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="18dp" />
+
+                    <TextView
+                        android:id="@+id/tv_returnedEvents"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:background="#b8860b"
+                        android:text="Pubblicati"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+
+                <TableRow
+                    android:id="@+id/collectionURIEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#b8860b">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="18dp" />
+
+                    <TextView
+                        android:id="@+id/tv_UriEvents"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:background="#b8860b"
+                        android:text="CollezioneURI"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableLayout
+                    android:id="@+id/itemsEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_elementsEvents"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#8b4513"
+                        android:text="Elementi"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TableRow
+                        android:id="@+id/resourceURIEvent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#bebebe">
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="18dp" />
+
+                        <TextView
+                            android:id="@+id/tv_resourceUriEvents"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#bebebe"
+                            android:text="RisorseURI"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/nameEvent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#bebebe">
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="18dp" />
+
+                        <TextView
+                            android:id="@+id/tv_nameElementEvents"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#bebebe"
+                            android:text="Nome"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                </TableLayout>
+            </TableLayout>
+
+            <TableLayout
+                android:id="@+id/stories"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_stories"
+                    android:layout_width="368dp"
+
+                    android:layout_height="wrap_content"
+                    android:background="#b22222"
+                    android:text="Storie"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="531dp" />
+
+
+                <TableRow
+                    android:id="@+id/returnedStory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#b8860b">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="18dp" />
+
+                    <TextView
+                        android:id="@+id/tv_publishedStories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:background="#b8860b"
+                        android:text="Pubblicati"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/availableStory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#b8860b">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="18dp" />
+
+                    <TextView
+                        android:id="@+id/tv_availableStories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:background="#b8860b"
+                        android:text="Disponibili"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/collectionURIStory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#b8860b">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="18dp" />
+
+                    <TextView
+                        android:id="@+id/tv_uriStories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:background="#b8860b"
+                        android:text="CollezioneURI"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableLayout
+                    android:id="@+id/itemsStory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_ElementStories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#8b4513"
+                        android:text="Elementi"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TableRow
+                        android:id="@+id/resourceURIStory"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#bebebe">
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="18dp" />
+
+                        <TextView
+                            android:id="@+id/tv_resourceUriStories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#bebebe"
+                            android:text="RisorseURI"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/nameStory"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#bebebe">
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="18dp" />
+
+                        <TextView
+                            android:id="@+id/tv_nameStories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#bebebe"
+                            android:text="Nome"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                </TableLayout>
+            </TableLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_todo_ID"
+        android:layout_width="95dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="000"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_ID"
+        app:layout_constraintEnd_toStartOf="@+id/iv_thumbnail"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toEndOf="@+id/tv_ID"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_todo_name"
+        android:layout_width="178dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="name"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+        app:layout_constraintEnd_toStartOf="@+id/iv_thumbnail"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toEndOf="@+id/tv_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_todo_ID"
+        app:layout_constraintVertical_bias="0.769" />
+
+    <TextView
+        android:id="@+id/tv_todo_urlORlastname"
+        android:layout_width="219dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textAlignment="inherit"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_uriORlastname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toEndOf="@+id/tv_uriORlastname"
+        app:layout_constraintTop_toBottomOf="@+id/iv_thumbnail"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_todo_descriptionORsuffix"
+        android:layout_width="330dp"
+        android:layout_height="87dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Here description ..."
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_descriptionORsuffix" />
+
+</android.support.constraint.ConstraintLayout>
