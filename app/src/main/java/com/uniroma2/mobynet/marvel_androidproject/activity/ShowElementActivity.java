@@ -44,13 +44,14 @@ public class ShowElementActivity extends AppCompatActivity {
 */
         JSONManager jsonManager = new JSONManager(this);
         research = "Hulk";
+        type = 1;
 
         if(type == 1){
             tvUriLastname.setText(R.string.url);
             tvDescriptionSuffix.setText(R.string.description);
 
             Character character = jsonManager.get_json_character(research);
-            Uri uri = Uri.parse(character.getThumbnail().getPath() + character.getThumbnail().getExtension());
+            Uri uri = Uri.parse(character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension());
             iv_thumbnailValue.setImageURI(uri);
 
             tv_IDValue.setText(character.getId());
@@ -65,7 +66,7 @@ public class ShowElementActivity extends AppCompatActivity {
             tvDescriptionSuffix.setText(R.string.suffix);
 
             Creator creator = jsonManager.get_json_creator(research);
-            Uri uri = Uri.parse(creator.getThumbnail().getPath() + creator.getThumbnail().getExtension());
+            Uri uri = Uri.parse(creator.getThumbnail().getPath()+ "." +creator.getThumbnail().getExtension());
             iv_thumbnailValue.setImageURI(uri);
 
             tv_IDValue.setText(creator.getId());
