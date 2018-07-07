@@ -21,7 +21,7 @@
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.SearchElementActivity" />
         <activity android:name=".activity.ShowElementActivity" />
-        <activity android:name=".JSONManager" />
+        <activity android:name=".restAPI.JSONManager" />
     </application>
 
 </manifest>

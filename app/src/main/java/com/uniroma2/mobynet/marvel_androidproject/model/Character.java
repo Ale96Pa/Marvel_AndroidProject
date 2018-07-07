@@ -1,7 +1,9 @@
 package com.uniroma2.mobynet.marvel_androidproject.model;
 
+import android.net.Uri;
+
+import java.net.URI;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Character {
 
@@ -34,6 +36,38 @@ public class Character {
         this.id=id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getModified() {
+        return modified;
+    }
+
+    public String getResourceURI() {
+        return resourceURI;
+    }
+
+    public ArrayList<Url> getUrls() {
+        return urls;
+    }
+
+    public Thumbnail getThumbnail() {
+        return thumbnail;
+    }
+
+    public Comic getComics() {
+        return comics;
+    }
+
+    public Story getStories() {
+        return stories;
+    }
+
+    public Event getEvents() {
+        return events;
+    }
+
     public void setName(String name){
         this.name=name;
     }
@@ -59,10 +93,6 @@ public class Character {
 
     public void setUrls(ArrayList<Url> urls){
         this.urls=urls;
-    }
-
-    public void setThumbnail(Thumbnail thumbnail){
-        this.thumbnail=thumbnail;
     }
 
     public void setComics(Comic comics){

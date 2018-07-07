@@ -26,7 +26,6 @@ import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUM
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUMN_NAME_CREAT;
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE_CHARACTERS;
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE_CREATORS;
-import static com.uniroma2.mobynet.marvel_androidproject.database.DbManager.addRowCharacter;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -87,6 +86,8 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                //Intent intent = new Intent(WelcomeActivity.this, ShowElementActivity.class);
+
                 startActivity(intent);
             }
         });

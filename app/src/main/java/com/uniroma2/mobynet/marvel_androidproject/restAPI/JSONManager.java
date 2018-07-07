@@ -1,4 +1,4 @@
-package com.uniroma2.mobynet.marvel_androidproject;
+package com.uniroma2.mobynet.marvel_androidproject.restAPI;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import com.uniroma2.mobynet.marvel_androidproject.model.Story;
 import com.uniroma2.mobynet.marvel_androidproject.model.StorySummary;
 import com.uniroma2.mobynet.marvel_androidproject.model.Thumbnail;
 import com.uniroma2.mobynet.marvel_androidproject.model.Url;
+import com.uniroma2.mobynet.marvel_androidproject.restAPI.RestRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,7 +56,7 @@ public class JSONManager{
     }
 
 
-    public Character  get_json_character(String nameToSearch) throws ParseException {
+    public Character  get_json_character(String nameToSearch) {
 
         String res=null;
 
@@ -411,14 +412,6 @@ public class JSONManager{
         return urlArrayList;
 
     }
-
-
-
-
-
-
-
-
 
 
 }

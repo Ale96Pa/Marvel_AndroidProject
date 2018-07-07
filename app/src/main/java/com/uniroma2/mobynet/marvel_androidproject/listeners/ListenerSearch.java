@@ -55,6 +55,7 @@ public class ListenerSearch implements View.OnClickListener {
         lvElements.setAdapter(adapater);
         ListenerSearchItem listenerSearchItem = new ListenerSearchItem(context, type);
         lvElements.setOnItemClickListener(listenerSearchItem);
+
     }
 
 }

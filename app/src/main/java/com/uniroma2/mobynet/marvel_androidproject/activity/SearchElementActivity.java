@@ -52,10 +52,6 @@ public class SearchElementActivity extends AppCompatActivity {
         context = SearchElementActivity.this;
     }
 
-    public Context getContext() {
-        return context;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +76,7 @@ public class SearchElementActivity extends AppCompatActivity {
             tvElement.setText(R.string.searching_creators);
         }
 
+        context = SearchElementActivity.this;
         ListenerSearch listener = new ListenerSearch(user_search, etSearch, type, db, lvElements, context);
         btnSearch.setOnClickListener(listener);
 

@@ -22,18 +22,13 @@ public class ListenerSearchItem extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Context otherContext = null;
-        try {
-            otherContext = createPackageContext("SearchElementActivity.pack",
-                    Context.CONTEXT_IGNORE_SECURITY | Context.CONTEXT_INCLUDE_CODE);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
+        SearchElementActivity searchElementActivity = new SearchElementActivity();
 
-        Intent intent = new Intent(otherContext, ShowElementActivity.class);
+        Intent intent = new Intent(searchElementActivity, ShowElementActivity.class);
         intent.putExtra("search_value", adapterView.getItemAtPosition(i).toString());
         intent.putExtra("type", type);
         startActivity(intent);
+
     }
 
 
