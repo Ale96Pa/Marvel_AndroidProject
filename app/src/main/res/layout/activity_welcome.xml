@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.uniroma2.mobynet.marvel_androidproject.activity_welcome">
+    tools:context="com.uniroma2.mobynet.marvel_androidproject.activity.WelcomeActivity"
+    android:background="@drawable/wp2436369">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_Sx"
@@ -45,7 +46,7 @@
         android:layout_marginTop="28dp"
         android:text="Vuoi scoprire tutti i dettagli di un personaggio o autore della Marvel? Non ricordi bene il loro nome? Nessun problema, Moby Marvel viene in tuo aiuto!"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Dx"
         app:layout_constraintHorizontal_bias="0.545"
@@ -64,6 +65,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Dx"
         app:layout_constraintStart_toStartOf="@+id/guideline_Sx"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+        android:background="@drawable/bottone_oro"
+        android:textColor="#000000"/>
 
 </android.support.constraint.ConstraintLayout>
