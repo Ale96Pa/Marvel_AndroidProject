@@ -125,6 +125,12 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
+                    <TextView
+                        android:id="@+id/tv_todo_collectionURIComic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
                 </TableRow>
 
                 <TableRow
@@ -147,6 +153,12 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
+                    <TextView
+                        android:id="@+id/tv_todo_returnedComic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
                 </TableRow>
 
                 <TableRow
@@ -168,6 +180,12 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_todo_availableComic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
                 </TableRow>
 
                 <TableLayout
@@ -205,6 +223,12 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
+                        <TextView
+                            android:id="@+id/tv_todo_resourcesURIComic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+
                     </TableRow>
 
                     <TableRow
@@ -226,6 +250,12 @@
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_todo_nameComic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
                     </TableRow>
 
                 </TableLayout>
@@ -274,6 +304,12 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
+                    <TextView
+                        android:id="@+id/tv_todo_availableEvent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
                 </TableRow>
 
                 <TableRow
@@ -295,6 +331,12 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_todo_returnedEvent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
 
                 </TableRow>
 
@@ -318,6 +360,13 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_todo_collectionURIEvent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
                 </TableRow>
 
                 <TableLayout
@@ -354,6 +403,13 @@
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_todo_resourceURIEvent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+
                     </TableRow>
 
                     <TableRow
@@ -375,6 +431,13 @@
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_todo_nameEvent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+
                     </TableRow>
 
                 </TableLayout>
@@ -419,6 +482,13 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
+                    <TextView
+                        android:id="@+id/tv_todo_returnedStory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
+
                 </TableRow>
 
                 <TableRow
@@ -441,6 +511,13 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
+                    <TextView
+                        android:id="@+id/tv_todo_availableStory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
+
                 </TableRow>
 
                 <TableRow
@@ -462,6 +539,13 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_todo_collectionURIStory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
 
                 </TableRow>
 
@@ -499,6 +583,13 @@
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_todo_resourceURIStory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+
                     </TableRow>
 
                     <TableRow
@@ -520,6 +611,13 @@
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_todo_nameStory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+
                     </TableRow>
 
                 </TableLayout>

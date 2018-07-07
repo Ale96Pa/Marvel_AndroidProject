@@ -18,6 +18,15 @@ public class Character {
     private Story stories;
     private Event events;
 
+    public  Character(int id, String name, String description,String modified,String resourceURI){
+        this.id=id;
+        this.name=name;
+        this.description=description;
+        this.modified=modified;
+        this.resourceURI=resourceURI;
+    }
+
+
     public Character( int id, String name, String description, String modified, String resourceURI,ArrayList<Url> urls,
                       Thumbnail thumbnail, Comic comics, Story stories, Event events){
         this.comics=comics;
@@ -71,6 +80,7 @@ public class Character {
     public void setName(String name){
         this.name=name;
     }
+
     public String getName(){
         return name;
     }
