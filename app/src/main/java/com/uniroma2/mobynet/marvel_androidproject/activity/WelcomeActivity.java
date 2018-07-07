@@ -18,10 +18,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 
+import com.uniroma2.mobynet.marvel_androidproject.JSONManager;
 import com.uniroma2.mobynet.marvel_androidproject.R;
 import com.uniroma2.mobynet.marvel_androidproject.RestRequest;
 import com.uniroma2.mobynet.marvel_androidproject.database.DbHelper;
+import com.uniroma2.mobynet.marvel_androidproject.model.Character;
 
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUMN_NAME_CHAR;
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUMN_NAME_CREAT;
@@ -43,15 +46,25 @@ public class WelcomeActivity extends AppCompatActivity {
         System.out.println("******QUI ARRIVO WELCOME 1**********");
 
 
-        RestRequest rs = new RestRequest("creators","deo");
+        /*RestRequest rs = new RestRequest("creators","deo");
         try {
             rs.sendGet();
         } catch (Exception e) {
             e.printStackTrace();
+        }*/
+
+        //String result = rs.getResult();
+        //System.out.println(result);
+
+        JSONManager json = new JSONManager();
+        try {
+            Character ch = json.get_json_character("Hulk");
+            System.out.println(" " + ch.getName());
+
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
-        String result = rs.getResult();
-        System.out.println(result);
 
         //DbHelper dbHelper = new DbHelper(this);
         //SQLiteDatabase db = dbHelper.getWritableDatabase();
