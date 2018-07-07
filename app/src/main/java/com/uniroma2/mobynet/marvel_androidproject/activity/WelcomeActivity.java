@@ -73,8 +73,8 @@ public class WelcomeActivity extends AppCompatActivity {
             e2.printStackTrace();
         }
 */
-        DBhelper = new DbHelper(this);
-        db = DBhelper.getWritableDatabase();
+        /*DBhelper = new DbHelper(this);
+        db = DBhelper.getWritableDatabase();*/
 /*
         try {
             insertDataCharacters();

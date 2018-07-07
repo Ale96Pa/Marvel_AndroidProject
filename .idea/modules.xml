@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Marvel_AndroidProject.iml" filepath="$PROJECT_DIR$/Marvel_AndroidProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Marvel_AndroidProject.iml" filepath="$PROJECT_DIR$/Marvel_AndroidProject.iml" />
       <module fileurl="file://C:/Users/Matteo/AndroidStudioProjects/Marvel_AndroidProject/Marvel_AndroidProject.iml" filepath="C:/Users/Matteo/AndroidStudioProjects/Marvel_AndroidProject/Marvel_AndroidProject.iml" />
       <module fileurl="file://D:/alessandro/DataProgram/android/mobileProgramming/apps/Marvel_AndroidProject/.idea/Marvel_AndroidProject.iml" filepath="D:/alessandro/DataProgram/android/mobileProgramming/apps/Marvel_AndroidProject/.idea/Marvel_AndroidProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:/Users/Matteo/AndroidStudioProjects/Marvel_AndroidProject/app/app.iml" filepath="C:/Users/Matteo/AndroidStudioProjects/Marvel_AndroidProject/app/app.iml" />
     </modules>
