@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.uniroma2.mobynet.marvel_androidproject.model.Comic;
 import com.uniroma2.mobynet.marvel_androidproject.model.ComicSummary;
 import com.uniroma2.mobynet.marvel_androidproject.model.Event;
-import com.uniroma2.mobynet.marvel_androidproject.model.EventSummary;
 import com.uniroma2.mobynet.marvel_androidproject.model.Story;
-import com.uniroma2.mobynet.marvel_androidproject.model.StorySummary;
 import com.uniroma2.mobynet.marvel_androidproject.model.Thumbnail;
 import com.uniroma2.mobynet.marvel_androidproject.model.Url;
 
@@ -34,7 +32,7 @@ public class JSONManager extends AppCompatActivity{
 
     }
 
-    public String  get_json_character(String nameToSearch) {
+    public Character  get_json_character(String nameToSearch) {
         String nome = null;
         String json = null;
 
@@ -66,10 +64,7 @@ public class JSONManager extends AppCompatActivity{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
-
+        Character character=null;
         try{
             InputStream is = getAssets().open("characters.json");
             int size = is.available();
@@ -79,7 +74,7 @@ public class JSONManager extends AppCompatActivity{
             json = new String(buffer, "UTF-8");
             JSONArray jsonArray = new JSONArray(json);
 
-            Character character=null;
+
 
             for (int i = 0; i<jsonArray.length(); i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
@@ -93,19 +88,14 @@ public class JSONManager extends AppCompatActivity{
 
                     JSONObject comics = obj.getJSONObject("comics");
                     Comic comic = get_json_comics( comics);
-
                     JSONObject thumbnails=obj.getJSONObject("thumbnail");
                     Thumbnail thumbnail=get_json_thumbnail( thumbnails);
-
-                    JSONObject stories=obj.getJSONObject("thumbnail");
-                    Story story=get_json_story( stories);
-
-                    JSONObject events=obj.getJSONObject("thumbnail");
-                    Event event=get_json_event( events);
+                    JSONObject urls = obj.getJSONObject("urls");
+                    ArrayList<Url> urlArrayList = get_json_urls(urls);
 
 
                     character = new Character(id, name,description,modified,resourceURI,ArrayList< Url > urls,
-                            thumbnail, Comic comics, Story stories, Event events);
+                            thumbnail, comic, Story stories, Event events);
 
                 }
             }
@@ -114,10 +104,8 @@ public class JSONManager extends AppCompatActivity{
             e.printStackTrace();
         }
 
-        return nome;
+        return character;
     }
-
-
 
     public Comic  get_json_comics( JSONObject comics) {
         Comic comic=null;
@@ -177,35 +165,24 @@ public class JSONManager extends AppCompatActivity{
 
     }
 
-
-
-
-    public Story  get_json_story( JSONObject stories) {
-        Story story=null;
-
+    public ArrayList<Url>  get_json_urls( JSONObject urls) {
+        ArrayList<Url> urlArrayList=null;
         try{
-            Integer available= stories.getInt("available");
-            Integer returned = stories.getInt("returned");
-            String collectionURI=stories.getString("collectionURI");
-            JSONArray itemsArray = stories.getJSONArray("items");
 
-            ArrayList<StorySummary> storySummaryArrayList= new ArrayList<>();
 
-            for (int j = 0; j<itemsArray.length();j++){
-                JSONObject items=itemsArray.getJSONObject(j);
-                String resourceURI_item = items.getString("resourceURI");
-                String name_item = items.getString("name");
-                String type_item = items.getString("type");
 
-                StorySummary storySummary = new StorySummary(resourceURI_item,name_item, type_item);
 
-                storySummaryArrayList.add(storySummary);
+            for (int j = 0; j<urls.length();j++){
+                String type= urls.getString("type");
+                String url = urls.getString("url");
+
+                Url singleUrl = new Url(type,url);
+
+
+                urlArrayList.add(singleUrl);
 
 
             }
-
-
-            story = new Story(available,returned,collectionURI,storySummaryArrayList);
 
 
 
@@ -215,47 +192,7 @@ public class JSONManager extends AppCompatActivity{
 
 
 
-        return story;
-
-    }
-
-
-
-
-    public Event  get_json_event( JSONObject events) {
-        Event event=null;
-        try{
-            Integer available= events.getInt("available");
-            Integer returned = events.getInt("returned");
-            String collectionURI=events.getString("collectionURI");
-            JSONArray itemsArray = events.getJSONArray("items");
-
-            ArrayList<EventSummary> eventSummaryArrayList= new ArrayList<>();
-
-            for (int j = 0; j<itemsArray.length();j++){
-                JSONObject items=itemsArray.getJSONObject(j);
-                String resourceURI_item = items.getString("resourceURI");
-                String name_item = items.getString("name");
-
-                EventSummary eventSummary = new EventSummary(resourceURI_item,name_item);
-
-                eventSummaryArrayList.add(eventSummary);
-
-
-            }
-
-
-            event = new Event(available,returned,collectionURI,eventSummaryArrayList);
-
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-
-        return event;
+        return urlArrayList;
 
     }
 }
