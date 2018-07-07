@@ -27,11 +27,11 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String creatTableCharQuery = "CREATE TABLE " + TABLE_CHARACTERS + " ( " + COLUMN_ID_CHAR +
-                " integer PRIMARY KEY AUTO_INCREMENT NOT NULL, " + COLUMN_NAME_CHAR + " text ); ";
+                " integer PRIMARY KEY AUTOINCREMENT NOT NULL, " + COLUMN_NAME_CHAR + " text ); ";
         db.execSQL(creatTableCharQuery);
 
         String creatTableCreatQuery = "CREATE TABLE " + TABLE_CREATORS + " ( " + COLUMN_ID_CREAT +
-                " integer PRIMARY KEY AUTO_INCREMENT NOT NULL, " + COLUMN_NAME_CREAT + " text ); ";
+                " integer PRIMARY KEY AUTOINCREMENT NOT NULL, " + COLUMN_NAME_CREAT + " text ); ";
         db.execSQL(creatTableCreatQuery);
     }
 

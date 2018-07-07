@@ -10,6 +10,14 @@ public class EventSummary{
         this.resourceURI = resourceURI;
     }
 
+    public String getResourceURI() {
+        return resourceURI;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setResourceURI(String resourceURI){
         this.resourceURI = resourceURI;
     }

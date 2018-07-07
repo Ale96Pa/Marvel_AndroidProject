@@ -19,7 +19,23 @@ public class Comic {
             this.returned=returned;
         }
 
-        public void setAvailable(int available){
+    public int getAvailable() {
+        return available;
+    }
+
+    public int getReturned() {
+        return returned;
+    }
+
+    public String getCollectionURI() {
+        return collectionURI;
+    }
+
+    public ArrayList<ComicSummary> getItems() {
+        return items;
+    }
+
+    public void setAvailable(int available){
             this.available=available;
         }
 

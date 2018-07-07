@@ -13,6 +13,17 @@ public class StorySummary{
 
     }
 
+    public String getResourceURI() {
+        return resourceURI;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
 
     public void setResourceURI(String resourceURI){
         this.resourceURI = resourceURI;

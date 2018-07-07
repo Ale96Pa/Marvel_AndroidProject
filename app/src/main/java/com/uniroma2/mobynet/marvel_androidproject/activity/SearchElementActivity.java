@@ -52,6 +52,10 @@ public class SearchElementActivity extends AppCompatActivity {
         context = SearchElementActivity.this;
     }
 
+    public Context getContext() {
+        return this.context;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,92 +110,5 @@ public class SearchElementActivity extends AppCompatActivity {
 
 
 
-    public String  get_json(String nameToSearch) {
-        String nome = null;
-        String json = null;
 
-        File file = new File("characters.json");
-
-        try {
-
-            file.createNewFile();
-
-            RestRequest rs = new RestRequest("creators", nameToSearch);
-
-            try {
-
-                rs.sendGet();
-                String res = rs.getResult();
-                System.out.println("****** RESULT JSON *******");
-                System.out.println(res);
-
-                FileOutputStream fOut = new FileOutputStream(file);
-                OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
-
-                myOutWriter.append(res);
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-
-
-        try{
-            InputStream is = getAssets().open("characters.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-            JSONArray jsonArray = new JSONArray(json);
-
-            for (int i = 0; i<jsonArray.length(); i++){
-                JSONObject obj = jsonArray.getJSONObject(i);
-                if (obj.getString("name")== nameToSearch){
-
-                    String nomeC = obj.getString("name");
-                    int id = obj.getInt("id");
-                    String description = obj.getString("description");
-                    String resourceURI = obj.getString("resourceURI");
-                    String modified = obj.getString("modified");
-
-                    JSONObject comics = obj.getJSONObject("comics");
-                    Integer available= comics.getInt("available");
-                    Integer returned = comics.getInt("returned");
-                    String collectionURI=comics.getString("collectionURI");
-                    JSONArray itemsArray = comics.getJSONArray("items");
-
-                    ArrayList<ComicSummary> comicSummaryArrayList= new ArrayList<>();
-
-                    for (int j = 0; j<itemsArray.length();j++){
-                        JSONObject items=itemsArray.getJSONObject(j);
-                        String resourceURI_item = items.getString("resourceURI");
-                        String name_item = items.getString("name");
-
-                        ComicSummary comicSummary = new ComicSummary(resourceURI_item,name_item);
-
-                        comicSummaryArrayList.add(comicSummary);
-
-
-                    }
-
-
-
-                    //Character character = new Character(.....);
-
-                }
-            }
-
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
-        }
-
-        return nome;
-    }
 }
