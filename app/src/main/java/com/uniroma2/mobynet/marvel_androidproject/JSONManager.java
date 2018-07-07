@@ -28,7 +28,7 @@ public class JSONManager extends AppCompatActivity{
 
     }
 
-    public void get_Character_By_Name(String name){
+    /*public void get_Character_By_Name(String name){
 
     }
 
@@ -94,7 +94,7 @@ public class JSONManager extends AppCompatActivity{
                     ArrayList<Url> urlArrayList = get_json_urls(urls);
 
 
-                    character = new Character(id, name,description,modified,resourceURI,ArrayList< Url > urls,
+                    character = new Character(id, name,description,modified,resourceURI,urls,
                             thumbnail, comic, Story stories, Event events);
 
                 }
@@ -194,5 +194,5 @@ public class JSONManager extends AppCompatActivity{
 
         return urlArrayList;
 
-    }
+    }*/
 }
