@@ -32,7 +32,7 @@ public class JSONManager extends AppCompatActivity{
 
     }
 
-    public String  get_json_character(String nameToSearch) {
+    public Character  get_json_character(String nameToSearch) {
         String nome = null;
         String json = null;
 
@@ -64,10 +64,7 @@ public class JSONManager extends AppCompatActivity{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
-
+        Character character=null;
         try{
             InputStream is = getAssets().open("characters.json");
             int size = is.available();
@@ -77,7 +74,7 @@ public class JSONManager extends AppCompatActivity{
             json = new String(buffer, "UTF-8");
             JSONArray jsonArray = new JSONArray(json);
 
-            Character character=null;
+
 
             for (int i = 0; i<jsonArray.length(); i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
@@ -93,10 +90,12 @@ public class JSONManager extends AppCompatActivity{
                     Comic comic = get_json_comics( comics);
                     JSONObject thumbnails=obj.getJSONObject("thumbnail");
                     Thumbnail thumbnail=get_json_thumbnail( thumbnails);
+                    JSONObject urls = obj.getJSONObject("urls");
+                    ArrayList<Url> urlArrayList = get_json_urls(urls);
 
 
                     character = new Character(id, name,description,modified,resourceURI,ArrayList< Url > urls,
-                            thumbnail, Comic comics, Story stories, Event events);
+                            thumbnail, comic, Story stories, Event events);
 
                 }
             }
@@ -105,7 +104,7 @@ public class JSONManager extends AppCompatActivity{
             e.printStackTrace();
         }
 
-        return nome;
+        return character;
     }
 
     public Comic  get_json_comics( JSONObject comics) {
@@ -163,6 +162,37 @@ public class JSONManager extends AppCompatActivity{
 
 
         return thumbnail;
+
+    }
+
+    public ArrayList<Url>  get_json_urls( JSONObject urls) {
+        ArrayList<Url> urlArrayList=null;
+        try{
+
+
+
+
+            for (int j = 0; j<urls.length();j++){
+                String type= urls.getString("type");
+                String url = urls.getString("url");
+
+                Url singleUrl = new Url(type,url);
+
+
+                urlArrayList.add(singleUrl);
+
+
+            }
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+        return urlArrayList;
 
     }
 }
