@@ -1,5 +1,6 @@
 package com.uniroma2.mobynet.marvel_androidproject.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,8 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,62 +26,88 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 import com.uniroma2.mobynet.marvel_androidproject.R;
-import com.uniroma2.mobynet.marvel_androidproject.RestRequest;
+import com.uniroma2.mobynet.marvel_androidproject.listeners.ListenerSearch;
+import com.uniroma2.mobynet.marvel_androidproject.listeners.ListenerSearchItem;
+import com.uniroma2.mobynet.marvel_androidproject.restAPI.RestRequest;
 import com.uniroma2.mobynet.marvel_androidproject.database.DbHelper;
+import com.uniroma2.mobynet.marvel_androidproject.database.DbManager;
 import com.uniroma2.mobynet.marvel_androidproject.model.ComicSummary;
-
-import static com.uniroma2.mobynet.marvel_androidproject.activity.WelcomeActivity.DBhelper;
 
 public class SearchElementActivity extends AppCompatActivity {
 
     private EditText etSearch;
     private ListView lvElements;
-    final String querySearch = "SELECT * FROM creators WHERE name like '%deo%';";
+    private TextView tvElement;
+    private Button btnSearch;
+    private String user_search;
+
+    SQLiteDatabase db;
+    static DbHelper DBhelper;
+    Context context;
+
     int type; // 1 if characters, 2 if creator
-    ArrayList<String> allSearchedCharacters = new ArrayList<>();
-    ArrayList<String> allSearchedCreators = new ArrayList<>();
+    ArrayList<String> allSearchedElements = new ArrayList<>();
+
+    public SearchElementActivity() {
+        context = SearchElementActivity.this;
+    }
+
+    public Context getContext() {
+        return context;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_creator);
-        etSearch = (EditText) findViewById(R.id.etSearch);
-        lvElements = (ListView) findViewById(R.id.lvElementsSearched);
+        setContentView(R.layout.activity_search_element);
 
-        Bundle requested = getIntent().getExtras();
-        type = requested.getInt("type");
-        System.out.println("*********YOU HAVE CLICKED: " + type);
+        etSearch = findViewById(R.id.etSearch);
+        lvElements = findViewById(R.id.lvElementsSearched);
+        tvElement = findViewById(R.id.tvInstructionSearch);
+        btnSearch = findViewById(R.id.btnSearch);
 
         DBhelper = new DbHelper(this);
-        SQLiteDatabase db = DBhelper.getReadableDatabase();
+        db = DBhelper.getWritableDatabase();
+        final DbManager manager = new DbManager(this);
 
-        Cursor cursor = db.rawQuery(querySearch, new String[]{});
-        allSearchedCharacters = new ArrayList<>();
+        Bundle requested = getIntent().getExtras();
+        if (requested != null)
+            type = requested.getInt("type");
+        if(type == 1) {
+            tvElement.setText(R.string.searching_characters);
+        }
+        else {
+            tvElement.setText(R.string.searching_creators);
+        }
+
+        ListenerSearch listener = new ListenerSearch(user_search, etSearch, type, db, lvElements, context);
+        btnSearch.setOnClickListener(listener);
+
+/*
+        Cursor cursor = db.rawQuery(query, new String[]{});
+        allSearchedElements = new ArrayList<>();
 
         if(cursor.moveToFirst()) {
             do {
                 String name = cursor.getString(1);
-                allSearchedCharacters.add(name);
+                allSearchedElements.add(name);
             } while(cursor.moveToNext());
         }
         cursor.close();
+*/
+        //allSearchedElements = listener.getAllSearchedElements();
 
-
-
-        ArrayAdapter<String> adapater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allSearchedCharacters);
+/*
+        ArrayAdapter<String> adapater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allSearchedElements);
         lvElements.setAdapter(adapater);
+        ListenerSearchItem listenerSearchItem = new ListenerSearchItem(this, type);
+        lvElements.setOnItemClickListener(listenerSearchItem);
+ */
 
-        lvElements.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println("**********CLICK ON ITEM: ********" + adapterView.getItemAtPosition(i));
-                //Passare all'intent del personaggio
-                Intent intent = new Intent(SearchElementActivity.this, ShowElementActivity.class);
-                startActivity(intent);
-            }
-        });
       //  String jsonString = get_json(etSearch.getText().toString());
     }
+
+
 
     public String  get_json(String nameToSearch) {
         String nome = null;

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Moby Marvel</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="searching_characters">Insert a Marvel character</string>
+    <string name="searching_creators">Insert a Marvel creator</string>
+    <string name="welcome">Welcome in Moby Marvel</string>
+    <string name="instruction">"Do you want discover a Marvel character or creator? Don't you remember well their name? No prblem, MobyMarvel is here for you! "</string>
+    <string name="start">Start</string>
+    <string name="select_search">Select a research type</string>
+    <string name="character">Character</string>
+    <string name="creator">Creator</string>
+    <string name="search">Search</string>
+    <string name="insert_name">Insert a name</string>
+    <string name="search_something">Search an element</string>
+    <string name="id">ID</string>
+    <string name="name">Name</string>
+    <string name="resourceURI">Resource URI</string>
+    <string name="collectionURI">Collection URI</string>
+    <string name="descriptionORsuffix">" Description"</string>
+    <string name="urlORlastname_value">" URL"</string>
+    <string name="urlORlastname">" "</string>
+    <string name="descriptionORsuffix_value">" "</string>
+    <string name="stories">Stories</string>
+    <string name="published">Published</string>
+    <string name="elements">Elements</string>
+    <string name="available">Available</string>
+    <string name="id_value">0</string>
+    <string name="name_value">name</string>
+    <string name="comics">Comics</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="description">Description</string>
+    <string name="suffix">Honorific suffix</string>
+    <string name="url">URL</string>
+    <string name="lastname">Lastname</string>
+</resources>

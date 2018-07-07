@@ -1,4 +1,4 @@
-package com.uniroma2.mobynet.marvel_androidproject;
+package com.uniroma2.mobynet.marvel_androidproject.restAPI;
 
 import android.os.AsyncTask;
 import java.io.BufferedReader;
