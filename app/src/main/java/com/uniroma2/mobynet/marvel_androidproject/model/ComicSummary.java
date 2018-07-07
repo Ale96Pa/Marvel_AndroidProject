@@ -9,6 +9,14 @@ public class ComicSummary {
         this.name=name;
     }
 
+    public String getResourceURI() {
+        return resourceURI;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

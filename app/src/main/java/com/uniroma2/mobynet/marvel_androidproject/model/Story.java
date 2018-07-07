@@ -19,6 +19,22 @@ public class Story{
         this.items = items;
     }
 
+    public int getAvailable() {
+        return available;
+    }
+
+    public int getReturned() {
+        return returned;
+    }
+
+    public String getCollectionURI() {
+        return collectionURI;
+    }
+
+    public ArrayList<StorySummary> getItems() {
+        return items;
+    }
+
     public void setAvailable(int av){
         this.available = av;
     }

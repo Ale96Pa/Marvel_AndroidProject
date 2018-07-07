@@ -67,9 +67,10 @@ public class JSONManager{
 
                 rs.sendGet();
                 res = rs.getResult();
+                /*
                 System.out.println("****** RESULT JSON *******");
                 System.out.println(res);
-
+                */
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -157,9 +158,10 @@ public class JSONManager{
 
                 rs.sendGet();
                 res = rs.getResult();
+                /*
                 System.out.println("****** RESULT JSON *******");
                 System.out.println(res);
-
+                */
 
 
             } catch (Exception e) {
