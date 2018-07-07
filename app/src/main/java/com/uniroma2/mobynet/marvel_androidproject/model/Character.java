@@ -12,12 +12,12 @@ public class Character {
     private String resourceURI;
     private ArrayList<Url> urls;
     private Thumbnail thumbnail;
-    private ArrayList<Comic> comics;
-    private ArrayList<Story> stories;
-    private ArrayList<Event> events;
+    private Comic comics;
+    private Story stories;
+    private Event events;
 
     public Character( int id, String name, String description, Date modified, String resourceURI,ArrayList<Url> urls,
-                      Thumbnail thumbnail, ArrayList<Comic> comics, ArrayList<Story> stories, ArrayList<Event> events){
+                      Thumbnail thumbnail, Comic comics, Story stories, Event events){
         this.comics=comics;
         this.description=description;
         this.events=events;
@@ -58,15 +58,15 @@ public class Character {
         this.thumbnail=thumbnail;
     }
 
-    public void setComics(ArrayList<Comic> comics){
+    public void setComics(Comic comics){
         this.comics=comics;
     }
 
-    public void setStories(ArrayList<Story> stories){
+    public void setStories(Story stories){
         this.stories=stories;
     }
 
-    public void setEvents(ArrayList<Event> events){
+    public void setEvents(Event events){
         this.events=events;
     }
 
