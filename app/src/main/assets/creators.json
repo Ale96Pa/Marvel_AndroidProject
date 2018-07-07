@@ -1,0 +1,145 @@
+{"creator": {
+  "id": 312,
+  "firstName": "Mike",
+  "middleName": "",
+  "lastName": "Deodato",
+  "suffix": "",
+  "fullName": "Mike Deodato",
+  "modified": "2016-10-26T17:16:14-0400",
+  "thumbnail": {
+    "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/30/51080a9f0671f",
+    "extension": "jpg"
+  },
+  "resourceURI": "http://gateway.marvel.com/v1/public/creators/312",
+  "comics": {
+    "available": 492,
+    "collectionURI": "http://gateway.marvel.com/v1/public/creators/312/comics",
+    "items": [
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/1977",
+        "name": "4 (2004) #18"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/2189",
+        "name": "4 Vol. 3: Divine Time (Trade Paperback)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/45764",
+        "name": "A+X VOL. 2: = AMAZING TPB (MARVEL NOW) (Trade Paperback)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/43511",
+        "name": "A+X (2012) #12"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/721",
+        "name": "Amazing Spider-Man (1999) #509"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/530",
+        "name": "Amazing Spider-Man (1999) #510"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/765",
+        "name": "Amazing Spider-Man (1999) #511"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/855",
+        "name": "Amazing Spider-Man (1999) #512"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/935",
+        "name": "Amazing Spider-Man (1999) #513"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/6",
+        "name": "Amazing Spider-Man (1999) #514"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/1409",
+        "name": "Amazing Spider-Man (1999) #515"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/1511",
+        "name": "Amazing Spider-Man (1999) #516"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/1611",
+        "name": "Amazing Spider-Man (1999) #517"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/1762",
+        "name": "Amazing Spider-Man (1999) #518"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/2452",
+        "name": "Amazing Spider-Man (1999) #525"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/3020",
+        "name": "Amazing Spider-Man (1999) #526"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/3360",
+        "name": "Amazing Spider-Man (1999) #528"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/3537",
+        "name": "Amazing Spider-Man (1999) #529"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/29101",
+        "name": "Amazing Spider-Man by JMS Ultimate Collection Book 4 (Trade Paperback)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/1548",
+        "name": "Amazing Spider-Man Vol. 8: Sins Past (Trade Paperback)"
+      }
+    ],
+    "returned": 20
+  },
+  "series": {
+    "available": 228,
+    "collectionURI": "http://gateway.marvel.com/v1/public/creators/312/series",
+    "items": [
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/725",
+        "name": "4 (2004 - 2006)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/1423",
+        "name": "4 Vol. 3: Divine Time (2005)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/16450",
+        "name": "A+X (2012 - Present)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/17272",
+        "name": "A+X VOL. 2: = AMAZING TPB (MARVEL NOW) (2013)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/17318",
+        "name": "Age of Ultron (2013)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/454",
+        "name": "Amazing Spider-Man (1999 - 2013)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/17285",
+        "name": "Amazing Spider-Man (2014 - Present)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/7547",
+        "name": "Amazing Spider-Man by JMS Ultimate Collection Book 4 (2010 - Present)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/1283",
+        "name": "Amazing Spider-Man Vol. 8: Sins Past (2005)"
+      }
+    ]
+  }
+}
+}
+

@@ -8,6 +8,10 @@ public class Comic {
         private String collectionURI;
         private ArrayList<ComicSummary> items;
 
+        public Comic(){
+
+        }
+
         public Comic(int available, int returned,String collectionURI, ArrayList<ComicSummary> items){
             this.available=available;
             this.collectionURI=collectionURI;

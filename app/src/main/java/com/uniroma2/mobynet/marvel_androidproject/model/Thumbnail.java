@@ -4,6 +4,7 @@ public class Thumbnail {
     private String path;
     private String extension;
 
+    public Thumbnail(){}
     public Thumbnail(String path, String extension){
         this.path=path;
         this.extension=extension;

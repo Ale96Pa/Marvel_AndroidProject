@@ -9,6 +9,8 @@ public class Story{
     private String collectionURI;
     private ArrayList<StorySummary> items;
 
+    public Story(){}
+
     public Story(int available, int returned, String collectionURI, ArrayList<StorySummary> items ){
 
         this.available = available;
