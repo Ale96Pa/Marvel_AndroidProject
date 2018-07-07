@@ -16,8 +16,8 @@ public class Character {
     private Story stories;
     private Event events;
 
-
-    public Character(int id, String name, String description, String modified, String resourceURI, ArrayList<Url> urls, Thumbnail thumbnail, Comic comics, Story stories, Event events ){
+    public Character( int id, String name, String description, String modified, String resourceURI,ArrayList<Url> urls,
+                      Thumbnail thumbnail, Comic comics, Story stories, Event events){
         this.comics=comics;
         this.description=description;
         this.events=events;
