@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.uniroma2.mobynet.marvel_androidproject.model.Comic;
 import com.uniroma2.mobynet.marvel_androidproject.model.ComicSummary;
 import com.uniroma2.mobynet.marvel_androidproject.model.Event;
+import com.uniroma2.mobynet.marvel_androidproject.model.EventSummary;
 import com.uniroma2.mobynet.marvel_androidproject.model.Story;
+import com.uniroma2.mobynet.marvel_androidproject.model.StorySummary;
 import com.uniroma2.mobynet.marvel_androidproject.model.Thumbnail;
 import com.uniroma2.mobynet.marvel_androidproject.model.Url;
 
@@ -90,9 +92,16 @@ public class JSONManager extends AppCompatActivity{
                     String modified = obj.getString("modified");
 
                     JSONObject comics = obj.getJSONObject("comics");
-                    Comic comic = get_json_comics( comics);
+                    Comic comic = get_json_comics(comics);
                     JSONObject thumbnails=obj.getJSONObject("thumbnail");
                     Thumbnail thumbnail=get_json_thumbnail( thumbnails);
+
+                    JSONObject stories=obj.getJSONObject("stories");
+                    Story story=get_json_story(stories);
+
+                    JSONObject events=obj.getJSONObject("events");
+                    Event event=get_json_event(events);
+
 
 
                     character = new Character(id, name,description,modified,resourceURI,ArrayList< Url > urls,
@@ -100,6 +109,7 @@ public class JSONManager extends AppCompatActivity{
 
                 }
             }
+
 
         } catch (JSONException | IOException e) {
             e.printStackTrace();
@@ -165,4 +175,94 @@ public class JSONManager extends AppCompatActivity{
         return thumbnail;
 
     }
+
+
+
+
+    public Story  get_json_story(JSONObject stories) {
+        Story story=null;
+        try{
+            Integer available= stories.getInt("available");
+            Integer returned = stories.getInt("returned");
+            String collectionURI=stories.getString("collectionURI");
+            JSONArray itemsArray = stories.getJSONArray("items");
+
+            ArrayList<StorySummary> storySummaryArrayList= new ArrayList<>();
+
+            for (int j = 0; j<itemsArray.length();j++){
+                JSONObject items=itemsArray.getJSONObject(j);
+                String resourceURI_item = items.getString("resourceURI");
+                String name_item = items.getString("name");
+                String type_item = items.getString("type");
+
+                StorySummary storySummary = new StorySummary(resourceURI_item,name_item, type_item);
+
+                storySummaryArrayList.add(storySummary);
+
+
+            }
+
+
+            story = new Story(available,returned,collectionURI,storySummaryArrayList);
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+        return story;
+
+    }
+
+
+
+
+
+
+
+    public Event  get_json_event(JSONObject events) {
+        Event event=null;
+        try{
+            Integer available= events.getInt("available");
+            Integer returned = events.getInt("returned");
+            String collectionURI=events.getString("collectionURI");
+            JSONArray itemsArray = events.getJSONArray("items");
+
+            ArrayList<EventSummary> eventSummaryArrayList= new ArrayList<>();
+
+            for (int j = 0; j<itemsArray.length();j++){
+                JSONObject items=itemsArray.getJSONObject(j);
+                String resourceURI_item = items.getString("resourceURI");
+                String name_item = items.getString("name");
+
+                EventSummary eventSummary = new EventSummary(resourceURI_item,name_item);
+
+                eventSummaryArrayList.add(eventSummary);
+
+
+            }
+
+
+            event = new Event(available,returned,collectionURI,eventSummaryArrayList);
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+        return event;
+
+    }
+
+
+
+
+
+
 }
