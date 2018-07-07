@@ -56,14 +56,9 @@ public class JSONManager{
 
 
     public Character  get_json_character(String nameToSearch) throws ParseException {
-        String json;
+
         String res=null;
 
-        //File file = new File("characters.json");
-
-        //try {
-
-            //file.createNewFile();
 
             RestRequest rs = new RestRequest("characters", nameToSearch);
 
@@ -74,28 +69,16 @@ public class JSONManager{
                 System.out.println("****** RESULT JSON *******");
                 System.out.println(res);
 
-                /*FileOutputStream fOut = new FileOutputStream(file);
-                OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
-
-                myOutWriter.append(res);*/
-
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-        /*} catch (IOException e) {
-            e.printStackTrace();
-        }*/
         Character character=null;
         try{
-            //json = loadJSONFromAsset(c,"characters.json");
-            //JSONArray jsonArray = new JSONArray(res);
+
             JSONObject obj = new JSONObject(res);
 
-            //for (int i = 0; i<jsonArray.length(); i++){
-              //  JSONObject obj = jsonArray.getJSONObject(i);
-                //if (obj.getJSONObject("data").getJSONObject("result").getString("name").equals(nameToSearch)){
 
                     JSONObject charObj = obj.getJSONObject("data").getJSONArray("results").getJSONObject(0);
 
@@ -141,14 +124,10 @@ public class JSONManager{
 
                     character = new Character(id, name, description, modified, resourceURI, urlArrayList, thumbnail, comic, story, event);
 
-                //}
             } catch (JSONException e1) {
             e1.printStackTrace();
         }
 
-    //} catch (JSONException e) {
-      //      e.printStackTrace();
-        //}
 
         return character;
     }
@@ -166,83 +145,89 @@ public class JSONManager{
 
 
     public Creator  get_json_creator(String nameToSearch) {
-        String json = null;
 
-        File file = new File("creator.json");
 
-        try {
+        String res = null;
 
-            file.createNewFile();
 
-            RestRequest rs = new RestRequest("creators", nameToSearch);
+        RestRequest rs = new RestRequest("creators", nameToSearch);
 
             try {
 
                 rs.sendGet();
-                String res = rs.getResult();
+                res = rs.getResult();
                 System.out.println("****** RESULT JSON *******");
                 System.out.println(res);
 
-                FileOutputStream fOut = new FileOutputStream(file);
-                OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
-
-                myOutWriter.append(res);
 
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         Creator creator=null;
+
         try{
-            json = loadJSONFromAsset(c,"creators.json");
-            JSONArray jsonArray = new JSONArray(json);
+
+            JSONObject obj = new JSONObject(res);
 
 
 
-            for (int i = 0; i<jsonArray.length(); i++){
-                JSONObject obj = jsonArray.getJSONObject(i);
-                if (obj.getString("lastName").equals(nameToSearch)){
+            JSONObject charObj = obj.getJSONObject("data").getJSONArray("results").getJSONObject(0);
 
-                    int id = obj.getInt("id");
-                    String firstName = obj.getString("firstName");
-                    String middleName = obj.getString("middleName");
-                    String lastName = obj.getString("lastName");
-                    String suffix = obj.getString("suffix");
-                    String fullName = obj.getString("fullName");
-                    String resourceURI = obj.getString("resourceURI");
-                    String modified = obj.getString("modified");
+            String firstName = null, middleName = null, lastName = null, fullName=null, suffix=null, resourceURI=null, modified=null;
+            int id;
+            ArrayList<Url> urlArrayList = new ArrayList<>();
+            Event event = new Event();
+            Story story = new Story();
+            Comic comic = new Comic(){} ;
+            Thumbnail thumbnail = new Thumbnail();
 
-                    JSONObject comics = obj.getJSONObject("comics");
-                    Comic comic = get_json_comics( comics);
+            id = charObj.getInt("id");
 
-                    JSONObject thumbnails=obj.getJSONObject("thumbnail");
-                    Thumbnail thumbnail=get_json_thumbnail( thumbnails);
+            if(charObj.getString("firstName")!=null){ firstName = charObj.getString("firstName");}
+            if(charObj.getString("middleName")!=null){ middleName = charObj.getString("middleName");}
+            if(charObj.getString("lastName")!=null){ lastName = charObj.getString("lastName");}
+            if(charObj.getString("fullName")!=null){ fullName = charObj.getString("fullName");}
 
-                    JSONArray urls = obj.getJSONArray("urls");
-                    ArrayList<Url> urlArrayList = get_json_urls(urls);
+            if(charObj.getString("suffix")!=null){ suffix = charObj.getString("suffix");}
+            if(charObj.getString("resourceURI")!=null){ resourceURI = charObj.getString("resourceURI");}
+            if(charObj.getString("modified")!=null){ modified = charObj.getString("modified");}
 
-                    JSONObject events=obj.getJSONObject("event");
-                    Event event=get_json_events( events);
+            System.out.println("id:"+id+" name:"+firstName);
 
-                    JSONObject stories=obj.getJSONObject("story");
-                    Story story=get_json_stories( stories);
+            if(charObj.getString("comics")!=null){ JSONObject comics = charObj.getJSONObject("comics");
+                comic = get_json_comics( comics);}
 
-                    creator = new Creator(id, firstName, middleName, lastName, suffix, fullName, modified,resourceURI,
-                            urlArrayList, thumbnail, comic, story, event);
 
-                }
-            }
+            if(charObj.getString("thumbnail")!=null){ JSONObject thumbnails=charObj.getJSONObject("thumbnail");
+                thumbnail=get_json_thumbnail( thumbnails);}
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+
+
+            if(charObj.getString("urls")!=null){ JSONArray urls = charObj.getJSONArray("urls");
+                urlArrayList = get_json_urls(urls);}
+
+
+            if(charObj.getString("events")!=null){ JSONObject events=charObj.getJSONObject("events");
+                event=get_json_events( events);}
+
+
+
+            if(charObj.getString("stories")!=null){ JSONObject stories=charObj.getJSONObject("stories");
+                story=get_json_stories( stories);}
+
+
+            creator = new Creator( id, firstName, middleName, lastName, suffix, fullName, modified, resourceURI, urlArrayList,
+                     thumbnail, comic, story, event);
+
+        } catch (JSONException e1) {
+            e1.printStackTrace();
         }
 
-        return creator;
-    }
+
+            return creator;
+        }
 
 
 

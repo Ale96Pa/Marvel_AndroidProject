@@ -25,6 +25,7 @@ import com.uniroma2.mobynet.marvel_androidproject.R;
 import com.uniroma2.mobynet.marvel_androidproject.RestRequest;
 import com.uniroma2.mobynet.marvel_androidproject.database.DbHelper;
 import com.uniroma2.mobynet.marvel_androidproject.model.Character;
+import com.uniroma2.mobynet.marvel_androidproject.model.Creator;
 
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUMN_NAME_CHAR;
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUMN_NAME_CREAT;
@@ -57,14 +58,21 @@ public class WelcomeActivity extends AppCompatActivity {
         //System.out.println(result);
 
         JSONManager json = new JSONManager(this);
+
         try {
 
             Character ch = json.get_json_character("Hulk");
-            System.out.println(ch.getName());
+            System.out.println(" PROVA_CHARACTER : " + ch.getName());
+
+            Creator c = json.get_json_creator("Deodato");
+            System.out.println(" PROVA_CREATOR :" + c.getFirstName());
 
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+
+
 
 
         //DbHelper dbHelper = new DbHelper(this);
