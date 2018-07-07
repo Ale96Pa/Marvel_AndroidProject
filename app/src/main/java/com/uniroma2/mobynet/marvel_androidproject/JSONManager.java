@@ -107,7 +107,8 @@ public class JSONManager extends AppCompatActivity{
                     JSONObject stories=obj.getJSONObject("story");
                     Story story=get_json_stories( stories);
 
-                    character = new Character(id, name, description, modified, resourceURI, urlArrayList, thumbnail, comic, story, event);
+                    character = new Character(id, name, description, modified, resourceURI,
+                            urlArrayList, thumbnail, comic, story, event);
 
                 }
             }
