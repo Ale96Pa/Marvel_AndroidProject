@@ -96,9 +96,15 @@ public class Character {
     public void setModified(String modified){
         this.modified=modified;
     }
+    public String getModified(){
+        return modified;
+    }
 
     public void setResourceURI(String resourceURI){
         this.resourceURI=resourceURI;
+    }
+    public String getResourceURI(){
+        return resourceURI;
     }
 
     public void setUrls(ArrayList<Url> urls){

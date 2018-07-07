@@ -18,14 +18,20 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 
+import com.uniroma2.mobynet.marvel_androidproject.JSONManager;
 import com.uniroma2.mobynet.marvel_androidproject.R;
+import com.uniroma2.mobynet.marvel_androidproject.RestRequest;
 import com.uniroma2.mobynet.marvel_androidproject.database.DbHelper;
+import com.uniroma2.mobynet.marvel_androidproject.model.Character;
+import com.uniroma2.mobynet.marvel_androidproject.model.Creator;
 
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUMN_NAME_CHAR;
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUMN_NAME_CREAT;
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE_CHARACTERS;
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE_CREATORS;
+import static com.uniroma2.mobynet.marvel_androidproject.database.DbManager.addRowCharacter;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -40,14 +46,32 @@ public class WelcomeActivity extends AppCompatActivity {
 
         System.out.println("******QUI ARRIVO WELCOME 1**********");
 
-/*
-        RestRequest rs = new RestRequest("characters");
+
+        /*RestRequest rs = new RestRequest("creators","deo");
         try {
             rs.sendGet();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-*/
+        }*/
+
+        //String result = rs.getResult();
+        //System.out.println(result);
+
+        JSONManager json = new JSONManager(this);
+
+
+
+        Character ch = json.get_json_character("Hulk");
+        System.out.println(" PROVA_CHARACTER : " + ch.getName());
+
+        Creator c = json.get_json_creator("Deodato");
+        System.out.println(" PROVA_CREATOR :" + c.getFirstName());
+
+
+
+
+
+
         //DbHelper dbHelper = new DbHelper(this);
         //SQLiteDatabase db = dbHelper.getWritableDatabase();
 /*        helper = new DbHelper(this);
@@ -68,8 +92,8 @@ public class WelcomeActivity extends AppCompatActivity {
             e2.printStackTrace();
         }
 */
-        DBhelper = new DbHelper(this);
-        db = DBhelper.getWritableDatabase();
+        /*DBhelper = new DbHelper(this);
+        db = DBhelper.getWritableDatabase();*/
 /*
         try {
             insertDataCharacters();
@@ -86,8 +110,6 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                //Intent intent = new Intent(WelcomeActivity.this, ShowElementActivity.class);
-
                 startActivity(intent);
             }
         });
