@@ -99,29 +99,45 @@ public class JSONManager{
 
                     JSONObject charObj = obj.getJSONObject("data").getJSONArray("results").getJSONObject(0);
 
+                    int id;
+                    String name = null, description = null, resourceURI = null, modified = null;
+                    ArrayList<Url> urlArrayList = new ArrayList<>();
+                    Event event = new Event();
+                    Story story = new Story();
+                    Comic comic = new Comic(){} ;
+                    Thumbnail thumbnail = new Thumbnail();
 
-                    int id = charObj.getInt("id");
-                    String name = charObj.getString("name");
-                    String description = charObj.getString("description");
-                    String resourceURI = charObj.getString("resourceURI");
-                    String modified = charObj.getString("modified");
+                    id = charObj.getInt("id");
+
+                    if(charObj.getString("name")!=null){ name = charObj.getString("name");}
+                    if(charObj.getString("description")!=null){ description = charObj.getString("description");}
+                    if(charObj.getString("resourceURI")!=null){ resourceURI = charObj.getString("resourceURI");}
+                    if(charObj.getString("modified")!=null){ modified = charObj.getString("modified");}
 
                     System.out.println("id:"+id+" name:"+name+" description:"+description);
 
-                    JSONObject comics = charObj.getJSONObject("comics");
-                    Comic comic = get_json_comics( comics);
+                    if(charObj.getString("comics")!=null){ JSONObject comics = charObj.getJSONObject("comics");
+                                                                  comic = get_json_comics( comics);}
 
-                    JSONObject thumbnails=charObj.getJSONObject("thumbnail");
-                    Thumbnail thumbnail=get_json_thumbnail( thumbnails);
 
-                    JSONArray urls = charObj.getJSONArray("urls");
-                    ArrayList<Url> urlArrayList = get_json_urls(urls);
+                    if(charObj.getString("thumbnail")!=null){ JSONObject thumbnails=charObj.getJSONObject("thumbnail");
+                                                                      thumbnail=get_json_thumbnail( thumbnails);}
 
-                    JSONObject events=charObj.getJSONObject("event");
-                    Event event=get_json_events( events);
 
-                    JSONObject stories=charObj.getJSONObject("story");
-                    Story story=get_json_stories( stories);
+
+                    if(charObj.getString("urls")!=null){ JSONArray urls = charObj.getJSONArray("urls");
+                                                                 urlArrayList = get_json_urls(urls);}
+
+
+                    if(charObj.getString("events")!=null){ JSONObject events=charObj.getJSONObject("events");
+                                                                  event=get_json_events( events);}
+
+
+
+                    if(charObj.getString("stories")!=null){ JSONObject stories=charObj.getJSONObject("stories");
+                                                                 story=get_json_stories( stories);}
+
+
 
                     character = new Character(id, name, description, modified, resourceURI, urlArrayList, thumbnail, comic, story, event);
 
@@ -376,21 +392,25 @@ public class JSONManager{
 
     }
 
+
+
+
     public ArrayList<Url>  get_json_urls( JSONArray urls) {
-        ArrayList<Url> urlArrayList=null;
+        ArrayList<Url> urlArrayList= new ArrayList<>();
+
         try{
 
 
-
-
             for (int j = 0; j<urls.length();j++){
-                String type= urls.getJSONObject(j).getString("type");
+
+                Url singleUrl;
+
+                String type = urls.getJSONObject(j).getString("type");
                 String url = urls.getJSONObject(j).getString("url");
 
-                Url singleUrl = new Url(type,url);
+                singleUrl = new Url(type,url);
 
-
-                urlArrayList.add(singleUrl);
+                if(singleUrl!=null){ urlArrayList.add(singleUrl);}
 
 
             }

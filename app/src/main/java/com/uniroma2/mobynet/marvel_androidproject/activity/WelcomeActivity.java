@@ -58,6 +58,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         JSONManager json = new JSONManager(this);
         try {
+
             Character ch = json.get_json_character("Hulk");
             System.out.println(ch.getName());
 

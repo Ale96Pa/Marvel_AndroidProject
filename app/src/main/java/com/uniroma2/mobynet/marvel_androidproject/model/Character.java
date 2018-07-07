@@ -45,6 +45,9 @@ public class Character {
     public void setDescription(String description){
         this.description=description;
     }
+    public String getDescription(){
+        return description;
+    }
 
     public void setModified(String modified){
         this.modified=modified;

@@ -49,6 +49,9 @@ public class Creator {
     public void setFirstName(String name){
         this.firstName=firstName;
     }
+    public String getFirstName( ){
+        return firstName;
+    }
 
     public void setMiddleName(String name){
         this.middleName=middleName;
@@ -56,6 +59,9 @@ public class Creator {
 
     public void setLastName(String name){
         this.lastName=lastName;
+    }
+    public String getLastName( ){
+        return lastName;
     }
 
     public void setSuffix(String suffix){

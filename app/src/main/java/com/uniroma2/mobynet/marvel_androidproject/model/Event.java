@@ -9,6 +9,7 @@ public class Event{
     private String collectionURI;
     private ArrayList<EventSummary> items;
 
+    public Event(){}
     public Event(int available, int returned, String collectionURI, ArrayList<EventSummary> items ){
 
         this.available = available;
