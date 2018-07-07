@@ -14,8 +14,8 @@
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="ID"
-        android:textSize="20dp"
+        android:text="@string/id"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,8 +26,8 @@
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Nome"
-        android:textSize="20dp"
+        android:text="@string/name"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_ID" />
@@ -38,8 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="URL/Cogn"
-        android:textSize="20dp"
+        android:text="@string/urlORlastname"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
@@ -50,8 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Descrizione/Suffisso"
-        android:textSize="20dp"
+        android:text="@string/descriptionORsuffix"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tv_uriORlastname"
         app:layout_constraintHorizontal_bias="0.061"
@@ -64,6 +64,7 @@
         android:layout_height="95dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/thumbnail"
         android:src="@android:drawable/star_big_on"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -97,9 +98,9 @@
 
                     android:layout_height="wrap_content"
                     android:background="#b22222"
-                    android:text="Fumetti"
+                    android:text="@string/comics"
                     android:textColor="#FFFFFF"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="8dp"
                     tools:layout_editor_absoluteY="531dp" />
@@ -119,9 +120,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="31dp"
                         android:background="#b8860b"
-                        android:text="CollezioneURI"
+                        android:text="@string/collectionURI"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -147,9 +148,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="#b8860b"
-                        android:text="Pubblicati"
+                        android:text="@string/published"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -175,9 +176,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="#b8860b"
-                        android:text="Disponibili"
+                        android:text="@string/available"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -197,9 +198,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#8b4513"
-                        android:text="Elementi"
+                        android:text="@string/elements"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TableRow
@@ -217,9 +218,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="#bebebe"
-                            android:text="RisorseURI"
+                            android:text="@string/resourceURI"
                             android:textColor="#FFFFFF"
-                            android:textSize="16dp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -245,9 +246,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="#bebebe"
-                            android:text="Nome"
+                            android:text="@string/name"
                             android:textColor="#FFFFFF"
-                            android:textSize="16dp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -273,9 +274,9 @@
 
                     android:layout_height="wrap_content"
                     android:background="#b22222"
-                    android:text="Eventi"
+                    android:text="@string/elements"
                     android:textColor="#FFFFFF"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="8dp"
                     tools:layout_editor_absoluteY="531dp" />
@@ -298,9 +299,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="31dp"
                         android:background="#b8860b"
-                        android:text="Disponibili"
+                        android:text="@string/available"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -326,9 +327,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="31dp"
                         android:background="#b8860b"
-                        android:text="Pubblicati"
+                        android:text="@string/published"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -355,9 +356,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="31dp"
                         android:background="#b8860b"
-                        android:text="CollezioneURI"
+                        android:text="@string/collectionURI"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -378,9 +379,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#8b4513"
-                        android:text="Elementi"
+                        android:text="@string/elements"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TableRow
@@ -398,9 +399,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="#bebebe"
-                            android:text="RisorseURI"
+                            android:text="@string/resourceURI"
                             android:textColor="#FFFFFF"
-                            android:textSize="16dp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -426,9 +427,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="#bebebe"
-                            android:text="Nome"
+                            android:text="@string/name"
                             android:textColor="#FFFFFF"
-                            android:textSize="16dp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -453,9 +454,9 @@
 
                     android:layout_height="wrap_content"
                     android:background="#b22222"
-                    android:text="Storie"
+                    android:text="@string/stories"
                     android:textColor="#FFFFFF"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="8dp"
                     tools:layout_editor_absoluteY="531dp" />
@@ -476,9 +477,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="31dp"
                         android:background="#b8860b"
-                        android:text="Pubblicati"
+                        android:text="@string/published"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -505,9 +506,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="31dp"
                         android:background="#b8860b"
-                        android:text="Disponibili"
+                        android:text="@string/available"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -534,9 +535,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="31dp"
                         android:background="#b8860b"
-                        android:text="CollezioneURI"
+                        android:text="@string/collectionURI"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -558,9 +559,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#8b4513"
-                        android:text="Elementi"
+                        android:text="@string/elements"
                         android:textColor="#FFFFFF"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TableRow
@@ -578,9 +579,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="#bebebe"
-                            android:text="RisorseURI"
+                            android:text="@string/resourceURI"
                             android:textColor="#FFFFFF"
-                            android:textSize="16dp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -606,9 +607,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="#bebebe"
-                            android:text="Nome"
+                            android:text="@string/name"
                             android:textColor="#FFFFFF"
-                            android:textSize="16dp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -633,7 +634,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:text="000"
+        android:text="@string/id_value"
         app:layout_constraintBottom_toBottomOf="@+id/tv_ID"
         app:layout_constraintEnd_toStartOf="@+id/iv_thumbnail"
         app:layout_constraintHorizontal_bias="0.093"
@@ -648,7 +649,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="name"
+        android:text="@string/name_value"
         app:layout_constraintBottom_toBottomOf="@+id/tv_name"
         app:layout_constraintEnd_toStartOf="@+id/iv_thumbnail"
         app:layout_constraintHorizontal_bias="0.148"
@@ -664,7 +665,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="@string/urlORlastname_value"
         android:textAlignment="inherit"
         app:layout_constraintBottom_toBottomOf="@+id/tv_uriORlastname"
         app:layout_constraintEnd_toEndOf="parent"
@@ -681,7 +682,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Here description ..."
+        android:text="@string/descriptionORsuffix"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.21"

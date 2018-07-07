@@ -1,4 +1,4 @@
-package com.uniroma2.mobynet.marvel_androidproject;
+package com.uniroma2.mobynet.marvel_androidproject.restAPI;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import java.net.URL;

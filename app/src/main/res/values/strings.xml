@@ -1,4 +1,35 @@
 <resources>
     <string name="app_name">Moby Marvel</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="searching_characters">Inserisci un personaggio Marvel</string>
+    <string name="searching_creators">Inserisci un autore Marvel</string>
+    <string name="welcome">Benvenuto in Moby Marvel</string>
+    <string name="instruction">Vuoi scoprire tutti i dettagli di un personaggio o autore della Marvel? Non ricordi bene il loro nome? Nessun problema, Moby Marvel viene in tuo aiuto!</string>
+    <string name="start">Inizia</string>
+    <string name="select_search">Scegli il tipo di ricerca</string>
+    <string name="character">Personaggio</string>
+    <string name="creator">Autore</string>
+    <string name="search">Cerca</string>
+    <string name="insert_name">Inserire un nome</string>
+    <string name="search_something">Cerca elemento</string>
+    <string name="id">ID</string>
+    <string name="name">Nome</string>
+    <string name="resourceURI">Risorse URI</string>
+    <string name="description">Descrizione</string>
+    <string name="suffix">Suffisso onorifico</string>
+    <string name="collectionURI">Collezione URI</string>
+    <string name="stories">Storie</string>
+    <string name="published">Pubblicati</string>
+    <string name="elements">Elementi</string>
+    <string name="available">Disponibili</string>
+    <string name="id_value">0</string>
+    <string name="name_value">name</string>
+    <string name="url">URL</string>
+    <string name="lastname">Cognome</string>
+    <string name="urlORlastname" />
+    <string name="descriptionORsuffix_value" />
+    <string name="comics">Fumetti</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="descriptionORsuffix">Descrizione</string>
+    <string name="urlORlastname_value">URL</string>
 </resources>

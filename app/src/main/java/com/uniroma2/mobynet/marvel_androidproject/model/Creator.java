@@ -1,5 +1,7 @@
 package com.uniroma2.mobynet.marvel_androidproject.model;
 
+import android.net.Uri;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -42,6 +44,50 @@ public class Creator {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public String getModified() {
+        return modified;
+    }
+
+    public String getResourceURI() {
+        return resourceURI;
+    }
+
+    public ArrayList<Url> getUrls() {
+        return urls;
+    }
+
+    public Thumbnail getThumbnail() {
+        return thumbnail;
+    }
+
+    public Comic getComics() {
+        return comics;
+    }
+
+    public Story getStories() {
+        return stories;
+    }
+
+    public Event getEvents() {
+        return events;
+    }
+
     public void setId(int id){
         this.id=id;
     }
@@ -82,10 +128,6 @@ public class Creator {
 
     public void setUrls(ArrayList<Url> urls){
         this.urls=urls;
-    }
-
-    public void setThumbnail(Thumbnail thumbnail){
-        this.thumbnail=thumbnail;
     }
 
     public void setComics(Comic comics){
