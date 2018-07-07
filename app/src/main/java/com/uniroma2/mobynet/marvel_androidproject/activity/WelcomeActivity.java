@@ -56,10 +56,10 @@ public class WelcomeActivity extends AppCompatActivity {
         //String result = rs.getResult();
         //System.out.println(result);
 
-        JSONManager json = new JSONManager();
+        JSONManager json = new JSONManager(this);
         try {
             Character ch = json.get_json_character("Hulk");
-            System.out.println(" " + ch.getName());
+            System.out.println(ch.getName());
 
         } catch (ParseException e) {
             e.printStackTrace();

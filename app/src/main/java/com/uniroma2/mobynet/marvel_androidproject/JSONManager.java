@@ -1,5 +1,6 @@
 package com.uniroma2.mobynet.marvel_androidproject;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
 import com.uniroma2.mobynet.marvel_androidproject.model.Comic;
@@ -29,93 +30,109 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class JSONManager extends AppCompatActivity{
+public class JSONManager{
+    private Context c;
 
-
-    public JSONManager(){
-
+    public JSONManager(Context c){
+        this.c = c;
     }
 
-    public void get_Character_By_Name(String name){
 
+    public String loadJSONFromAsset(Context c, String jsonName) {
+        String json = null;
+        try {
+            InputStream is = c.getAssets().open(jsonName);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
+
 
     public Character  get_json_character(String nameToSearch) throws ParseException {
-        String nome = null;
-        String json = null;
+        String json;
+        String res=null;
 
-        File file = new File("characters.json");
+        //File file = new File("characters.json");
 
-        try {
+        //try {
 
-            file.createNewFile();
+            //file.createNewFile();
 
-            RestRequest rs = new RestRequest("character", nameToSearch);
+            RestRequest rs = new RestRequest("characters", nameToSearch);
 
             try {
 
                 rs.sendGet();
-                String res = rs.getResult();
+                res = rs.getResult();
                 System.out.println("****** RESULT JSON *******");
                 System.out.println(res);
 
-                FileOutputStream fOut = new FileOutputStream(file);
+                /*FileOutputStream fOut = new FileOutputStream(file);
                 OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
 
-                myOutWriter.append(res);
+                myOutWriter.append(res);*/
 
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-        } catch (IOException e) {
+        /*} catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         Character character=null;
         try{
-            InputStream is = getAssets().open("characters.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-            JSONArray jsonArray = new JSONArray(json);
+            //json = loadJSONFromAsset(c,"characters.json");
+            //JSONArray jsonArray = new JSONArray(res);
+            JSONObject obj = new JSONObject(res);
 
-            for (int i = 0; i<jsonArray.length(); i++){
-                JSONObject obj = jsonArray.getJSONObject(i);
-                if (obj.getString("name").equals(nameToSearch)){
+            //for (int i = 0; i<jsonArray.length(); i++){
+              //  JSONObject obj = jsonArray.getJSONObject(i);
+                //if (obj.getJSONObject("data").getJSONObject("result").getString("name").equals(nameToSearch)){
 
-                    int id = obj.getInt("id");
-                    String name = obj.getString("name");
-                    String description = obj.getString("description");
-                    String resourceURI = obj.getString("resourceURI");
-                    String modified = obj.getString("modified");
+                    JSONObject charObj = obj.getJSONObject("data").getJSONArray("results").getJSONObject(0);
 
-                    JSONObject comics = obj.getJSONObject("comics");
+
+                    int id = charObj.getInt("id");
+                    String name = charObj.getString("name");
+                    String description = charObj.getString("description");
+                    String resourceURI = charObj.getString("resourceURI");
+                    String modified = charObj.getString("modified");
+
+                    System.out.println("id:"+id+" name:"+name+" description:"+description);
+
+                    JSONObject comics = charObj.getJSONObject("comics");
                     Comic comic = get_json_comics( comics);
 
-                    JSONObject thumbnails=obj.getJSONObject("thumbnail");
+                    JSONObject thumbnails=charObj.getJSONObject("thumbnail");
                     Thumbnail thumbnail=get_json_thumbnail( thumbnails);
 
-                    JSONObject urls = obj.getJSONObject("urls");
+                    JSONArray urls = charObj.getJSONArray("urls");
                     ArrayList<Url> urlArrayList = get_json_urls(urls);
 
-                    JSONObject events=obj.getJSONObject("event");
+                    JSONObject events=charObj.getJSONObject("event");
                     Event event=get_json_events( events);
 
-                    JSONObject stories=obj.getJSONObject("story");
+                    JSONObject stories=charObj.getJSONObject("story");
                     Story story=get_json_stories( stories);
 
-                    character = new Character(id, name, description, modified, resourceURI,
-                            urlArrayList, thumbnail, comic, story, event);
+                    character = new Character(id, name, description, modified, resourceURI, urlArrayList, thumbnail, comic, story, event);
 
-                }
-            }
-
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
+                //}
+            } catch (JSONException e1) {
+            e1.printStackTrace();
         }
+
+    //} catch (JSONException e) {
+      //      e.printStackTrace();
+        //}
 
         return character;
     }
@@ -133,7 +150,6 @@ public class JSONManager extends AppCompatActivity{
 
 
     public Creator  get_json_creator(String nameToSearch) {
-        String nome = null;
         String json = null;
 
         File file = new File("creator.json");
@@ -142,7 +158,7 @@ public class JSONManager extends AppCompatActivity{
 
             file.createNewFile();
 
-            RestRequest rs = new RestRequest("creator", nameToSearch);
+            RestRequest rs = new RestRequest("creators", nameToSearch);
 
             try {
 
@@ -166,12 +182,7 @@ public class JSONManager extends AppCompatActivity{
         }
         Creator creator=null;
         try{
-            InputStream is = getAssets().open("creator.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
+            json = loadJSONFromAsset(c,"creators.json");
             JSONArray jsonArray = new JSONArray(json);
 
 
@@ -195,7 +206,7 @@ public class JSONManager extends AppCompatActivity{
                     JSONObject thumbnails=obj.getJSONObject("thumbnail");
                     Thumbnail thumbnail=get_json_thumbnail( thumbnails);
 
-                    JSONObject urls = obj.getJSONObject("urls");
+                    JSONArray urls = obj.getJSONArray("urls");
                     ArrayList<Url> urlArrayList = get_json_urls(urls);
 
                     JSONObject events=obj.getJSONObject("event");
@@ -210,7 +221,7 @@ public class JSONManager extends AppCompatActivity{
                 }
             }
 
-        } catch (JSONException | IOException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -365,7 +376,7 @@ public class JSONManager extends AppCompatActivity{
 
     }
 
-    public ArrayList<Url>  get_json_urls( JSONObject urls) {
+    public ArrayList<Url>  get_json_urls( JSONArray urls) {
         ArrayList<Url> urlArrayList=null;
         try{
 
@@ -373,8 +384,8 @@ public class JSONManager extends AppCompatActivity{
 
 
             for (int j = 0; j<urls.length();j++){
-                String type= urls.getString("type");
-                String url = urls.getString("url");
+                String type= urls.getJSONObject(j).getString("type");
+                String url = urls.getJSONObject(j).getString("url");
 
                 Url singleUrl = new Url(type,url);
 
