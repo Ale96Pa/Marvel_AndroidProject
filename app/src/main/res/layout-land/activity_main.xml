@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_image"
-    tools:context="com.uniroma2.mobynet.marvel_androidproject.activity.MainActivity">
+    tools:context="com.uniroma2.mobynet.marvel_androidproject.activity.MainActivity"
+    tools:layout_editor_absoluteY="73dp">
 
 
     <android.support.constraint.Guideline
@@ -29,7 +30,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="16dp"
         android:text="@string/select_search"
         android:textAlignment="center"
         android:textColor="@android:color/white"
@@ -42,20 +43,19 @@
     <Button
         android:id="@+id/btnCharacter"
         style="@android:style/Widget.Holo.Light.Button.Inset"
-        android:layout_width="227dp"
-        android:layout_height="83dp"
+        android:layout_width="231dp"
+        android:layout_height="82dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginBottom="112dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bottone_oro"
         android:text="@string/character"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvInstruction" />
 
@@ -66,34 +66,36 @@
         android:layout_height="79dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bottone_oro"
         android:text="@string/creator"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCharacter" />
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintStart_toEndOf="@+id/btnCharacter"
+        app:layout_constraintTop_toBottomOf="@+id/tvInstruction" />
 
     <Button
         android:id="@+id/btn_exit"
-        android:layout_width="73dp"
-        android:layout_height="46dp"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/bottone_oro"
         android:text="@string/exit"
         android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreator" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCreator"
+        app:layout_constraintVertical_bias="0.619" />
 
 
 </android.support.constraint.ConstraintLayout>
