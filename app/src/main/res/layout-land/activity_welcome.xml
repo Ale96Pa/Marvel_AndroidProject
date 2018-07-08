@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/wp2436369_land"
     tools:context="com.uniroma2.mobynet.marvel_androidproject.activity.WelcomeActivity"
-    android:background="@drawable/wp2436369">
+    tools:layout_editor_absoluteY="73dp">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_Sx"
@@ -27,29 +28,30 @@
         android:layout_height="104dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="@string/welcome"
         android:textAlignment="center"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvDescription"
-        android:layout_width="310dp"
-        android:layout_height="190dp"
+        android:layout_width="304dp"
+        android:layout_height="91dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:text="@string/instruction"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
 
@@ -58,7 +60,7 @@
         android:layout_width="112dp"
         android:layout_height="66dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="136dp"
+        android:layout_marginStart="240dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/bottone_oro"
         android:text="@string/start"
@@ -66,12 +68,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription"
-        app:layout_constraintVertical_bias="0.278" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnExit"
-        android:layout_width="83dp"
-        android:layout_height="37dp"
+        android:layout_width="94dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -81,9 +83,9 @@
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.707"
+        app:layout_constraintHorizontal_bias="0.939"
         app:layout_constraintStart_toEndOf="@+id/btnStart"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription"
-        app:layout_constraintVertical_bias="0.712" />
+        app:layout_constraintVertical_bias="0.75" />
 
 </android.support.constraint.ConstraintLayout>

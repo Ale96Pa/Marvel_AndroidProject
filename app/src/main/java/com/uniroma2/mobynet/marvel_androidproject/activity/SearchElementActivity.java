@@ -84,27 +84,6 @@ public class SearchElementActivity extends AppCompatActivity {
         ListenerSearch listener = new ListenerSearch(user_search, etSearch, type, db, lvElements, context);
         btnSearch.setOnClickListener(listener);
 
-/*
-        Cursor cursor = db.rawQuery(query, new String[]{});
-        allSearchedElements = new ArrayList<>();
-
-        if(cursor.moveToFirst()) {
-            do {
-                String name = cursor.getString(1);
-                allSearchedElements.add(name);
-            } while(cursor.moveToNext());
-        }
-        cursor.close();
-*/
-        //allSearchedElements = listener.getAllSearchedElements();
-
-/*
-        ArrayAdapter<String> adapater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allSearchedElements);
-        lvElements.setAdapter(adapater);
-        ListenerSearchItem listenerSearchItem = new ListenerSearchItem(this, type);
-        lvElements.setOnItemClickListener(listenerSearchItem);
- */
-
     }
 
 
