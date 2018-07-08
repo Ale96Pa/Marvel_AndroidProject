@@ -1,12 +1,15 @@
 package com.uniroma2.mobynet.marvel_androidproject.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +33,9 @@ import java.util.ArrayList;
 
 public class ShowElementActivity extends AppCompatActivity {
 
+    private Button btnAgain;
+    private Button btnExit;
+
     private String research;
     private int type;
     private TextView  tvUriLastname,  tvDescriptionSuffix;
@@ -45,6 +51,10 @@ public class ShowElementActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_element);
+
+        btnAgain = findViewById(R.id.btnAgain);
+        btnExit = findViewById(R.id.btnExitFinal);
+
         tvUriLastname = findViewById(R.id.tv_uriORlastname);
         tvDescriptionSuffix = findViewById(R.id.tv_descriptionORsuffix);
 
@@ -61,14 +71,13 @@ public class ShowElementActivity extends AppCompatActivity {
         Bundle type_value = getIntent().getExtras();
         if (type_value != null)
             type = type_value.getInt("type");
-/*
+
         Bundle request_value = getIntent().getExtras();
         if (request_value != null)
             research = request_value.getString("search_value");
-*/
+
         JSONManager jsonManager = new JSONManager(this);
-        research = "Hulk";
-        type = 1;
+
 
         if(type == 1){
             tvUriLastname.setText(R.string.url);
@@ -112,23 +121,63 @@ public class ShowElementActivity extends AppCompatActivity {
             }
             tv_nameStory.setText(storiesNames);
 
-
-
         } else {
             tvUriLastname.setText(R.string.lastname);
             tvDescriptionSuffix.setText(R.string.suffix);
 
             Creator creator = jsonManager.get_json_creator(research);
-            Uri uri = Uri.parse(creator.getThumbnail().getPath()+ "." +creator.getThumbnail().getExtension());
-            iv_thumbnailValue.setImageURI(null);
-            iv_thumbnailValue.setImageURI(uri);
+            Uri uri = Uri.parse(creator.getThumbnail().getPath() + "." + creator.getThumbnail().getExtension());
+            System.out.println("********URI********: " + uri);
+            try {
+                InputStream is = this.getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(is);
+                iv_thumbnailValue.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
-            tv_IDValue.setText(creator.getId());
+            tv_IDValue.setText(String.valueOf(creator.getId()));
             tv_NameValue.setText(creator.getFullName());
             tv_UriLastnameValue.setText(creator.getLastName());
             tv_DescriptionSuffixValue.setText(creator.getSuffix());
-            
+
+            StringBuilder comicsNames = new StringBuilder();
+            for(int i=0; i<creator.getComics().getItems().size(); i++){
+                comicsNames.append(creator.getComics().getItems().get(i).getName());
+                comicsNames.append("\n");
+            }
+            tv_nameComic.setText(comicsNames);
+
+            StringBuilder eventsNames = new StringBuilder();
+            for(int i=0; i<creator.getEvents().getItems().size(); i++){
+                eventsNames.append(creator.getEvents().getItems().get(i).getName());
+                eventsNames.append("\n");
+            }
+            tv_nameEvent.setText(eventsNames);
+
+            StringBuilder storiesNames = new StringBuilder();
+            for(int i=0; i<creator.getStories().getItems().size(); i++){
+                storiesNames.append(creator.getStories().getItems().get(i).getName());
+                storiesNames.append("\n");
+            }
+            tv_nameStory.setText(storiesNames);
+
         }
+
+        btnAgain.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowElementActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnExit.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                System.exit(0);
+            }
+        });
 
 
     }

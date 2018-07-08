@@ -26,10 +26,12 @@
     <string name="name_value">name</string>
     <string name="url">URL</string>
     <string name="lastname">Cognome</string>
-    <string name="urlORlastname" />
+    <string name="urlORlastname" >Url</string>
     <string name="descriptionORsuffix_value" />
     <string name="comics">Fumetti</string>
     <string name="thumbnail">Thumbnail</string>
     <string name="descriptionORsuffix">Descrizione</string>
     <string name="urlORlastname_value">URL</string>
+    <string name="exit">Esci</string>
+    <string name="again">Cerca ancora</string>
 </resources>

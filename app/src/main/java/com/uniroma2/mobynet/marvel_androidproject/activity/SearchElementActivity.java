@@ -105,7 +105,6 @@ public class SearchElementActivity extends AppCompatActivity {
         lvElements.setOnItemClickListener(listenerSearchItem);
  */
 
-      //  String jsonString = get_json(etSearch.getText().toString());
     }
 
 

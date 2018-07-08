@@ -26,7 +26,6 @@
         android:id="@+id/tvInstruction"
         android:layout_width="232dp"
         android:layout_height="89dp"
-        android:layout_below="@+id/tvWelcome"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -49,7 +48,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/bottone_oro"
         android:text="@string/character"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
@@ -67,7 +66,6 @@
         android:layout_height="79dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -76,10 +74,26 @@
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_dx"
         app:layout_constraintStart_toStartOf="@+id/guideline_sx"
         app:layout_constraintTop_toBottomOf="@+id/btnCharacter" />
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/exit"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_dx"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnCreator"
+        app:layout_constraintTop_toBottomOf="@+id/btnCreator"
+        app:layout_constraintVertical_bias="0.6" />
 
 
 </android.support.constraint.ConstraintLayout>
