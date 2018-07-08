@@ -81,7 +81,7 @@ public class SearchElementActivity extends AppCompatActivity {
         }
 
         context = SearchElementActivity.this;
-        ListenerSearch listener = new ListenerSearch(user_search, etSearch, type, db, lvElements, context);
+        ListenerSearch listener = new ListenerSearch(user_search, etSearch, type, lvElements, context);
         btnSearch.setOnClickListener(listener);
 
 /*
