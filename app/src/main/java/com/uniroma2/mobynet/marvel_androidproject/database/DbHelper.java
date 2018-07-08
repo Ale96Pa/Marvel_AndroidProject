@@ -19,11 +19,25 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final int DB_VERSION = 1;
 
     /* Costruttore */
+
+    /**
+     * Questo costruttore richiama il costruttore della superclasse SQLiteOpenHelper con il contesto
+     * della classe che lo invoca, il nome del database marvel.db ed una versione del database.
+     *
+     * @param context : e' il contesto che viene passato dalla classe che invoca il costruttore
+     */
     public DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
     /* Metodi */
+
+    /**
+     * Questa funzione crea le tabelle relative ai creators e characters con i rispettivi nomi
+     * all'interno del database db.
+     *
+     * @param db : database di tipo SQLiteDatabase nel quale vengono create le tabelle
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String creatTableCharQuery = "CREATE TABLE " + TABLE_CHARACTERS + " ( " + COLUMN_ID_CHAR +
@@ -40,3 +54,4 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 }
+

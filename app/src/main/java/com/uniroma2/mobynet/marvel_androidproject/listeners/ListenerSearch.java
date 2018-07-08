@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.uniroma2.mobynet.marvel_androidproject.R;
@@ -24,20 +25,23 @@ public class ListenerSearch implements View.OnClickListener {
     private int type;
     private ListView lvElements;
     Context context;
+    ProgressBar spinner;
 
     private String query;
     ArrayList<String> queryResults;
 
-    public ListenerSearch(String user_search, EditText etSearch, int type, ListView lvElements, Context context) {
+    public ListenerSearch(String user_search, EditText etSearch, int type, ListView lvElements, Context context, ProgressBar spinner) {
         this.user_search = user_search;
         this.etSearch = etSearch;
         this.type = type;
         this.lvElements = lvElements;
         this.context = context;
+        this.spinner = spinner;
     }
 
     @Override
     public void onClick(View view) {
+        spinner.setVisibility(View.VISIBLE);
         user_search = String.valueOf(etSearch.getText());
 
         DbHelper DBhelper = new DbHelper(context);
@@ -83,7 +87,7 @@ public class ListenerSearch implements View.OnClickListener {
         }
         cursor.close();
         List<String> allSearchedElements = new ArrayList<>(new LinkedHashSet<>(queryResults));
-
+        spinner.setVisibility(View.INVISIBLE);
         ArrayAdapter<String> adapater = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, allSearchedElements);
         lvElements.setAdapter(adapater);
         ListenerSearchItem listenerSearchItem = new ListenerSearchItem(context, type);
@@ -92,4 +96,3 @@ public class ListenerSearch implements View.OnClickListener {
     }
 
 }
-

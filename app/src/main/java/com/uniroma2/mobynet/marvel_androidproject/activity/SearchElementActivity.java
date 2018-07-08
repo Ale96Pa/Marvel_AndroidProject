@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -41,6 +42,7 @@ public class SearchElementActivity extends AppCompatActivity {
     private TextView tvElement;
     private Button btnSearch;
     private String user_search;
+    private ProgressBar spinner;
 
     SQLiteDatabase db;
     static DbHelper DBhelper;
@@ -66,7 +68,9 @@ public class SearchElementActivity extends AppCompatActivity {
         lvElements = findViewById(R.id.lvElementsSearched);
         tvElement = findViewById(R.id.tvInstructionSearch);
         btnSearch = findViewById(R.id.btnSearch);
+        spinner = findViewById(R.id.progressBar);
 
+        spinner.setVisibility(View.GONE);
         DBhelper = new DbHelper(this);
         db = DBhelper.getWritableDatabase();
         final DbManager manager = new DbManager(this);
@@ -83,13 +87,12 @@ public class SearchElementActivity extends AppCompatActivity {
 
         context = SearchElementActivity.this;
 
-        ListenerSearch listener = new ListenerSearch(user_search, etSearch, type, lvElements, context);
+        ListenerSearch listener = new ListenerSearch(user_search, etSearch, type, lvElements, context,spinner);
         btnSearch.setOnClickListener(listener);
 
 /*
         Cursor cursor = db.rawQuery(query, new String[]{});
         allSearchedElements = new ArrayList<>();
-
         if(cursor.moveToFirst()) {
             do {
                 String name = cursor.getString(1);
