@@ -13,9 +13,10 @@ import com.uniroma2.mobynet.marvel_androidproject.activity.ShowElementActivity;
 
 public class ListenerSearchItem  implements AdapterView.OnItemClickListener  {
 
-    Context context;
-    ShowElementActivity activity = new ShowElementActivity();
-    int type;
+    private Context context;
+    //private ShowElementActivity activity = new ShowElementActivity();
+    private int type;
+
     public ListenerSearchItem(Context context, int type) {
         this.context = context;
         this.type = type;
@@ -23,11 +24,10 @@ public class ListenerSearchItem  implements AdapterView.OnItemClickListener  {
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        SearchElementActivity searchElementActivity = new SearchElementActivity();
 
-        Intent intent = new Intent(searchElementActivity, activity.getClass());
-        //intent.putExtra("search_value", adapterView.getItemAtPosition(i).toString());
-        //intent.putExtra("type", type);
+        Intent intent = new Intent(context, ShowElementActivity.class);
+        intent.putExtra("search_value", adapterView.getItemAtPosition(i).toString());
+        intent.putExtra("type", type);
         context.startActivity(intent);
 
     }

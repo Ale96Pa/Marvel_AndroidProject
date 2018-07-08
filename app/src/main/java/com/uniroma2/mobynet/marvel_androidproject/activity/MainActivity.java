@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnCreator;
     private Button btnCharacter;
+    private Button btnExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnCharacter = findViewById(R.id.btnCharacter);
         btnCreator = findViewById(R.id.btnCreator);
+        btnExit = findViewById(R.id.btn_exit);
 
         btnCharacter.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -34,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, SearchElementActivity.class);
                 intent.putExtra("type", 2);
                 startActivity(intent);
+            }
+        });
+        btnExit.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                System.exit(0);
             }
         });
 

@@ -1,7 +1,6 @@
 package com.uniroma2.mobynet.marvel_androidproject.restAPI;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 
 import com.uniroma2.mobynet.marvel_androidproject.model.Comic;
 import com.uniroma2.mobynet.marvel_androidproject.model.ComicSummary;
@@ -13,29 +12,21 @@ import com.uniroma2.mobynet.marvel_androidproject.model.Story;
 import com.uniroma2.mobynet.marvel_androidproject.model.StorySummary;
 import com.uniroma2.mobynet.marvel_androidproject.model.Thumbnail;
 import com.uniroma2.mobynet.marvel_androidproject.model.Url;
-import com.uniroma2.mobynet.marvel_androidproject.restAPI.RestRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class JSONManager{
-    private Context c;
+    private Context context;
 
-    public JSONManager(Context c){
-        this.c = c;
+    public JSONManager(Context context){
+        this.context = context;
     }
 
 
@@ -94,35 +85,51 @@ public class JSONManager{
 
                     id = charObj.getInt("id");
 
-                    if(charObj.getString("name")!=null){ name = charObj.getString("name");}
-                    if(charObj.getString("description")!=null){ description = charObj.getString("description");}
-                    if(charObj.getString("resourceURI")!=null){ resourceURI = charObj.getString("resourceURI");}
-                    if(charObj.getString("modified")!=null){ modified = charObj.getString("modified");}
+                    if(charObj.getString("name")!=null){
+                        name = charObj.getString("name");
+                    }
+                    if(charObj.getString("description")!=null){
+                        description = charObj.getString("description");
+                    }
+                    if(charObj.getString("resourceURI")!=null){
+                        resourceURI = charObj.getString("resourceURI");
+                    }
+                    if(charObj.getString("modified")!=null){
+                        modified = charObj.getString("modified");
+                    }
 
                     System.out.println("id:"+id+" name:"+name+" description:"+description);
 
-                    if(charObj.getString("comics")!=null){ JSONObject comics = charObj.getJSONObject("comics");
-                                                                  comic = get_json_comics( comics);}
+                    if(charObj.getString("comics")!=null){
+                        JSONObject comics = charObj.getJSONObject("comics");
+                        comic = get_json_comics( comics);
+                    }
 
 
-                    if(charObj.getString("thumbnail")!=null){ JSONObject thumbnails=charObj.getJSONObject("thumbnail");
-                                                                      thumbnail=get_json_thumbnail( thumbnails);}
-
-
-
-                    if(charObj.getString("urls")!=null){ JSONArray urls = charObj.getJSONArray("urls");
-                                                                 urlArrayList = get_json_urls(urls);}
-
-
-                    if(charObj.getString("events")!=null){ JSONObject events=charObj.getJSONObject("events");
-                                                                  event=get_json_events( events);}
+                    if(charObj.getString("thumbnail")!=null){
+                        JSONObject thumbnails=charObj.getJSONObject("thumbnail");
+                        thumbnail=get_json_thumbnail( thumbnails);
+                    }
 
 
 
-                    if(charObj.getString("stories")!=null){ JSONObject stories=charObj.getJSONObject("stories");
-                                                                 story=get_json_stories( stories);}
+                    if(charObj.getString("urls")!=null){
+                        JSONArray urls = charObj.getJSONArray("urls");
+                        urlArrayList = get_json_urls(urls);
+                    }
 
 
+                    if(charObj.getString("events")!=null){
+                        JSONObject events=charObj.getJSONObject("events");
+                        event=get_json_events( events);
+                    }
+
+
+
+                    if(charObj.getString("stories")!=null){
+                        JSONObject stories=charObj.getJSONObject("stories");
+                        story=get_json_stories( stories);
+                    }
 
                     character = new Character(id, name, description, modified, resourceURI, urlArrayList, thumbnail, comic, story, event);
 
@@ -130,16 +137,8 @@ public class JSONManager{
             e1.printStackTrace();
         }
 
-
         return character;
     }
-
-
-
-
-
-
-
 
     public void get_Creator_By_Name(String name){
 
@@ -150,8 +149,6 @@ public class JSONManager{
 
 
         String res = null;
-
-
         RestRequest rs = new RestRequest("creators", nameToSearch);
 
             try {
@@ -188,41 +185,65 @@ public class JSONManager{
 
             id = charObj.getInt("id");
 
-            if(charObj.getString("firstName")!=null){ firstName = charObj.getString("firstName");}
-            if(charObj.getString("middleName")!=null){ middleName = charObj.getString("middleName");}
-            if(charObj.getString("lastName")!=null){ lastName = charObj.getString("lastName");}
-            if(charObj.getString("fullName")!=null){ fullName = charObj.getString("fullName");}
+            if(charObj.getString("firstName")!=null){
+                firstName = charObj.getString("firstName");
+            }
+            if(charObj.getString("middleName")!=null){
+                middleName = charObj.getString("middleName");
+            }
+            if(charObj.getString("lastName")!=null){
+                lastName = charObj.getString("lastName");
+            }
+            if(charObj.getString("fullName")!=null){
+                fullName = charObj.getString("fullName");
+            }
 
-            if(charObj.getString("suffix")!=null){ suffix = charObj.getString("suffix");}
-            if(charObj.getString("resourceURI")!=null){ resourceURI = charObj.getString("resourceURI");}
-            if(charObj.getString("modified")!=null){ modified = charObj.getString("modified");}
+            if(charObj.getString("suffix")!=null){
+                suffix = charObj.getString("suffix");
+            }
+            if(charObj.getString("resourceURI")!=null){
+                resourceURI = charObj.getString("resourceURI");
+            }
+            if(charObj.getString("modified")!=null){
+                modified = charObj.getString("modified");
+            }
 
-            System.out.println("id:"+id+" name:"+firstName);
+            //System.out.println("id:"+id+" name:"+firstName);
 
-            if(charObj.getString("comics")!=null){ JSONObject comics = charObj.getJSONObject("comics");
-                comic = get_json_comics( comics);}
-
-
-            if(charObj.getString("thumbnail")!=null){ JSONObject thumbnails=charObj.getJSONObject("thumbnail");
-                thumbnail=get_json_thumbnail( thumbnails);}
-
-
-
-            if(charObj.getString("urls")!=null){ JSONArray urls = charObj.getJSONArray("urls");
-                urlArrayList = get_json_urls(urls);}
-
-
-            if(charObj.getString("events")!=null){ JSONObject events=charObj.getJSONObject("events");
-                event=get_json_events( events);}
-
-
-
-            if(charObj.getString("stories")!=null){ JSONObject stories=charObj.getJSONObject("stories");
-                story=get_json_stories( stories);}
+            if(charObj.getString("comics")!=null){
+                JSONObject comics = charObj.getJSONObject("comics");
+                comic = get_json_comics( comics);
+            }
 
 
-            creator = new Creator( id, firstName, middleName, lastName, suffix, fullName, modified, resourceURI, urlArrayList,
-                     thumbnail, comic, story, event);
+            if(charObj.getString("thumbnail")!=null){
+                JSONObject thumbnails=charObj.getJSONObject("thumbnail");
+                thumbnail=get_json_thumbnail( thumbnails);
+            }
+
+
+
+            if(charObj.getString("urls")!=null){
+                JSONArray urls = charObj.getJSONArray("urls");
+                urlArrayList = get_json_urls(urls);
+            }
+
+
+            if(charObj.getString("events")!=null){
+                JSONObject events=charObj.getJSONObject("events");
+                event=get_json_events( events);
+            }
+
+
+
+            if(charObj.getString("stories")!=null){
+                JSONObject stories=charObj.getJSONObject("stories");
+                story=get_json_stories( stories);
+            }
+
+
+            creator = new Creator( id, firstName, middleName, lastName, suffix, fullName, modified,
+                    resourceURI, urlArrayList, thumbnail, comic, story, event);
 
         } catch (JSONException e1) {
             e1.printStackTrace();

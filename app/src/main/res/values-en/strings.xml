@@ -19,7 +19,7 @@
     <string name="collectionURI">Collection URI</string>
     <string name="descriptionORsuffix">" Description"</string>
     <string name="urlORlastname_value">" URL"</string>
-    <string name="urlORlastname">" "</string>
+    <string name="urlORlastname">" Url"</string>
     <string name="descriptionORsuffix_value">" "</string>
     <string name="stories">Stories</string>
     <string name="published">Published</string>
@@ -33,4 +33,6 @@
     <string name="suffix">Honorific suffix</string>
     <string name="url">URL</string>
     <string name="lastname">Lastname</string>
+    <string name="exit">Esci</string>
+    <string name="again">Cerca ancora</string>
 </resources>
