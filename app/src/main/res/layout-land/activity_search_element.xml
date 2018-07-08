@@ -11,34 +11,19 @@
     tools:layout_editor_absoluteY="73dp">
 
 
-    <ListView
-        android:id="@+id/lvElementsSearched"
-        android:layout_width="590dp"
-        android:layout_height="148dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSearch"
-        app:layout_constraintVertical_bias="0.916" />
-
     <TextView
         android:id="@+id/tvInstructionSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Cerca Elemento"
+        android:layout_marginTop="24dp"
+        android:text="@string/search_something"
         android:textColor="#000000"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.303"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,13 +40,15 @@
         android:contentDescription="@string/insert_name"
         android:drawableStart="@drawable/search_icon"
         android:ems="10"
-        android:hint="Cerca Elemento"
+        android:hint="@string/instruction_search"
         android:inputType="textPersonName"
         android:labelFor="@+id/btnSearch"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvInstructionSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/tvInstructionSearch"
+        tools:ignore="ContentDescription" />
 
     <Button
         android:id="@+id/btnSearch"
@@ -69,14 +56,29 @@
         android:layout_height="34dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bottone_oro"
         android:text="@string/search"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
+        app:layout_constraintTop_toTopOf="@+id/etSearch" />
+
+    <ListView
+        android:id="@+id/lvElementsSearched"
+        android:layout_width="525dp"
+        android:layout_height="148dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearch"
+        app:layout_constraintVertical_bias="0.45" />
 
 
 </android.support.constraint.ConstraintLayout>

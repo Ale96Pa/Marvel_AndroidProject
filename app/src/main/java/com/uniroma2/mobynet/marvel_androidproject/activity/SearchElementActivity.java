@@ -82,40 +82,12 @@ public class SearchElementActivity extends AppCompatActivity {
         }
 
         context = SearchElementActivity.this;
-
         ListenerSearch listener = new ListenerSearch(user_search, etSearch, type, lvElements, context);
         btnSearch.setOnClickListener(listener);
 
-/*
-        Cursor cursor = db.rawQuery(query, new String[]{});
-        allSearchedElements = new ArrayList<>();
-
-        if(cursor.moveToFirst()) {
-            do {
-                String name = cursor.getString(1);
-                allSearchedElements.add(name);
-            } while(cursor.moveToNext());
-        }
-        cursor.close();
-*/
-        //allSearchedElements = listener.getAllSearchedElements();
-
-/*
-        ArrayAdapter<String> adapater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allSearchedElements);
-        lvElements.setAdapter(adapater);
-        ListenerSearchItem listenerSearchItem = new ListenerSearchItem(this, type);
-        lvElements.setOnItemClickListener(listenerSearchItem);
- */
 
     }
 
-    public void showSoftKeyboard(View view) {
-        if (view.requestFocus()) {
-            InputMethodManager imm = (InputMethodManager)
-                    getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
-        }
-    }
 
 
 

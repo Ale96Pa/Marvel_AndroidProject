@@ -37,4 +37,5 @@
     <string name="again">Search again</string>
     <string name="not_found">not found</string>
     <string name="apix">Insert a name without apostrophe</string>
+    <string name="instruction_search">Inserisci nome</string>
 </resources>

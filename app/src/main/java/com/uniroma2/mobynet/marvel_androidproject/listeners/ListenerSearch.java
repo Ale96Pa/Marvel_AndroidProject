@@ -46,7 +46,6 @@ public class ListenerSearch implements View.OnClickListener {
 
         if(user_search.contains("'")){
             user_search = user_search.replace('\'', ' ');
-            System.out.println("*******STR" + user_search);
             Toast.makeText(context, R.string.apix, Toast.LENGTH_LONG).show();
         }
 
@@ -84,8 +83,8 @@ public class ListenerSearch implements View.OnClickListener {
         cursor.close();
         List<String> allSearchedElements = new ArrayList<>(new LinkedHashSet<>(queryResults));
 
-        ArrayAdapter<String> adapater = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, allSearchedElements);
-        lvElements.setAdapter(adapater);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, allSearchedElements);
+        lvElements.setAdapter(adapter);
         ListenerSearchItem listenerSearchItem = new ListenerSearchItem(context, type);
         lvElements.setOnItemClickListener(listenerSearchItem);
 

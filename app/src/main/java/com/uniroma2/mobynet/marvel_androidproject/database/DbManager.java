@@ -74,7 +74,7 @@ public class DbManager extends AppCompatActivity {
                     String user_search_upper = userSearch.substring(0,1).toUpperCase() +
                             userSearch.substring(1, userSearch.length()).toLowerCase();
                     if (line.contains(userSearch) || line.contains(user_search_upper)) {
-                        addRowCreator(line, db);
+                        addRowCharacter(line, db);
                     }
                 }
             }
