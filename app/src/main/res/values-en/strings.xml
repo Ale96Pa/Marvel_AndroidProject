@@ -33,6 +33,8 @@
     <string name="suffix">Honorific suffix</string>
     <string name="url">URL</string>
     <string name="lastname">Lastname</string>
-    <string name="exit">Esci</string>
-    <string name="again">Cerca ancora</string>
+    <string name="exit">Exit</string>
+    <string name="again">Search again</string>
+    <string name="not_found">not found</string>
+    <string name="apix">Insert a name without apostrophe</string>
 </resources>

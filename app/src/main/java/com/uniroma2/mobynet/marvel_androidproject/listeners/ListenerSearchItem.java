@@ -14,7 +14,6 @@ import com.uniroma2.mobynet.marvel_androidproject.activity.ShowElementActivity;
 public class ListenerSearchItem  implements AdapterView.OnItemClickListener  {
 
     private Context context;
-    //private ShowElementActivity activity = new ShowElementActivity();
     private int type;
 
     public ListenerSearchItem(Context context, int type) {

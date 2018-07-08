@@ -24,6 +24,7 @@ public class DbManager extends AppCompatActivity {
         this.context = context;
     }
 
+    /* Metodi */
     public void addRowCharacter(String rowName, SQLiteDatabase db) {
 
         db.beginTransaction();
@@ -59,7 +60,7 @@ public class DbManager extends AppCompatActivity {
         db.endTransaction();
     }
 
-    public void insertDataCharacters(SQLiteDatabase db)  throws IOException {
+    public void insertDataCharacters(SQLiteDatabase db, String userSearch)  throws IOException {
         InputStream is = null;
         BufferedReader reader = null;
         try {
@@ -68,7 +69,14 @@ public class DbManager extends AppCompatActivity {
             String line = reader.readLine();
             while (line != null) {
                 line = reader.readLine();
-                addRowCharacter(line, db);
+                if(line != null) {
+                    userSearch.toLowerCase();
+                    String user_search_upper = userSearch.substring(0,1).toUpperCase() +
+                            userSearch.substring(1, userSearch.length()).toLowerCase();
+                    if (line.contains(userSearch) || line.contains(user_search_upper)) {
+                        addRowCreator(line, db);
+                    }
+                }
             }
         } catch (IOException e){
             e.printStackTrace();
@@ -81,7 +89,7 @@ public class DbManager extends AppCompatActivity {
             }
         }
     }
-    public void insertDataCreators(SQLiteDatabase db)  throws IOException {
+    public void insertDataCreators(SQLiteDatabase db, String userSearch)  throws IOException {
         InputStream is = null;
         BufferedReader reader = null;
         try {
@@ -90,7 +98,14 @@ public class DbManager extends AppCompatActivity {
             String line = reader.readLine();
             while (line != null) {
                 line = reader.readLine();
-                addRowCreator(line, db);
+                if(line != null) {
+                    userSearch.toLowerCase();
+                    String user_search_upper = userSearch.substring(0,1).toUpperCase() +
+                            userSearch.substring(1, userSearch.length()).toLowerCase();
+                    if (line.contains(userSearch) || line.contains(user_search_upper)) {
+                        addRowCreator(line, db);
+                    }
+                }
             }
         } catch (IOException e){
             e.printStackTrace();

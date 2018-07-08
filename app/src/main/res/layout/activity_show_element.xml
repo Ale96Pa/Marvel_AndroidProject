@@ -23,140 +23,118 @@
         app:layout_constraintGuide_percent="0.9375" />
 
     <TextView
-        android:id="@+id/tv_ID"
-        android:layout_width="41dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/id"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline_sx"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/tv_todo_ID"
-        android:layout_width="95dp"
-        android:layout_height="33dp"
+        android:layout_width="165dp"
+        android:layout_height="26dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:text="@string/id_value"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/iv_thumbnail"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tv_ID"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="61dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/name"
-        android:textAlignment="textStart"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tv_ID"
-        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="@+id/guideline_sx"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ID" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_todo_name"
-        android:layout_width="150dp"
-        android:layout_height="42dp"
+        android:layout_width="181dp"
+        android:layout_height="65dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:text="@string/name_value"
-        android:textAlignment="textStart"
-        android:textAllCaps="false"
-        android:verticalScrollbarPosition="defaultPosition"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/iv_thumbnail"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tv_name"
+        app:layout_constraintStart_toStartOf="@+id/guideline_sx"
         app:layout_constraintTop_toBottomOf="@+id/tv_todo_ID" />
 
     <TextView
-        android:id="@+id/tv_uriORlastname"
-        android:layout_width="90dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/urlORlastname"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tv_name"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline_sx"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-    <TextView
         android:id="@+id/tv_todo_urlORlastname"
-        android:layout_width="223dp"
-        android:layout_height="56dp"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="@string/urlORlastname_value"
-        android:textAlignment="inherit"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_dx"
-        app:layout_constraintStart_toEndOf="@+id/tv_uriORlastname"
-        app:layout_constraintTop_toBottomOf="@+id/iv_thumbnail" />
-
-    <TextView
-        android:id="@+id/tv_descriptionORsuffix"
-        android:layout_width="149dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/descriptionORsuffix"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tv_uriORlastname"
-        app:layout_constraintHorizontal_bias="0.169"
-        app:layout_constraintStart_toStartOf="@+id/guideline_sx"
-        app:layout_constraintTop_toBottomOf="@+id/tv_uriORlastname" />
-
-    <TextView
-        android:id="@+id/tv_todo_descriptionORsuffix"
-        android:layout_width="311dp"
-        android:layout_height="84dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/descriptionORsuffix"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_dx"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_sx"
-        app:layout_constraintTop_toBottomOf="@+id/tv_descriptionORsuffix"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_todo_name" />
 
     <ImageView
         android:id="@+id/iv_thumbnail"
-        android:layout_width="101dp"
-        android:layout_height="95dp"
+        android:layout_width="124dp"
+        android:layout_height="111dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:contentDescription="@string/thumbnail"
         android:src="@android:drawable/star_big_on"
         app:layout_constraintEnd_toStartOf="@+id/guideline_dx"
-        app:layout_constraintHorizontal_bias="0.995"
+        app:layout_constraintHorizontal_bias="0.978"
         app:layout_constraintStart_toStartOf="@+id/guideline_sx"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_descriptionORsuffix"
+        android:layout_width="178dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/descriptionORsuffix"
+        android:textColor="?attr/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ScrollViewText"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_dx"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_sx"
+        app:layout_constraintTop_toBottomOf="@+id/tv_todo_urlORlastname"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ScrollView
-        android:id="@+id/scrollView"
+        android:id="@+id/ScrollViewText"
+        android:layout_width="298dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/ScrollViewItems"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_todo_urlORlastname"
+        app:layout_constraintVertical_bias="0.81">
+
+        <TextView
+            android:id="@+id/tv_todo_descriptionORsuffix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descriptionORsuffix_value"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/ScrollViewItems"
         android:layout_width="354dp"
-        android:layout_height="143dp"
+        android:layout_height="170dp"
         android:layout_marginBottom="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -207,11 +185,17 @@
                         android:layout_width="20dp"
                         android:layout_height="18dp" />
 
-                    <TextView
-                        android:id="@+id/tv_todo_nameComic"
+                    <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_todo_nameComic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+
+                    </HorizontalScrollView>
 
                 </TableRow>
 
@@ -261,11 +245,17 @@
                         android:layout_width="20dp"
                         android:layout_height="18dp" />
 
-                    <TextView
-                        android:id="@+id/tv_todo_nameEvent"
+                    <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_todo_nameEvent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+
+                    </HorizontalScrollView>
 
                 </TableRow>
 
@@ -314,32 +304,23 @@
                         android:layout_width="20dp"
                         android:layout_height="18dp" />
 
-                    <TextView
-                        android:id="@+id/tv_todo_nameStory"
+                    <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_todo_nameStory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+                    </HorizontalScrollView>
 
                 </TableRow>
 
             </TableLayout>
 
         </LinearLayout>
-
     </ScrollView>
-
-    <Button
-        android:id="@+id/btnAgain"
-        android:layout_width="137dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/again"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_sx"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 
     <Button
         android:id="@+id/btnExitFinal"
@@ -355,7 +336,20 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_dx"
         app:layout_constraintHorizontal_bias="0.767"
         app:layout_constraintStart_toEndOf="@+id/btnAgain"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+        app:layout_constraintTop_toBottomOf="@+id/ScrollViewItems"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnAgain"
+        android:layout_width="137dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/again"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_sx"
+        app:layout_constraintTop_toBottomOf="@+id/ScrollViewItems"
         app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

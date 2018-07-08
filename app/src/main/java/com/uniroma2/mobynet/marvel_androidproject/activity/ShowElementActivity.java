@@ -1,13 +1,10 @@
 package com.uniroma2.mobynet.marvel_androidproject.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,18 +16,7 @@ import com.uniroma2.mobynet.marvel_androidproject.model.Character;
 import com.uniroma2.mobynet.marvel_androidproject.model.Creator;
 import com.uniroma2.mobynet.marvel_androidproject.restAPI.JSONManager;
 
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class ShowElementActivity extends AppCompatActivity {
@@ -57,7 +43,7 @@ public class ShowElementActivity extends AppCompatActivity {
         btnAgain = findViewById(R.id.btnAgain);
         btnExit = findViewById(R.id.btnExitFinal);
 
-        tvUriLastname = findViewById(R.id.tv_uriORlastname);
+        //tvUriLastname = findViewById(R.id.tv_uriORlastname);
         tvDescriptionSuffix = findViewById(R.id.tv_descriptionORsuffix);
 
         iv_thumbnailValue = findViewById(R.id.iv_thumbnail);
@@ -82,96 +68,167 @@ public class ShowElementActivity extends AppCompatActivity {
 
 
         if(type == 1){
-            tvUriLastname.setText(R.string.url);
+            //tvUriLastname.setText(R.string.url);
             tvDescriptionSuffix.setText(R.string.description);
 
             Character character = jsonManager.get_json_character(research);
-            Uri uri = Uri.parse(character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension());
-            System.out.println("********URI********: " + uri);
+            if(character != null) {
+                if (character.getThumbnail() == null) {
+                    Drawable drawable = getResources().getDrawable(R.drawable.moby);
+                    iv_thumbnailValue.setImageDrawable(drawable);
+                } else {
+                    Uri uri = Uri.parse(character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension());
+                    String url = character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension();
+                    loadImageFromURL(url);
+                }
 
-            String url = character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension();
+                tv_IDValue.setText(String.valueOf(character.getId()));
+                if (character.getName() == null || Objects.equals(character.getName(), "")) {
+                    String notFound = R.string.name + " " + R.string.not_found;
+                    tv_NameValue.setText(notFound);
+                } else
+                    tv_NameValue.setText(character.getName());
 
-            loadImageFromURL(url);
+                if (character.getResourceURI() == null || Objects.equals(character.getResourceURI(), "")) {
+                    String notFound = R.string.resourceURI + " " + R.string.not_found;
+                    tv_UriLastnameValue.setText(notFound);
+                } else
+                    tv_UriLastnameValue.setText(character.getResourceURI());
 
-            //iv_thumbnailValue.setImageBitmap(getBitmapFromURL(url));
+                if (character.getDescription() == null || Objects.equals(character.getDescription(), "")) {
+                    String notFound = R.string.description + " " + R.string.not_found;
+                    tv_DescriptionSuffixValue.setText(notFound);
+                } else
+                    tv_DescriptionSuffixValue.setText(character.getDescription());
 
-            /*
-            try {
-                InputStream is = this.getContentResolver().openInputStream(uri);
-                Bitmap bitmap = BitmapFactory.decodeStream(is);
-                iv_thumbnailValue.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+
+                StringBuilder comicsNames = new StringBuilder();
+                for (int i = 0; i < character.getComics().getItems().size(); i++) {
+                    comicsNames.append(character.getComics().getItems().get(i).getName());
+                    comicsNames.append("\n");
+                }
+                if (comicsNames.length() <= 0) {
+                    String notFound = R.string.comics + " " + R.string.not_found;
+                    tv_nameComic.setText(notFound);
+                } else
+                    tv_nameComic.setText(comicsNames);
+
+                StringBuilder eventsNames = new StringBuilder();
+                for (int i = 0; i < character.getEvents().getItems().size(); i++) {
+                    eventsNames.append(character.getEvents().getItems().get(i).getName());
+                    eventsNames.append("\n");
+                }
+                if (eventsNames.length() <= 0) {
+                    String notFound = R.string.elements + " " + R.string.not_found;
+                    tv_nameEvent.setText(notFound);
+                } else
+                    tv_nameEvent.setText(eventsNames);
+
+                StringBuilder storiesNames = new StringBuilder();
+                for (int i = 0; i < character.getStories().getItems().size(); i++) {
+                    storiesNames.append(character.getStories().getItems().get(i).getName());
+                    storiesNames.append("\n");
+                }
+                if (storiesNames.length() <= 0) {
+                    String notFound = R.string.stories + " " + R.string.not_found;
+                    tv_nameStory.setText(notFound);
+                } else
+                    tv_nameStory.setText(storiesNames);
+            } else {
+                Drawable drawable = getResources().getDrawable(R.drawable.moby);
+                iv_thumbnailValue.setImageDrawable(drawable);
+                tv_IDValue.setText(R.string.not_found);
+
+                tv_NameValue.setText(R.string.not_found);
+                tv_UriLastnameValue.setText(R.string.not_found);
+                tv_DescriptionSuffixValue.setText(R.string.not_found);
+                tv_nameComic.setText(R.string.not_found);
+                tv_nameEvent.setText(R.string.not_found);
+                tv_nameStory.setText(R.string.not_found);
             }
-            */
-
-            tv_IDValue.setText(String.valueOf(character.getId()));
-            tv_NameValue.setText(character.getName());
-            tv_UriLastnameValue.setText(character.getResourceURI());
-            tv_DescriptionSuffixValue.setText(character.getDescription());
-
-            StringBuilder comicsNames = new StringBuilder();
-            for(int i=0; i<character.getComics().getItems().size(); i++){
-                comicsNames.append(character.getComics().getItems().get(i).getName());
-                comicsNames.append("\n");
-            }
-            tv_nameComic.setText(comicsNames);
-
-            StringBuilder eventsNames = new StringBuilder();
-            for(int i=0; i<character.getEvents().getItems().size(); i++){
-                eventsNames.append(character.getEvents().getItems().get(i).getName());
-                eventsNames.append("\n");
-            }
-            tv_nameEvent.setText(eventsNames);
-
-            StringBuilder storiesNames = new StringBuilder();
-            for(int i=0; i<character.getStories().getItems().size(); i++){
-                storiesNames.append(character.getStories().getItems().get(i).getName());
-                storiesNames.append("\n");
-            }
-            tv_nameStory.setText(storiesNames);
-
         } else {
-            tvUriLastname.setText(R.string.lastname);
+            //tvUriLastname.setText(R.string.lastname);
             tvDescriptionSuffix.setText(R.string.suffix);
+            String[] lastname = research.split(",");
 
-            Creator creator = jsonManager.get_json_creator(research);
-            Uri uri = Uri.parse(creator.getThumbnail().getPath() + "." + creator.getThumbnail().getExtension());
-            System.out.println("********URI********: " + uri);
-            try {
-                InputStream is = this.getContentResolver().openInputStream(uri);
-                Bitmap bitmap = BitmapFactory.decodeStream(is);
-                iv_thumbnailValue.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            Creator creator = jsonManager.get_json_creator(lastname[0]);
+            if(creator != null) {
+                if (creator.getThumbnail() == null) {
+                    Drawable drawable = getResources().getDrawable(R.drawable.moby);
+                    iv_thumbnailValue.setImageDrawable(drawable);
+                } else {
+                    Uri uri = Uri.parse(creator.getThumbnail().getPath() + "." + creator.getThumbnail().getExtension());
+                    String url = creator.getThumbnail().getPath() + "." + creator.getThumbnail().getExtension();
+                    loadImageFromURL(url);
+                }
+                tv_IDValue.setText(String.valueOf(creator.getId()));
+
+                String fullname = creator.getFirstName() + "  " + creator.getMiddleName() + "\n" + creator.getLastName();
+                if (Objects.equals(fullname, "")) {
+                    String notFound = R.string.name + " " + R.string.not_found;
+                    tv_NameValue.setText(notFound);
+                } else
+                    tv_NameValue.setText(fullname);
+    /*
+                if(creator.getLastName() == null || Objects.equals(creator.getLastName(), "")){
+                    String notFound = R.string.lastname + " " + R.string.not_found;
+                    tv_UriLastnameValue.setText(notFound);
+                } else
+                    tv_UriLastnameValue.setText(creator.getLastName());
+    */
+                tv_UriLastnameValue.setText("");
+
+                if (creator.getSuffix() == null || Objects.equals(creator.getSuffix(), "")) {
+                    String notFound = R.string.suffix + " " + R.string.not_found;
+                    tv_DescriptionSuffixValue.setText(notFound);
+                } else
+                    tv_DescriptionSuffixValue.setText(creator.getSuffix());
+
+
+                StringBuilder comicsNames = new StringBuilder();
+                for (int i = 0; i < creator.getComics().getItems().size(); i++) {
+                    comicsNames.append(creator.getComics().getItems().get(i).getName());
+                    comicsNames.append("\n");
+                }
+                if (comicsNames.length() <= 0) {
+                    String notFound = R.string.comics + " " + R.string.not_found;
+                    tv_nameComic.setText(notFound);
+                } else
+                    tv_nameComic.setText(comicsNames);
+
+                StringBuilder eventsNames = new StringBuilder();
+                for (int i = 0; i < creator.getEvents().getItems().size(); i++) {
+                    eventsNames.append(creator.getEvents().getItems().get(i).getName());
+                    eventsNames.append("\n");
+                }
+                if (eventsNames.length() <= 0) {
+                    String notFound = R.string.elements + " " + R.string.not_found;
+                    tv_nameEvent.setText(notFound);
+                } else
+                    tv_nameEvent.setText(eventsNames);
+
+                StringBuilder storiesNames = new StringBuilder();
+                for (int i = 0; i < creator.getStories().getItems().size(); i++) {
+                    storiesNames.append(creator.getStories().getItems().get(i).getName());
+                    storiesNames.append("\n");
+                }
+                if (storiesNames.length() <= 0) {
+                    String notFound = R.string.stories + " " + R.string.not_found;
+                    tv_nameStory.setText(notFound);
+                } else
+                    tv_nameStory.setText(storiesNames);
+            } else {
+                Drawable drawable = getResources().getDrawable(R.drawable.moby);
+                iv_thumbnailValue.setImageDrawable(drawable);
+                tv_IDValue.setText(R.string.not_found);
+
+                tv_NameValue.setText(R.string.not_found);
+                tv_UriLastnameValue.setText(R.string.not_found);
+                tv_DescriptionSuffixValue.setText(R.string.not_found);
+                tv_nameComic.setText(R.string.not_found);
+                tv_nameEvent.setText(R.string.not_found);
+                tv_nameStory.setText(R.string.not_found);
             }
-
-            tv_IDValue.setText(String.valueOf(creator.getId()));
-            tv_NameValue.setText(creator.getFullName());
-            tv_UriLastnameValue.setText(creator.getLastName());
-            tv_DescriptionSuffixValue.setText(creator.getSuffix());
-
-            StringBuilder comicsNames = new StringBuilder();
-            for(int i=0; i<creator.getComics().getItems().size(); i++){
-                comicsNames.append(creator.getComics().getItems().get(i).getName());
-                comicsNames.append("\n");
-            }
-            tv_nameComic.setText(comicsNames);
-
-            StringBuilder eventsNames = new StringBuilder();
-            for(int i=0; i<creator.getEvents().getItems().size(); i++){
-                eventsNames.append(creator.getEvents().getItems().get(i).getName());
-                eventsNames.append("\n");
-            }
-            tv_nameEvent.setText(eventsNames);
-
-            StringBuilder storiesNames = new StringBuilder();
-            for(int i=0; i<creator.getStories().getItems().size(); i++){
-                storiesNames.append(creator.getStories().getItems().get(i).getName());
-                storiesNames.append("\n");
-            }
-            tv_nameStory.setText(storiesNames);
-
         }
 
         btnAgain.setOnClickListener(new Button.OnClickListener() {
@@ -184,8 +241,10 @@ public class ShowElementActivity extends AppCompatActivity {
         btnExit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                System.exit(0);
+                Intent intent = new Intent(ShowElementActivity.this, WelcomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+                startActivity(intent);
             }
         });
 

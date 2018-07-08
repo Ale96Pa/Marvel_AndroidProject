@@ -14,7 +14,7 @@
     <string name="search_something">Cerca elemento</string>
     <string name="id">ID</string>
     <string name="name">Nome</string>
-    <string name="resourceURI">Risorse URI</string>
+    <string name="resourceURI">Risorsa URI</string>
     <string name="description">Descrizione</string>
     <string name="suffix">Suffisso onorifico</string>
     <string name="collectionURI">Collezione URI</string>
@@ -34,4 +34,6 @@
     <string name="urlORlastname_value">URL</string>
     <string name="exit">Esci</string>
     <string name="again">Cerca ancora</string>
+    <string name="not_found">non trovato</string>
+    <string name="apix">Inserisci un nome senza apostrofo</string>
 </resources>
