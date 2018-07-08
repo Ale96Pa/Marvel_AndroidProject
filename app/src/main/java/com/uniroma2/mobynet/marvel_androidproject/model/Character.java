@@ -49,13 +49,6 @@ public class Character {
         return id;
     }
 
-    public String getModified() {
-        return modified;
-    }
-
-    public String getResourceURI() {
-        return resourceURI;
-    }
 
     public ArrayList<Url> getUrls() {
         return urls;

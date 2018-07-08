@@ -30,4 +30,5 @@ dependencies {
     implementation files('libs/org-apache-commons-codec.jar')
     implementation files('libs/urlbuilder-2.0.7.jar')
 
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

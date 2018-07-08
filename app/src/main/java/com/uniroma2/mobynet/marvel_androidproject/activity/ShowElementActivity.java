@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.uniroma2.mobynet.marvel_androidproject.R;
 import com.uniroma2.mobynet.marvel_androidproject.model.Character;
 import com.uniroma2.mobynet.marvel_androidproject.model.Creator;
@@ -23,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -77,6 +79,14 @@ public class ShowElementActivity extends AppCompatActivity {
             Character character = jsonManager.get_json_character(research);
             Uri uri = Uri.parse(character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension());
             System.out.println("********URI********: " + uri);
+
+            String url = character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension();
+
+            loadImageFromURL(url);
+
+            //iv_thumbnailValue.setImageBitmap(getBitmapFromURL(url));
+
+            /*
             try {
                 InputStream is = this.getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(is);
@@ -84,7 +94,7 @@ public class ShowElementActivity extends AppCompatActivity {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-
+            */
 
             tv_IDValue.setText(String.valueOf(character.getId()));
             tv_NameValue.setText(character.getName());
@@ -132,5 +142,24 @@ public class ShowElementActivity extends AppCompatActivity {
 
 
     }
+
+    private void loadImageFromURL(String url) {
+
+        Picasso.with(this).load(url).placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
+                .into(iv_thumbnailValue, new com.squareup.picasso.Callback(){
+
+                    @Override
+                    public void onSuccess(){
+
+                    }
+
+                    @Override
+                    public void onError(){
+
+                    }
+                });
+    }
+
 
 }
