@@ -18,25 +18,22 @@ public class DbHelper extends SQLiteOpenHelper {
     public static String DB_NAME = "marvel.db";
     public static final int DB_VERSION = 1;
 
-    /* Costruttore */
-
     /**
-     * Questo costruttore richiama il costruttore della superclasse SQLiteOpenHelper con il contesto
-     * della classe che lo invoca, il nome del database marvel.db ed una versione del database.
+     * Costruttore
+     * Richiama il costruttore della superclasse SQLiteOpenHelper con il contesto
+     * della classe che lo invoca, il nome del database e la sua versione.
      *
-     * @param context : e' il contesto che viene passato dalla classe che invoca il costruttore
+     * @param context : contesto che viene passato dalla classe che invoca il costruttore
      */
     public DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
-    /* Metodi */
 
     /**
-     * Questa funzione crea le tabelle relative ai creators e characters con i rispettivi nomi
-     * all'interno del database db.
+     * Questa funzione crea le tabelle relative ai creators e characters nel database db.
      *
-     * @param db : database di tipo SQLiteDatabase nel quale vengono create le tabelle
+     * @param db : database di tipo SQLiteDatabase nel quale creare le tabelle
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -49,9 +46,16 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(creatTableCreatQuery);
     }
 
+    /**
+     * Questa funzione verifica gli aggiornamenti fatti nel database, in base alla versione,
+     * modificando opportunamente l'applicazione dell'utente (nel nostro caso e' superflua)
+     *
+     * @param db : database da aggiornare (se necessario);
+     * @param oldVersion : versioni del database precedenti a quella corrente
+     * @param newVersion : versione corrente del database
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
 }
-

@@ -18,6 +18,7 @@ import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE
 
 public class DbManager extends AppCompatActivity {
 
+    /* Attributi*/
     private Context context;
     private final String all = "0"; //Stringa usata per fare un inserimento e ricerca TOTALE
 
@@ -27,10 +28,11 @@ public class DbManager extends AppCompatActivity {
     }
 
     /**
-     * Questa funzione popola la tabella dei characters inserendo le righe lette dal file characters.txt
+     * Questa funzione riempie la tabella dei characters inserendo le righe lette dal file
+     * characters.txt
      *
-     * @param rowName : contiene, ad ogni invocazione di questa funzione, una riga del file characters.txt
-     * @param db : database che contiene le tabelle da popolare
+     * @param rowName : e' una riga del file characters.txt, ossia il nome di un personaggio;
+     * @param db : database con la tabella da riempire;
      */
     public void addRowCharacter(String rowName, SQLiteDatabase db) {
 
@@ -49,12 +51,12 @@ public class DbManager extends AppCompatActivity {
         db.setTransactionSuccessful();
         db.endTransaction();
     }
-
     /**
-     * Questa funzione popola la tabella dei creators inserendo le righe lette dal file creators.txt
+     * Questa funzione riempie la tabella dei creators inserendo le righe lette dal file
+     * creators.txt
      *
-     * @param rowName : contiene, ad ogni invocazione di questa funzione, una riga del file creators.txt
-     * @param db : database che contiene le tabelle da popolare
+     * @param rowName : e' una riga del file creators.txt, ossia cognome e nome di un creatore;
+     * @param db : database con la tabella da riempire;
      */
     public void addRowCreator(String rowName, SQLiteDatabase db) {
 
@@ -74,14 +76,15 @@ public class DbManager extends AppCompatActivity {
         db.endTransaction();
     }
 
+
+
     /**
-     * Questa funzione legge riga per riga il file characters.txt contenuto nella directory assets e
-     * per ciascuna riga letta, invoca la funzione addRowCharacter che inserira' i valori nella
-     * tabella del database db relativa ai personaggi della marvel.
+     * Questa funzione legge riga per riga il file characters.txt nella directory assets e,
+     * per ciascuna riga letta, invoca la funzione addRowCharacter per inserire i valori.
      *
-     * @param db : database al quale devo inserire i valori letti dal file.
-     * @param userSearch : contenuto della ricerca effettuata dall'utente
-     * @throws IOException : eccezione che puo' essere generata durante l'apertura e lettura del file
+     * @param db : database nel quale inserire i valori letti dal file;
+     * @param userSearch : contenuto della ricerca effettuata dall'utente (se "0" inserisce tutto);
+     * @throws IOException : eccezione generata durante una scorretta apertura o lettura del file;
      */
     public void insertDataCharacters(SQLiteDatabase db, String userSearch)  throws IOException {
         InputStream is = null;
@@ -117,13 +120,12 @@ public class DbManager extends AppCompatActivity {
         }
     }
     /**
-     * Questa funzione legge riga per riga il file creators.txt contenuto nella directory assets e
-     * per ciascuna riga letta, invoca la funzione addRowCreator che inserira' i valori nella
-     * tabella del database db relativa ai creatori dei personaggi della marvel.
+     * Questa funzione legge riga per riga il file creators.txt nella directory assets e
+     * per ciascuna riga letta, invoca la funzione addRowCreator per inserire i valori.
      *
-     * @param db : database al quale devo inserire i valori letti dal file.
-     * @param userSearch : contenuto della ricerca effettuata dall'utente.
-     * @throws IOException : eccezione che puo' essere generata durante l'apertura e lettura del file
+     * @param db : database nel quale inserire i valori letti dal file;
+     * @param userSearch : contenuto della ricerca effettuata dall'utente (se "0" inserisce TUTTO);
+     * @throws IOException : eccezione generata durante una scorretta apertura o lettura del file;
      */
     public void insertDataCreators(SQLiteDatabase db, String userSearch)  throws IOException {
         InputStream is = null;

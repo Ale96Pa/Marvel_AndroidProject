@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9375" />
+        app:layout_constraintGuide_end="15dp" />
 
     <TextView
         android:id="@+id/tv_todo_ID"
@@ -74,11 +74,11 @@
         android:layout_height="111dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/thumbnail"
         android:src="@android:drawable/star_big_on"
         app:layout_constraintEnd_toStartOf="@+id/guideline_dx"
-        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_sx"
         app:layout_constraintTop_toTopOf="parent" />
 

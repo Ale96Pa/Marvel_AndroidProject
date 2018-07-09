@@ -6,7 +6,7 @@ import java.util.Objects;
 import io.mikael.urlbuilder.UrlBuilder;
 
 /**
- * La classe RestRequest implementa le richieste REST appositamente in base al tipo di ricerca
+ * La classe RestRequest implementa le richieste REST in base al tipo di ricerca
  * definita dall'utente
  */
 public class RestRequest {
@@ -16,7 +16,7 @@ public class RestRequest {
     private final String privateKey = "614dac0d45ede934f75eaba93f13e1ae5eb1f38f";
     private final String publicKey = "4b4c2ad8ede8e2cfd66baa32cee65dda";
 
-    private String requestType; // Characters o creators
+    private String requestType; // "characters" o "creators"
     private String name; // Nome di characters o di creators
 
     private String url;
@@ -29,13 +29,22 @@ public class RestRequest {
         this.name = name;
     }
 
-    /* Metodi */
+    /**
+     *
+     * @param ts
+     * @return
+     */
     private String createHash(long ts) {
         String stringToHash = ts+getPrivateKey()+getPublicKey();
         return DigestUtils.md5Hex(stringToHash);
     }
 
     // Tale metodo costruisce appositamente un url per la richiesta GET
+
+    /**
+     *
+     * @return
+     */
     public String getUrl() {
         String url;
         long ts = getTimestamp();
@@ -56,6 +65,11 @@ public class RestRequest {
     }
 
     // Il timestamp viene ottenuto come secondi correnti, in modo da essere diverso ad ogni richiesta
+
+    /**
+     *
+     * @return
+     */
     public long getTimestamp() {
         timestamp = System.currentTimeMillis();
         return timestamp;
@@ -80,6 +94,11 @@ public class RestRequest {
     }
 
     // Tale metodo invia la richiesta GET effettiva e ottiene il risultato come file JSon
+
+    /**
+     *
+     * @throws Exception
+     */
     public void sendGet() throws Exception {
         // Si prende l'url per la richiesta
         String url = getUrl();

@@ -2,7 +2,6 @@ package com.uniroma2.mobynet.marvel_androidproject.activity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -26,7 +25,7 @@ public class ShowElementActivity extends AppCompatActivity {
 
     private String research;
     private int type;
-    private TextView  tvUriLastname,  tvDescriptionSuffix;
+    private TextView tvDescriptionSuffix;
     private TextView tv_IDValue, tv_NameValue, tv_UriLastnameValue, tv_DescriptionSuffixValue;
     private ImageView iv_thumbnailValue;
     private TextView tv_nameComic;
@@ -43,7 +42,6 @@ public class ShowElementActivity extends AppCompatActivity {
         btnAgain = findViewById(R.id.btnAgain);
         btnExit = findViewById(R.id.btnExitFinal);
 
-        //tvUriLastname = findViewById(R.id.tv_uriORlastname);
         tvDescriptionSuffix = findViewById(R.id.tv_descriptionORsuffix);
 
         iv_thumbnailValue = findViewById(R.id.iv_thumbnail);
@@ -68,7 +66,6 @@ public class ShowElementActivity extends AppCompatActivity {
 
 
         if(type == 1){
-            //tvUriLastname.setText(R.string.url);
             tvDescriptionSuffix.setText(R.string.description);
 
             Character character = jsonManager.get_json_character(research);
@@ -77,7 +74,6 @@ public class ShowElementActivity extends AppCompatActivity {
                     Drawable drawable = getResources().getDrawable(R.drawable.moby);
                     iv_thumbnailValue.setImageDrawable(drawable);
                 } else {
-                    Uri uri = Uri.parse(character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension());
                     String url = character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension();
                     loadImageFromURL(url);
                 }
@@ -147,7 +143,6 @@ public class ShowElementActivity extends AppCompatActivity {
                 tv_nameStory.setText(R.string.not_found);
             }
         } else {
-            //tvUriLastname.setText(R.string.lastname);
             tvDescriptionSuffix.setText(R.string.suffix);
             String[] lastname = research.split(",");
 
@@ -157,7 +152,6 @@ public class ShowElementActivity extends AppCompatActivity {
                     Drawable drawable = getResources().getDrawable(R.drawable.moby);
                     iv_thumbnailValue.setImageDrawable(drawable);
                 } else {
-                    Uri uri = Uri.parse(creator.getThumbnail().getPath() + "." + creator.getThumbnail().getExtension());
                     String url = creator.getThumbnail().getPath() + "." + creator.getThumbnail().getExtension();
                     loadImageFromURL(url);
                 }
@@ -169,13 +163,7 @@ public class ShowElementActivity extends AppCompatActivity {
                     tv_NameValue.setText(notFound);
                 } else
                     tv_NameValue.setText(fullname);
-    /*
-                if(creator.getLastName() == null || Objects.equals(creator.getLastName(), "")){
-                    String notFound = R.string.lastname + " " + R.string.not_found;
-                    tv_UriLastnameValue.setText(notFound);
-                } else
-                    tv_UriLastnameValue.setText(creator.getLastName());
-    */
+
                 tv_UriLastnameValue.setText("");
 
                 if (creator.getSuffix() == null || Objects.equals(creator.getSuffix(), "")) {

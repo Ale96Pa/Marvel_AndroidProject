@@ -8,10 +8,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * La classe MyAsyncTask implementa la connessione in background tramite un url per ricevere
- * file JSon richiesti tramite un metodo GET
+ * La classe MyAsyncTask implementa la connessione in background tramite URL per ricevere un
+ * file JSon richiesto tramite metodo GET
  */
 public class MyAsyncTask extends AsyncTask {
+
+    /* Attributi */
     public static String REQUEST_METHOD = "GET";
     public static final int READ_TIMEOUT = 15000;
     public static final int CONNECTION_TIMEOUT = 15000;

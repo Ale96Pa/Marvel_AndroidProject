@@ -1,8 +1,5 @@
 package com.uniroma2.mobynet.marvel_androidproject.model;
 
-import android.net.Uri;
-
-import java.net.URI;
 import java.util.ArrayList;
 
 public class Character {
