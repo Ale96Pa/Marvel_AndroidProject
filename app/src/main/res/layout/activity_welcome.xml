@@ -55,34 +55,30 @@
 
     <Button
         android:id="@+id/btnStart"
-        android:layout_width="102dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="224dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="111dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/bottone_oro"
         android:text="@string/start"
         android:textColor="@android:color/holo_red_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescription"
-        app:layout_constraintVertical_bias="0.596" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Dx"
+        app:layout_constraintStart_toStartOf="@+id/guideline_Sx"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
     <Button
         android:id="@+id/btnExit"
-        android:layout_width="102dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="111dp"
+        android:layout_height="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bottone_oro"
         android:text="@string/exit"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/btnStart"
-        app:layout_constraintEnd_toStartOf="@+id/btnStart"
-        app:layout_constraintHorizontal_bias="0.295"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Dx"
         app:layout_constraintStart_toStartOf="@+id/guideline_Sx"
-        app:layout_constraintTop_toTopOf="@+id/btnStart"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 
 </android.support.constraint.ConstraintLayout>

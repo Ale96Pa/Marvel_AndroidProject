@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUMN_NAME_CHAR;
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUMN_NAME_CREAT;
@@ -18,6 +19,7 @@ import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE
 public class DbManager extends AppCompatActivity {
 
     private Context context;
+    private final String all = "0"; //Stringa usata per fare un inserimento e ricerca TOTALE
 
     /* Costruttore */
     public DbManager(Context context){
@@ -91,11 +93,15 @@ public class DbManager extends AppCompatActivity {
             while (line != null) {
                 line = reader.readLine();
                 if(line != null) {
-                    userSearch.toLowerCase();
-                    String user_search_upper = userSearch.substring(0,1).toUpperCase() +
-                            userSearch.substring(1, userSearch.length()).toLowerCase();
-                    if (line.contains(userSearch) || line.contains(user_search_upper)) {
+                    if(Objects.equals(userSearch, all)){
                         addRowCharacter(line, db);
+                    } else {
+                        userSearch.toLowerCase();
+                        String user_search_upper = userSearch.substring(0, 1).toUpperCase() +
+                                userSearch.substring(1, userSearch.length()).toLowerCase();
+                        if (line.contains(userSearch) || line.contains(user_search_upper)) {
+                            addRowCharacter(line, db);
+                        }
                     }
                 }
             }
@@ -129,11 +135,15 @@ public class DbManager extends AppCompatActivity {
             while (line != null) {
                 line = reader.readLine();
                 if(line != null) {
-                    userSearch.toLowerCase();
-                    String user_search_upper = userSearch.substring(0,1).toUpperCase() +
-                            userSearch.substring(1, userSearch.length()).toLowerCase();
-                    if (line.contains(userSearch) || line.contains(user_search_upper)) {
+                    if(Objects.equals(userSearch, all)){
                         addRowCreator(line, db);
+                    } else {
+                        userSearch.toLowerCase();
+                        String user_search_upper = userSearch.substring(0, 1).toUpperCase() +
+                                userSearch.substring(1, userSearch.length()).toLowerCase();
+                        if (line.contains(userSearch) || line.contains(user_search_upper)) {
+                            addRowCreator(line, db);
+                        }
                     }
                 }
             }

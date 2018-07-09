@@ -17,12 +17,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 
 public class ListenerSearch implements View.OnClickListener {
     private String user_search;
     private EditText etSearch;
     private int type;
     private ListView lvElements;
+    private final String all = "0"; //Stringa usata per fare un inserimento e ricerca TOTALE
     Context context;
 
     private String query;
@@ -46,30 +48,51 @@ public class ListenerSearch implements View.OnClickListener {
 
         if(user_search.contains("'")){
             user_search = user_search.replace('\'', ' ');
-            System.out.println("*******STR" + user_search);
             Toast.makeText(context, R.string.apix, Toast.LENGTH_LONG).show();
         }
-
-        if(type == 1){
+        if(user_search == null || Objects.equals(user_search, "")){
+            user_search = "null";
+            Toast.makeText(context, R.string.empty_search, Toast.LENGTH_LONG).show();
+        }
+        if(Objects.equals(user_search, all) && type == 1){
             try {
                 manager.insertDataCharacters(db, user_search);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String user_search_upper = user_search.substring(0, 1).toUpperCase() +
-                    user_search.substring(1, user_search.length()).toLowerCase();
-            query = "SELECT DISTINCT * FROM characters WHERE name like '%" + user_search + "%' or name like '%" + user_search_upper + "%';";
+            query = "SELECT DISTINCT * FROM characters ;";
 
-        } else {
+        }
+        else if(Objects.equals(user_search, all) && type == 2){
             try {
                 manager.insertDataCreators(db, user_search);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            query = "SELECT DISTINCT * FROM creators ;";
+        } else {
 
-            String user_search_upper = user_search.substring(0,1).toUpperCase() +
-                    user_search.substring(1, user_search.length()).toLowerCase();
-            query = "SELECT DISTINCT * FROM creators WHERE name like '%"+user_search+"%' or name like '%"+user_search_upper+"%';";
+            if (type == 1) {
+                try {
+                    manager.insertDataCharacters(db, user_search);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                String user_search_upper = user_search.substring(0, 1).toUpperCase() +
+                        user_search.substring(1, user_search.length()).toLowerCase();
+                query = "SELECT DISTINCT * FROM characters WHERE name like '%" + user_search + "%' or name like '%" + user_search_upper + "%';";
+
+            } else {
+                try {
+                    manager.insertDataCreators(db, user_search);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                String user_search_upper = user_search.substring(0, 1).toUpperCase() +
+                        user_search.substring(1, user_search.length()).toLowerCase();
+                query = "SELECT DISTINCT * FROM creators WHERE name like '%" + user_search + "%' or name like '%" + user_search_upper + "%';";
+            }
         }
 
         Cursor cursor = db.rawQuery(query, new String[]{});

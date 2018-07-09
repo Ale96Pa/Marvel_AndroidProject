@@ -5,7 +5,7 @@
     <string name="searching_characters">Insert a Marvel character</string>
     <string name="searching_creators">Insert a Marvel creator</string>
     <string name="welcome">Welcome in Moby Marvel</string>
-    <string name="instruction">"Do you want discover a Marvel character or creator? Don't you remember well their name? No prblem, MobyMarvel is here for you! "</string>
+    <string name="instruction">"Do you want discover a Marvel character or creator? Don't you remember well their name? No problem, MobyMarvel is here for you! "</string>
     <string name="start">Start</string>
     <string name="select_search">Select a research type</string>
     <string name="character">Character</string>
@@ -37,5 +37,6 @@
     <string name="again">Search again</string>
     <string name="not_found">not found</string>
     <string name="apix">Insert a name without apostrophe</string>
-    <string name="instruction_search">Inserisci nome</string>
+    <string name="instruction_search">Insert name</string>
+    <string name="empty_search">Insert at least a letter or \"0\" to search everything. NB: this research will require more time!</string>
 </resources>

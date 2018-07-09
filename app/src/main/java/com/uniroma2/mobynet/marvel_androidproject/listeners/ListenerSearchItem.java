@@ -17,7 +17,8 @@ public class ListenerSearchItem  implements AdapterView.OnItemClickListener  {
     private Context context;
     private int type;
 
-    /**
+    /** TODO descrizione
+     * Tale funzione !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      * @param context : Rappresenta il contesto della classe che lo invoca(ListenerSearch)
      * @param type : Rappresenta il tipo di ricerca che e' stata fatta: characters o creators
      */
