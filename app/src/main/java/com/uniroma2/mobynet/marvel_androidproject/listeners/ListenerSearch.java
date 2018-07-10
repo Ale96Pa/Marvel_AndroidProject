@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -33,22 +35,23 @@ public class ListenerSearch implements View.OnClickListener {
     /* Attributi */
     private EditText etSearch;
     private ListView lvElements;
+    private ProgressBar spinner;
 
     private Context context;
     private Activity activity;
 
     private final String all = "0"; //Stringa usata per fare un inserimento e ricerca TOTALE
     private int type;
-
     private String query;
     private ArrayList<String> queryResults;
 
 
     /* Costruttore */
-    public ListenerSearch(EditText etSearch, int type, ListView lvElements, Context context, Activity activity) {
+    public ListenerSearch(EditText etSearch, int type, ListView lvElements, ProgressBar spinner, Context context, Activity activity) {
         this.etSearch = etSearch;
         this.type = type;
         this.lvElements = lvElements;
+        this.spinner = spinner;
         this.context = context;
         this.activity = activity;
     }
@@ -56,8 +59,10 @@ public class ListenerSearch implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
+        lvElements.setBackgroundColor(Color.parseColor("#CCFFFFFF"));
         hideKeyboard(activity); // Si nasconde la tastiera virtuale dopo aver confermato la ricerca
         String user_search = String.valueOf(etSearch.getText());
+        spinner.setVisibility(View.VISIBLE);
 
         // Si inizializza il database
         DbHelper DBhelper = new DbHelper(context);
@@ -131,6 +136,7 @@ public class ListenerSearch implements View.OnClickListener {
 
         // Vengono eliminati i doppioni dall'insieme di elementi ritornati
         List<String> allSearchedElements = new ArrayList<>(new LinkedHashSet<>(queryResults));
+        spinner.setVisibility(View.INVISIBLE);
 
         // Si istanzia adapter e listener per la ListView
         ArrayAdapter<String> adapater = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, allSearchedElements);
@@ -142,6 +148,7 @@ public class ListenerSearch implements View.OnClickListener {
 
     /**
      * Tale funzione permette di nascondere la tastiera dopo la ricerca dell'utente
+     *
      * @param activity: Activity da cui nascondere la tastiera
      */
     private static void hideKeyboard(Activity activity) {

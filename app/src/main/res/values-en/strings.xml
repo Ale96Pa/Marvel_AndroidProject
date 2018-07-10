@@ -23,7 +23,6 @@
     <string name="descriptionORsuffix_value">" "</string>
     <string name="stories">Stories</string>
     <string name="published">Published</string>
-    <string name="elements">Elements</string>
     <string name="available">Available</string>
     <string name="id_value">0</string>
     <string name="name_value">name</string>
@@ -39,4 +38,5 @@
     <string name="apix">Insert a name without apostrophe</string>
     <string name="instruction_search">Insert name</string>
     <string name="empty_search">Insert at least a letter or \"0\" to search everything. NB: this research will require more time!</string>
+    <string name="events">Events</string>
 </resources>

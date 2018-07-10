@@ -4,27 +4,25 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * Tale classe implementa le funzioni per l'inizializzazione di un database, con tutte le
+ * caratteristiche dello stesso
+ */
 public class DbHelper extends SQLiteOpenHelper {
 
     /* Attributi */
-    public static final String TABLE_CHARACTERS = "characters";
-    public static final String COLUMN_ID_CHAR = "_id";
-    public static final String COLUMN_NAME_CHAR = "name";
+    static final String TABLE_CHARACTERS = "characters";
+    private static final String COLUMN_ID_CHAR = "_id";
+    static final String COLUMN_NAME_CHAR = "name";
 
-    public static final String TABLE_CREATORS = "creators";
-    public static final String COLUMN_ID_CREAT = "_id";
-    public static final String COLUMN_NAME_CREAT = "name";
+    static final String TABLE_CREATORS = "creators";
+    private static final String COLUMN_ID_CREAT = "_id";
+    static final String COLUMN_NAME_CREAT = "name";
 
-    public static String DB_NAME = "marvel.db";
-    public static final int DB_VERSION = 1;
+    private static String DB_NAME = "marvel.db";
+    private static final int DB_VERSION = 1;
 
-    /**
-     * Costruttore
-     * Richiama il costruttore della superclasse SQLiteOpenHelper con il contesto
-     * della classe che lo invoca, il nome del database e la sua versione.
-     *
-     * @param context : contesto che viene passato dalla classe che invoca il costruttore
-     */
+    /* Costruttore */
     public DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }

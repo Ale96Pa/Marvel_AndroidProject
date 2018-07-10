@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Character {
 
+    /* Attributi */
     private int id;
     private String name;
     private String description;
@@ -15,17 +16,9 @@ public class Character {
     private Story stories;
     private Event events;
 
-    public  Character(int id, String name, String description,String modified,String resourceURI){
-        this.id=id;
-        this.name=name;
-        this.description=description;
-        this.modified=modified;
-        this.resourceURI=resourceURI;
-    }
-
-
-    public Character( int id, String name, String description, String modified, String resourceURI,ArrayList<Url> urls,
-                      Thumbnail thumbnail, Comic comics, Story stories, Event events){
+    /* Costruttore */
+    public Character( int id, String name, String description, String modified, String resourceURI,
+                      ArrayList<Url> urls, Thumbnail thumbnail, Comic comics, Story stories, Event events){
         this.comics=comics;
         this.description=description;
         this.events=events;
@@ -38,80 +31,45 @@ public class Character {
         this.thumbnail=thumbnail;
     }
 
-    public void setId(int id){
-        this.id=id;
-    }
-
+    /* Metodi */
     public int getId() {
         return id;
     }
-
-
     public ArrayList<Url> getUrls() {
         return urls;
     }
-
     public Thumbnail getThumbnail() {
         return thumbnail;
     }
-
     public Comic getComics() {
         return comics;
     }
-
     public Story getStories() {
         return stories;
     }
-
     public Event getEvents() {
         return events;
     }
-
-    public void setName(String name){
-        this.name=name;
-    }
-
     public String getName(){
         return name;
-    }
-
-
-
-    public void setDescription(String description){
-        this.description=description;
     }
     public String getDescription(){
         return description;
     }
-
-    public void setModified(String modified){
-        this.modified=modified;
-    }
     public String getModified(){
         return modified;
-    }
-
-    public void setResourceURI(String resourceURI){
-        this.resourceURI=resourceURI;
     }
     public String getResourceURI(){
         return resourceURI;
     }
-
-    public void setUrls(ArrayList<Url> urls){
-        this.urls=urls;
+    public void setId(int id){
+        this.id=id;
     }
-
-    public void setComics(Comic comics){
-        this.comics=comics;
+    public void setName(String name){
+        this.name=name;
     }
-
-    public void setStories(Story stories){
-        this.stories=stories;
-    }
-
-    public void setEvents(Event events){
-        this.events=events;
+    public void setModified(String modified){
+        this.modified=modified;
     }
 
 }

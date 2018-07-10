@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import com.uniroma2.mobynet.marvel_androidproject.R;
 
-
 /**
  * La logica dell'Activity "activity_main.xml" permette all'utente di selezionare il tipo di ricerca
  * tra due possibili: characters (personaggi) e creators (creatori).

@@ -210,7 +210,7 @@
 
                     android:layout_height="wrap_content"
                     android:background="#b22222"
-                    android:text="@string/elements"
+                    android:text="@string/events"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     android:textStyle="bold"

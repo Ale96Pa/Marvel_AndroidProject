@@ -3,8 +3,8 @@ package com.uniroma2.mobynet.marvel_androidproject.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +16,10 @@ import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.COLUM
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE_CHARACTERS;
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE_CREATORS;
 
-public class DbManager extends AppCompatActivity {
+/**
+ *
+ */
+public class DbManager {
 
     /* Attributi*/
     private Context context;
@@ -34,7 +37,7 @@ public class DbManager extends AppCompatActivity {
      * @param rowName : e' una riga del file characters.txt, ossia il nome di un personaggio;
      * @param db : database con la tabella da riempire;
      */
-    public void addRowCharacter(String rowName, SQLiteDatabase db) {
+    private void addRowCharacter(String rowName, SQLiteDatabase db) {
 
         db.beginTransaction();
 
@@ -58,7 +61,7 @@ public class DbManager extends AppCompatActivity {
      * @param rowName : e' una riga del file creators.txt, ossia cognome e nome di un creatore;
      * @param db : database con la tabella da riempire;
      */
-    public void addRowCreator(String rowName, SQLiteDatabase db) {
+    private void addRowCreator(String rowName, SQLiteDatabase db) {
 
         db.beginTransaction();
 

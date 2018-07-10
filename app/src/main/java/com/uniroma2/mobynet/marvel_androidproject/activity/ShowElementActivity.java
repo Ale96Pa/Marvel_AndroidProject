@@ -17,14 +17,17 @@ import com.uniroma2.mobynet.marvel_androidproject.restAPI.JSONManager;
 
 import java.util.Objects;
 
-
+/**
+ * Nell'Activity "activity_show_element.xml" viene realizzata la visualizzazione del risultato con
+ * tutte le caratteristiche richieste dai requisiti; in tale classe viene quindi implementata tutto
+ * il settaggio dei vari elementi grafici e due bottoni per:
+ *          1) Svolgere un'altra ricerca;
+ *          2) Uscire dall'applicazione;
+ */
 public class ShowElementActivity extends AppCompatActivity {
 
-    private Button btnAgain;
-    private Button btnExit;
-
-    private String research;
-    private int type;
+    /* Attributi */
+    private Button btnAgain, btnExit;
     private TextView tvDescriptionSuffix;
     private TextView tv_IDValue, tv_NameValue, tv_UriLastnameValue, tv_DescriptionSuffixValue;
     private ImageView iv_thumbnailValue;
@@ -32,43 +35,44 @@ public class ShowElementActivity extends AppCompatActivity {
     private TextView tv_nameEvent;
     private TextView tv_nameStory;
 
-
+    private String research;
+    private int type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_element);
 
+        // Mapping tra elementi grafici e attributi della classe
         btnAgain = findViewById(R.id.btnAgain);
         btnExit = findViewById(R.id.btnExitFinal);
-
         tvDescriptionSuffix = findViewById(R.id.tv_descriptionORsuffix);
-
         iv_thumbnailValue = findViewById(R.id.iv_thumbnail);
         tv_IDValue = findViewById(R.id.tv_todo_ID);
         tv_NameValue = findViewById(R.id.tv_todo_name);
         tv_UriLastnameValue = findViewById(R.id.tv_todo_urlORlastname);
         tv_DescriptionSuffixValue = findViewById(R.id.tv_todo_descriptionORsuffix);
-
         tv_nameComic = findViewById(R.id.tv_todo_nameComic);
         tv_nameEvent = findViewById(R.id.tv_todo_nameEvent);
         tv_nameStory = findViewById(R.id.tv_todo_nameStory);
 
+        // Prendo il tipo di ricerca dall'Activity precedente
         Bundle type_value = getIntent().getExtras();
         if (type_value != null)
             type = type_value.getInt("type");
 
+        // Prendo il valore di ricerca dall'Activity precedente
         Bundle request_value = getIntent().getExtras();
         if (request_value != null)
             research = request_value.getString("search_value");
 
-        JSONManager jsonManager = new JSONManager(this);
-
-
+        JSONManager jsonManager = new JSONManager();
+        // Caso CHARACTER
         if(type == 1){
-            tvDescriptionSuffix.setText(R.string.description);
 
+            tvDescriptionSuffix.setText(R.string.description);
             Character character = jsonManager.get_json_character(research);
+
             if(character != null) {
                 if (character.getThumbnail() == null) {
                     Drawable drawable = getResources().getDrawable(R.drawable.moby);
@@ -97,7 +101,7 @@ public class ShowElementActivity extends AppCompatActivity {
                 } else
                     tv_DescriptionSuffixValue.setText(character.getDescription());
 
-
+                // Set della lista di comics
                 StringBuilder comicsNames = new StringBuilder();
                 for (int i = 0; i < character.getComics().getItems().size(); i++) {
                     comicsNames.append(character.getComics().getItems().get(i).getName());
@@ -109,17 +113,19 @@ public class ShowElementActivity extends AppCompatActivity {
                 } else
                     tv_nameComic.setText(comicsNames);
 
+                // Set della lista di events
                 StringBuilder eventsNames = new StringBuilder();
                 for (int i = 0; i < character.getEvents().getItems().size(); i++) {
                     eventsNames.append(character.getEvents().getItems().get(i).getName());
                     eventsNames.append("\n");
                 }
                 if (eventsNames.length() <= 0) {
-                    String notFound = R.string.elements + " " + R.string.not_found;
+                    String notFound = R.string.events + " " + R.string.not_found;
                     tv_nameEvent.setText(notFound);
                 } else
                     tv_nameEvent.setText(eventsNames);
 
+                // Set della lista di stories
                 StringBuilder storiesNames = new StringBuilder();
                 for (int i = 0; i < character.getStories().getItems().size(); i++) {
                     storiesNames.append(character.getStories().getItems().get(i).getName());
@@ -130,7 +136,10 @@ public class ShowElementActivity extends AppCompatActivity {
                     tv_nameStory.setText(notFound);
                 } else
                     tv_nameStory.setText(storiesNames);
-            } else {
+
+            }
+            // Caso character NULL (non trovato)
+            else {
                 Drawable drawable = getResources().getDrawable(R.drawable.moby);
                 iv_thumbnailValue.setImageDrawable(drawable);
                 tv_IDValue.setText(R.string.not_found);
@@ -142,7 +151,10 @@ public class ShowElementActivity extends AppCompatActivity {
                 tv_nameEvent.setText(R.string.not_found);
                 tv_nameStory.setText(R.string.not_found);
             }
-        } else {
+        }
+
+        // Caso CREATOR
+        else {
             tvDescriptionSuffix.setText(R.string.suffix);
             String[] lastname = research.split(",");
 
@@ -172,7 +184,7 @@ public class ShowElementActivity extends AppCompatActivity {
                 } else
                     tv_DescriptionSuffixValue.setText(creator.getSuffix());
 
-
+                // Set lista di comics
                 StringBuilder comicsNames = new StringBuilder();
                 for (int i = 0; i < creator.getComics().getItems().size(); i++) {
                     comicsNames.append(creator.getComics().getItems().get(i).getName());
@@ -184,17 +196,19 @@ public class ShowElementActivity extends AppCompatActivity {
                 } else
                     tv_nameComic.setText(comicsNames);
 
+                // Set lista di events
                 StringBuilder eventsNames = new StringBuilder();
                 for (int i = 0; i < creator.getEvents().getItems().size(); i++) {
                     eventsNames.append(creator.getEvents().getItems().get(i).getName());
                     eventsNames.append("\n");
                 }
                 if (eventsNames.length() <= 0) {
-                    String notFound = R.string.elements + " " + R.string.not_found;
+                    String notFound = R.string.events + " " + R.string.not_found;
                     tv_nameEvent.setText(notFound);
                 } else
                     tv_nameEvent.setText(eventsNames);
 
+                // Set lista di stories
                 StringBuilder storiesNames = new StringBuilder();
                 for (int i = 0; i < creator.getStories().getItems().size(); i++) {
                     storiesNames.append(creator.getStories().getItems().get(i).getName());
@@ -205,7 +219,9 @@ public class ShowElementActivity extends AppCompatActivity {
                     tv_nameStory.setText(notFound);
                 } else
                     tv_nameStory.setText(storiesNames);
-            } else {
+            }
+            // Caso creator NULL (non trovato)
+            else {
                 Drawable drawable = getResources().getDrawable(R.drawable.moby);
                 iv_thumbnailValue.setImageDrawable(drawable);
                 tv_IDValue.setText(R.string.not_found);
@@ -239,23 +255,21 @@ public class ShowElementActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Tale funzione permette di visualizzare l'immagine nella imageView restituita con un URL
+     * dal file JSON
+     *
+     * @param url: url dell'immagine derivante dal file JSON
+     */
     private void loadImageFromURL(String url) {
-
         Picasso.with(this).load(url).placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
                 .into(iv_thumbnailValue, new com.squareup.picasso.Callback(){
 
                     @Override
-                    public void onSuccess(){
-
-                    }
-
+                    public void onSuccess(){}
                     @Override
-                    public void onError(){
-
-                    }
+                    public void onError(){}
                 });
     }
-
-
 }

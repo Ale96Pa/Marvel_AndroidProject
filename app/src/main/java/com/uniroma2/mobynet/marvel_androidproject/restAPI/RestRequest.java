@@ -30,20 +30,22 @@ public class RestRequest {
     }
 
     /**
+     * Tale funzione crea òla stringa HASH necessaria per eseguire correttamente le richieste per
+     * le API della Marvel
      *
-     * @param ts
-     * @return
+     * @param ts: timestamp
+     * @return: Stringa hash
      */
     private String createHash(long ts) {
         String stringToHash = ts+getPrivateKey()+getPublicKey();
         return DigestUtils.md5Hex(stringToHash);
     }
 
-    // Tale metodo costruisce appositamente un url per la richiesta GET
-
     /**
+     * Tale metodo costruisce appositamente un url per la richiesta GET, secondo le specifiche delle
+     * API della Marvel
      *
-     * @return
+     * @return: Stringa con l'url
      */
     public String getUrl() {
         String url;
@@ -64,40 +66,41 @@ public class RestRequest {
         return this.url;
     }
 
-    // Il timestamp viene ottenuto come secondi correnti, in modo da essere diverso ad ogni richiesta
-
     /**
+     * Tale funzione restituisce il timestamp ottenuto come secondi correnti, in modo da
+     * essere diverso ad ogni richiesta (come richiesto dalle API della Marvel)
      *
-     * @return
+     * @return: timestamp caratteristico della richiesta
      */
-    public long getTimestamp() {
+    private long getTimestamp() {
         timestamp = System.currentTimeMillis();
         return timestamp;
     }
-    public String getPrivateKey() {
+
+    // Metodi GET
+    private String getPrivateKey() {
         return privateKey;
     }
-    public String getPublicKey() {
+    private String getPublicKey() {
         return publicKey;
     }
-    public String getRequestType() {
+    private String getRequestType() {
         return requestType;
     }
     public String getName() {
         return name;
     }
-    public String getEntryPoint() {
+    private String getEntryPoint() {
         return entryPoint;
     }
     public String getResult() {
         return result;
     }
 
-    // Tale metodo invia la richiesta GET effettiva e ottiene il risultato come file JSon
-
     /**
+     * Tale metodo invia la richiesta GET effettiva e ottiene il risultato come file JSon
      *
-     * @throws Exception
+     * @throws Exception: eccezione in caso errata richiesta tramite url
      */
     public void sendGet() throws Exception {
         // Si prende l'url per la richiesta
