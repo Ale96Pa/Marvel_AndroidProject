@@ -7,11 +7,20 @@ import android.view.View;
 import android.widget.Button;
 import com.uniroma2.mobynet.marvel_androidproject.R;
 
+
+/**
+ * La logica dell'Activity "activity_main.xml" permette all'utente di selezionare il tipo di ricerca
+ * tra due possibili: characters (personaggi) e creators (creatori).
+ * In essa vengono implementati i listeners dei bottoni che semplicemente rimandano all'Activity
+ * successiva passando come dato il tipo di ricerca scelta dall'utente.
+ */
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnCreator;
-    private Button btnCharacter;
+    /* Attributi */
+    Button btnCreator;
+    Button btnCharacter;
 
+    /* Metodi */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
