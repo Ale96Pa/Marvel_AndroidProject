@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.uniroma2.mobynet.marvel_androidproject.R;
@@ -27,7 +25,6 @@ public class SearchElementActivity extends AppCompatActivity {
     ListView lvElements;
     TextView tvElement;
     Button btnSearch;
-    ProgressBar spinner;
 
     private int type; // 1 per "characters" e 2 per "creator"
     Context context;
@@ -42,8 +39,6 @@ public class SearchElementActivity extends AppCompatActivity {
         lvElements = findViewById(R.id.lvElementsSearched);
         tvElement = findViewById(R.id.tvInstructionSearch);
         btnSearch = findViewById(R.id.btnSearch);
-        spinner = findViewById(R.id.spinner);
-        spinner.setVisibility(View.GONE);
 
         Bundle requested = getIntent().getExtras();
         if (requested != null)
@@ -58,8 +53,24 @@ public class SearchElementActivity extends AppCompatActivity {
         context = SearchElementActivity.this;
         activity = this;
 
-        ListenerSearch listener = new ListenerSearch(etSearch, type, lvElements, spinner, context, activity);
+        ListenerSearch listener = new ListenerSearch(etSearch, type, lvElements, context, activity);
         btnSearch.setOnClickListener(listener);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
 }

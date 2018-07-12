@@ -10,7 +10,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -35,7 +34,6 @@ public class ListenerSearch implements View.OnClickListener {
     /* Attributi */
     private EditText etSearch;
     private ListView lvElements;
-    private ProgressBar spinner;
 
     private Context context;
     private Activity activity;
@@ -47,11 +45,10 @@ public class ListenerSearch implements View.OnClickListener {
 
 
     /* Costruttore */
-    public ListenerSearch(EditText etSearch, int type, ListView lvElements, ProgressBar spinner, Context context, Activity activity) {
+    public ListenerSearch(EditText etSearch, int type, ListView lvElements, Context context, Activity activity) {
         this.etSearch = etSearch;
         this.type = type;
         this.lvElements = lvElements;
-        this.spinner = spinner;
         this.context = context;
         this.activity = activity;
     }
@@ -62,7 +59,6 @@ public class ListenerSearch implements View.OnClickListener {
         lvElements.setBackgroundColor(Color.parseColor("#CCFFFFFF"));
         hideKeyboard(activity); // Si nasconde la tastiera virtuale dopo aver confermato la ricerca
         String user_search = String.valueOf(etSearch.getText());
-        spinner.setVisibility(View.VISIBLE);
 
         // Si inizializza il database
         DbHelper DBhelper = new DbHelper(context);
@@ -136,7 +132,6 @@ public class ListenerSearch implements View.OnClickListener {
 
         // Vengono eliminati i doppioni dall'insieme di elementi ritornati
         List<String> allSearchedElements = new ArrayList<>(new LinkedHashSet<>(queryResults));
-        spinner.setVisibility(View.INVISIBLE);
 
         // Si istanzia adapter e listener per la ListView
         ArrayAdapter<String> adapater = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, allSearchedElements);
@@ -155,7 +150,7 @@ public class ListenerSearch implements View.OnClickListener {
         InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         // Trova la View corrente in modo da "afferrare" la giusta finestra su essa
         View view = activity.getCurrentFocus();
-        // Se la View corrente non è disponibile se ne crea una cosi' da poter nascondere la tastiera
+        // Se la View corrente non e' disponibile se ne crea una cosi' da poter nascondere la tastiera
         if (view == null) {
             view = new View(activity);
         }

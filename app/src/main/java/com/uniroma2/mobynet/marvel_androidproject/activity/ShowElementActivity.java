@@ -239,6 +239,7 @@ public class ShowElementActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ShowElementActivity.this, MainActivity.class);
+                intent.putExtra("research", research);
                 startActivity(intent);
             }
         });
@@ -271,5 +272,20 @@ public class ShowElementActivity extends AppCompatActivity {
                     @Override
                     public void onError(){}
                 });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

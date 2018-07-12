@@ -183,6 +183,8 @@
                         android:layout_height="18dp" />
 
                     <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:paddingEnd="100dp"
+                        tools:ignore="RtlSymmetry"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -243,6 +245,8 @@
                         android:layout_height="18dp" />
 
                     <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:paddingEnd="100dp"
+                        tools:ignore="RtlSymmetry"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -302,6 +306,8 @@
                         android:layout_height="18dp" />
 
                     <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:paddingEnd="100dp"
+                        tools:ignore="RtlSymmetry"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -331,23 +337,23 @@
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_dx"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btnAgain"
         app:layout_constraintTop_toBottomOf="@+id/ScrollViewItems"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.897" />
 
     <Button
         android:id="@+id/btnAgain"
-        android:layout_width="137dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="328dp"
+        android:layout_marginStart="320dp"
         android:layout_marginTop="8dp"
         android:text="@string/again"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_sx"
         app:layout_constraintTop_toBottomOf="@+id/ScrollViewItems"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.875" />
 
 </android.support.constraint.ConstraintLayout>

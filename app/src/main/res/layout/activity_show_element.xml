@@ -186,6 +186,8 @@
                         android:layout_height="18dp" />
 
                     <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:paddingRight="100dp"
+                        tools:ignore="RtlHardcoded,RtlSymmetry"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -246,6 +248,8 @@
                         android:layout_height="18dp" />
 
                     <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:paddingEnd="100dp"
+                        tools:ignore="RtlSymmetry"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -305,6 +309,8 @@
                         android:layout_height="18dp" />
 
                     <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:paddingEnd="100dp"
+                        tools:ignore="RtlSymmetry"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -341,8 +347,8 @@
 
     <Button
         android:id="@+id/btnAgain"
-        android:layout_width="137dp"
-        android:layout_height="51dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/again"

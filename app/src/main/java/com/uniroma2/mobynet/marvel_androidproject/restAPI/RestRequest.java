@@ -77,7 +77,7 @@ public class RestRequest {
         return timestamp;
     }
 
-    // Metodi GET
+    // Metodi getter
     private String getPrivateKey() {
         return privateKey;
     }

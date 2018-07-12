@@ -344,7 +344,7 @@ public class JSONManager{
                 String type = urls.getJSONObject(j).getString("type");
                 String url = urls.getJSONObject(j).getString("url");
                 singleUrl = new Url(type,url);
-                if(singleUrl!=null){
+                if(singleUrl != null){
                     urlArrayList.add(singleUrl);
                 }
             }

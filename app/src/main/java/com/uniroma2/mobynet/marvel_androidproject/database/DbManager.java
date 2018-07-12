@@ -17,7 +17,8 @@ import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE
 import static com.uniroma2.mobynet.marvel_androidproject.database.DbHelper.TABLE_CREATORS;
 
 /**
- *
+ * Tale classe implementa i metodi funzionali per l'utilizzo del database, quindi tutta la logica
+ * dell'inserimento e della lettura dei dati
  */
 public class DbManager {
 
